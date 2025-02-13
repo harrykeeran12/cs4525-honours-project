@@ -1,15 +1,17 @@
 # Honours Project
 
-This project aims to use LLMs to correct and find errors in radiology reports. The 4 types of errors contained in the testing data are internal inconsistencies, transcript errors, omission errors and template errors. 
+This project aims to use smaller LLMs to correct and find errors in radiology reports.
 
-Template errors can be corrected by passing in the structure of a template. 
-
-
+The dataset used is located [here.](https://huggingface.co/datasets/ibrahimhamamci/CT-RATE/tree/main/dataset/radiology_text_reports). 
 
 ## Development
 
-TODO
+### Prerequisites:
+
+- A `.env` file that contains a Hugging Face token(`$HF_TOKEN`). You can create this with the commands `touch .env` and `nano .env` to edit the file if you are on a *nix machine. 
+- Ollama installed on your machine. This will allow you to use the `GGUF` file on your machine. 
+`TODO`
 
 ## Running Locally
 
-TODO
+`TODO`
