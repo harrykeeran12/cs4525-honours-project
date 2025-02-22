@@ -1,0 +1,14 @@
+name: hons
+channels:
+  - willyd
+  - conda-forge
+  - defaults
+dependencies:
+  - datasets
+  - ipykernel
+  - python=3.12
+  - conda-forge::ollama-python
+  - conda-forge::python-dotenv
+  - conda-forge::huggingface_hub
+  - conda-forge::ollama
+prefix: /opt/homebrew/Caskroom/miniconda/base/envs/hons
