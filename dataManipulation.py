@@ -33,7 +33,7 @@ for rowNumber in range(CT_RATE_LENGTH):
     consolidatedList.append(
         f"""Clinical Information:\n{row[0]}\nTechnique:\n{row[1]}\n Findings:\n{row[2]}\nImpressions: \n{row[3]}"""
     )
-# These entries do not have any errors. 
+# These entries do not have any errors.
 newDF = pd.DataFrame(
     {"Correct Items": consolidatedList, "Errors": [False for i in consolidatedList]}
 )
