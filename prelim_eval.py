@@ -4,6 +4,7 @@
 import ollama
 import pandas as pd
 from pprint import pprint
+from pathlib import Path
 
 MODELSUSED = ["mistral:latest", "falcon3:latest", "qwen2.5:latest"]
 
@@ -18,7 +19,9 @@ for i in MODELSUSED:
 
 SYSTEM = """You help correct radiology report errors. These include transcription errors, internal inconsistencies, insertion statements and translation errors. For each mistake, show the incorrect words and explain what the problem is."""
 
-dataframe = pd.read_csv("datasets/testing_data.csv")
+PWD = str(Path.cwd()) + "/honours_project"
+
+dataframe = pd.read_csv(PWD + "/datasets/testing_data.csv")
 
 removedCorrection = dataframe["Removed Correction"]
 
@@ -64,7 +67,7 @@ pprint(reportDict)
 
 tempData = pd.DataFrame().from_dict(reportDict)
 
-tempData.to_csv("datasets/preliminary_eval_results.csv")
+tempData.to_csv(PWD+"datasets/preliminary_eval_results.csv")
 
 # display(tempData)
 
