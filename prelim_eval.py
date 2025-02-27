@@ -7,17 +7,18 @@ from pprint import pprint
 from pathlib import Path
 import logging
 
-# Create and configure logger
-prelim_logger = logging.basicConfig(
+# Create and configure logger.
+logging.basicConfig(
     filename="./honours_project/prelim_eval.log",
     format="%(asctime)s: %(levelname)s: %(message)s",
     filemode="w",
     level=logging.DEBUG,
 )
 
+
 # Creating an object
 
-prelim_logger.debug("Starting logger.")
+logging.debug("Starting logger.")
 
 MODELSUSED = ["mistral:latest", "falcon3:latest", "qwen2.5:latest"]
 
@@ -52,34 +53,42 @@ for i in range(len(removedCorrection)):
 for i in range(len(errors)):
     errorList = errors[i].split(";")
     errorNumber = len(errorList)
-    # print(f"{i} : {errorNumber} errors.")
-# display(errors)
 
-# %%
+# Check if file for preliminary evaluation already exists.
+
 # Feed each report into the models.
 temp = removedCorrection
+
 reportDict: dict[str, list[str]] = {
     "Original report": temp,
-    "mistral:latest": [],
-    "falcon3:latest": [],
-    "qwen2.5:latest": [],
+    "mistral:latest": [""" """ for i in temp],
+    "falcon3:latest": [""" """ for i in temp],
+    "qwen2.5:latest": [""" """ for i in temp],
 }
 
-for report in temp:
-    for name in MODELSUSED:
-        generated = ollama.generate(
-            name, prompt=SYSTEM + report, options={"temperature": 0}
-        )
-        reportDict[name].append(generated["response"])
-        logging.debug(f"Generated new response to report {len(reportDict[name])} using model {name}.")
+# Ollama keeps models in memory, so better to have the for-loop as a report for each model.
 
-pprint(reportDict)
+
+def createReportIssues(row: str, MODELNAME: str):
+    """A function that creates a report using the ollama.generate function, taking in the name and the row. This allows it to be used with the dataframe.apply function."""
+    logging.debug(f"{MODELNAME}: Finding errors")
+    response = ollama.generate(MODELNAME, prompt=SYSTEM + row, options={"temperature": 0})["response"]
+    reportDict[MODELNAME].append(response)
+    logging.debug(f"{MODELNAME}: Completed finding errors.")
+    logging.info(f"{MODELNAME}: {response}")
+    return response
+
+temp.apply(lambda x : createReportIssues(x, "mistral:latest"))
+temp.apply(lambda x : createReportIssues(x, "falcon3:latest"))
+temp.apply(lambda x : createReportIssues(x, "qwen2.5:latest"))
 
 
 # Convert dictionary into CSV file.
 
 tempData = pd.DataFrame().from_dict(reportDict)
-tempData.to_csv(PWD + "datasets/preliminary_eval_results.csv")
-logging.debug("Created new datasets.")
+
+tempData.to_csv(PWD + "/datasets/preliminary_eval_results.csv")
+
+logging.debug("Created new dataset.")
 
 # display(tempData)
