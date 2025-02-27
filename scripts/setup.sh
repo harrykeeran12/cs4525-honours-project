@@ -12,7 +12,7 @@ module load conda/miniconda3
 
 echo "Creating environment."
 
-conda create -n hons python=3.12
+conda create -n hons python=3.12 -y
 conda activate hons
-conda install -c conda-forge ollama-python python-dotenv huggingface_hub ollama pandas
+conda install -y -c conda-forge ollama-python python-dotenv huggingface_hub ollama pandas
 
