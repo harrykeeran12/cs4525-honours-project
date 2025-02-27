@@ -7,9 +7,11 @@ from pprint import pprint
 from pathlib import Path
 import logging
 
+PWD = str(Path.cwd()) + "/honours_project"
+
 # Create and configure logger.
 logging.basicConfig(
-    filename="./honours_project/prelim_eval.log",
+    filename=PWD + "/prelim_eval.log",
     format="%(asctime)s: %(levelname)s: %(message)s",
     filemode="w",
     level=logging.DEBUG,
@@ -34,7 +36,7 @@ for i in MODELSUSED:
 
 SYSTEM = """You help correct radiology report errors. These include transcription errors, internal inconsistencies, insertion statements and translation errors. For each mistake, show the incorrect words and explain what the problem is."""
 
-PWD = str(Path.cwd()) + "/honours_project"
+
 
 dataframe = pd.read_csv(PWD + "/datasets/testing_data.csv")
 
