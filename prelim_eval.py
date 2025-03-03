@@ -11,7 +11,7 @@ PWD = str(Path.cwd()) + "/honours_project"
 
 # Create and configure logger.
 logging.basicConfig(
-    filename=PWD + "/prelim_eval.log",
+    filename=PWD + "/logs/prelim_eval.log",
     format="%(asctime)s: %(levelname)s: %(message)s",
     filemode="w",
     level=logging.DEBUG,
