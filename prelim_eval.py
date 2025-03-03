@@ -67,7 +67,7 @@ else:
     WRITEBYTE = "w"
     logging.debug("Created new dataset.")
     # Feed each report into the models.
-    temp = removedCorrection.head(2)
+    temp = removedCorrection
 
     reportDict: dict[str, list[str]] = {
         "Original report": temp,
