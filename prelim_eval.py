@@ -37,7 +37,6 @@ for i in MODELSUSED:
 SYSTEM = """You help correct radiology report errors. These include transcription errors, internal inconsistencies, insertion statements and translation errors. For each mistake, show the incorrect words and explain what the problem is."""
 
 
-
 dataframe = pd.read_csv(PWD + "/datasets/testing_data.csv")
 
 removedCorrection = dataframe["Removed Correction"]
@@ -56,41 +55,47 @@ for i in range(len(errors)):
     errorList = errors[i].split(";")
     errorNumber = len(errorList)
 
+
 # Check if file for preliminary evaluation already exists.
+if Path.exists(Path(PWD + "/datasets/preliminary_eval_results.csv")):
+    # print("This path exists.")
+    WRITEBYTE = "a"
+    prelimEvalDF = pd.read_csv(PWD + "/datasets/preliminary_eval_results.csv")
 
-# Feed each report into the models.
-temp = removedCorrection
+else:
+    # print("This path does not exist. Create this file.")
+    WRITEBYTE = "w"
+    logging.debug("Created new dataset.")
+    # Feed each report into the models.
+    temp = removedCorrection.head(2)
 
-reportDict: dict[str, list[str]] = {
-    "Original report": temp,
-    "mistral:latest": [""" """ for i in temp],
-    "falcon3:latest": [""" """ for i in temp],
-    "qwen2.5:latest": [""" """ for i in temp],
-}
+    reportDict: dict[str, list[str]] = {
+        "Original report": temp,
+        "mistral:latest": [""" """ for i in temp],
+        "falcon3:latest": [""" """ for i in temp],
+        "qwen2.5:latest": [""" """ for i in temp],
+    }
+
+    prelimEvalDF = pd.DataFrame(reportDict)
+
+print(prelimEvalDF)
 
 # Ollama keeps models in memory, so better to have the for-loop as a report for each model.
-
 
 def createReportIssues(row: str, MODELNAME: str):
     """A function that creates a report using the ollama.generate function, taking in the name and the row. This allows it to be used with the dataframe.apply function."""
     logging.debug(f"{MODELNAME}: Finding errors")
-    response = ollama.generate(MODELNAME, prompt=SYSTEM + row, options={"temperature": 0})["response"]
-    reportDict[MODELNAME].append(response)
+    response = ollama.generate(
+        MODELNAME, prompt=SYSTEM + row, options={"temperature": 0}
+    )["response"]
     logging.debug(f"{MODELNAME}: Completed finding errors.")
     logging.info(f"{MODELNAME}: {response}")
     return response
 
-temp.apply(lambda x : createReportIssues(x, "mistral:latest"))
-temp.apply(lambda x : createReportIssues(x, "falcon3:latest"))
-temp.apply(lambda x : createReportIssues(x, "qwen2.5:latest"))
+for modelName in MODELSUSED:
+    prelimEvalDF[modelName] = prelimEvalDF["Original report"].apply(
+        lambda x: createReportIssues(x, modelName)
+    )
 
-
+prelimEvalDF.to_csv(PWD + "/datasets/preliminary_eval_results.csv", mode="w")
 # Convert dictionary into CSV file.
-
-tempData = pd.DataFrame().from_dict(reportDict)
-
-tempData.to_csv(PWD + "/datasets/preliminary_eval_results.csv")
-
-logging.debug("Created new dataset.")
-
-# display(tempData)
