@@ -4,8 +4,12 @@
 #SBATCH --mem=16G
 #SBATCH --ntasks-per-node=1 
 #SBATCH --partition=gpu 
+#SBATCH --mail-user=u03he21@abdn.ac.uk
+#SBATCH --mail-type=ALL
+#SBATCH --output=prelimLog-%j.out
+#SBATCH --error=error-%j.out
 #SBATCH --job-name=nlpRadio
-#SBATCH --output=prelimLog.out
+
 
 module load conda/miniconda3
 

@@ -4,6 +4,8 @@
 #SBATCH --mem=8G
 #SBATCH --ntasks-per-node=1 
 #SBATCH --partition=gpu
+#SBATCH --mail-user=u03he21@abdn.ac.uk
+#SBATCH --mail-type=ALL
 #SBATCH --job-name=nlpRadioSetup
 #SBATCH --output=environmentSetup.out
 
