@@ -6,12 +6,13 @@ import pandas as pd
 from pprint import pprint
 from pathlib import Path
 import logging
+import datetime
 
 PWD = str(Path.cwd()) + "/honours_project"
 
 # Create and configure logger.
 logging.basicConfig(
-    filename=PWD + "/logs/prelim_eval.log",
+    filename=PWD + f"/logs/prelim_eval_{datetime.datetime.now()}.log",
     format="%(asctime)s: %(levelname)s: %(message)s",
     filemode="w",
     level=logging.DEBUG,
@@ -97,5 +98,5 @@ for modelName in MODELSUSED:
         lambda x: createReportIssues(x, modelName)
     )
 
-prelimEvalDF.to_csv(PWD + "/datasets/preliminary_eval_results.csv", mode="w")
+    prelimEvalDF.to_csv(PWD + f"/datasets/preliminary_eval_results_{modelName}.csv", mode="w")
 # Convert dictionary into CSV file.
