@@ -7,6 +7,14 @@ from pprint import pprint
 from pathlib import Path
 import logging
 import datetime
+from pydantic import BaseModel
+
+
+class RadiologyError(BaseModel):
+    errorType: list[str]
+    errorPhrases: list[str]
+    errorExplanation: list[str]
+
 
 PWD = str(Path.cwd()) + "/honours_project"
 
@@ -79,7 +87,7 @@ else:
 
     prelimEvalDF = pd.DataFrame(reportDict)
 
-print(prelimEvalDF)
+print(prelimEvalDF.shape)
 
 # Ollama keeps models in memory, so better to have the for-loop as a report for each model.
 
@@ -87,7 +95,10 @@ def createReportIssues(row: str, MODELNAME: str):
     """A function that creates a report using the ollama.generate function, taking in the name and the row. This allows it to be used with the dataframe.apply function."""
     logging.debug(f"{MODELNAME}: Finding errors")
     response = ollama.generate(
-        MODELNAME, prompt=SYSTEM + row, options={"temperature": 0}
+        MODELNAME,
+        prompt=SYSTEM + row,
+        options={"temperature": 0},
+        format=RadiologyError.model_json_schema(),
     )["response"]
     logging.debug(f"{MODELNAME}: Completed finding errors.")
     logging.info(f"{MODELNAME}: {response}")
@@ -98,5 +109,9 @@ for modelName in MODELSUSED:
         lambda x: createReportIssues(x, modelName)
     )
 
-    prelimEvalDF.to_csv(PWD + f"/datasets/preliminary_eval_results_{modelName}.csv", mode="w")
+    prelimEvalDF.to_csv(
+        PWD + f"/datasets/preliminary_eval_results_{modelName}.csv", mode="w"
+    )
+
+
 # Convert dictionary into CSV file.

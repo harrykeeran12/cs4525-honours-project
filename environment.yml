@@ -11,4 +11,5 @@ dependencies:
   - conda-forge::python-dotenv
   - conda-forge::huggingface_hub
   - conda-forge::ollama
+  - conda-forge::pydantic
 prefix: /opt/homebrew/Caskroom/miniconda/base/envs/hons
