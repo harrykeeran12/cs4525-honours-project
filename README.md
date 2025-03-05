@@ -2,7 +2,7 @@
 
 This project aims to use smaller LLMs to correct and find errors in radiology reports.
 
-The dataset used is located [here.](https://huggingface.co/datasets/ibrahimhamamci/CT-RATE/tree/main/dataset/radiology_text_reports)
+The training dataset used is located [here](https://huggingface.co/datasets/ibrahimhamamci/CT-RATE/tree/main/dataset/radiology_text_reports) and can be accessed using the `dataManipulation.py` script. 
 
 
 
@@ -22,11 +22,13 @@ or
 ```
 conda create -n hons python=3.12
 conda activate hons
-conda install -c conda-forge ollama-python python-dotenv huggingface_hub ollama pandas
+conda install -c conda-forge ollama-python python-dotenv huggingface_hub ollama pandas flask
 ```
 
 The preliminary evaluation results were run on a HPC supercomputer. As such, the scripts located in the `scripts/` directory were designed to be run on a Linux machine. 
 
+
 ## Running Locally
 
+The main point of interaction is the Flask application, located in the `webview` folder. This will still require Ollama to be installed.
 `TODO`
