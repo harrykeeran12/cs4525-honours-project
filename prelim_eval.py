@@ -91,6 +91,7 @@ print(prelimEvalDF.shape)
 
 # Ollama keeps models in memory, so better to have the for-loop as a report for each model.
 
+
 def createReportIssues(row: str, MODELNAME: str):
     """A function that creates a report using the ollama.generate function, taking in the name and the row. This allows it to be used with the dataframe.apply function."""
     logging.debug(f"{MODELNAME}: Finding errors")
@@ -104,14 +105,16 @@ def createReportIssues(row: str, MODELNAME: str):
     logging.info(f"{MODELNAME}: {response}")
     return response
 
-for modelName in MODELSUSED:
-    prelimEvalDF[modelName] = prelimEvalDF["Original report"].apply(
-        lambda x: createReportIssues(x, modelName)
-    )
 
-    prelimEvalDF.to_csv(
-        PWD + f"/datasets/preliminary_eval_results_{modelName}.csv", mode="w"
-    )
+for modelName in MODELSUSED:
+    try:
+        prelimEvalDF[modelName] = prelimEvalDF["Original report"].apply(
+            lambda x: createReportIssues(x, modelName)
+        )
+    finally:
+        prelimEvalDF.to_csv(
+            PWD + f"/datasets/preliminary_eval_results_{modelName}.csv", mode="w"
+        )
 
 
 # Convert dictionary into CSV file.
