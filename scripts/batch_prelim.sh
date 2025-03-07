@@ -23,6 +23,7 @@ export OLLAMA_CONTEXT_LENGTH=1024
 export PATH=${PATH}:${PWD}/ollama/bin
 export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:${PWD}/ollama/lib
 export OLLAMA_MODELS=${PWD}/ollama/models
+export OLLAMA_DEBUG=1
 
 
 source activate base
@@ -52,7 +53,9 @@ sleep 10
 
 # Use the slurm script to run the preliminary evaluation script. 
 
-srun python honours_project/prelim_eval.py 
+# srun python honours_project/prelim_eval.py mistral:latest
+# srun python honours_project/prelim_eval.py falcon3:latest
+srun python honours_project/prelim_eval.py qwen2.5:latest
 
 conda deactivate
 

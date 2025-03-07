@@ -8,13 +8,21 @@ from pathlib import Path
 import logging
 import datetime
 from pydantic import BaseModel
+import argparse
 
 
 class RadiologyError(BaseModel):
+    """This class serves as a schema to act as as structured output for the models."""
     errorType: list[str]
     errorPhrases: list[str]
     errorExplanation: list[str]
 
+
+CMDPARSER = argparse.ArgumentParser(
+    prog="python3 honours_project/prelim_eval.py",
+    description="This program generates an analysis of a report, looking for any errors using the help of a model specified. The default models expected to be installed on the machine are mistral:latest, falcon3:latest and qwen2.5:latest.",
+    epilog="",
+)
 
 PWD = str(Path.cwd()) + "/honours_project"
 
@@ -25,22 +33,38 @@ logging.basicConfig(
     filemode="w",
     level=logging.DEBUG,
 )
-
+# Configure the argument parser.
+CMDPARSER.add_argument(
+    "modelName",
+    help="Name of the model used when evaluating a report, utilising ollama.",
+)
+ARGUMENTS = CMDPARSER.parse_args()
+modelName = ARGUMENTS.modelName
 
 # Creating an object
-
 logging.debug("Starting logger.")
 
 MODELSUSED = ["mistral:latest", "falcon3:latest", "qwen2.5:latest"]
 
-modelNames = [model.get("model") for model in ollama.list().models]
+try:
+    installedModels = [model.get("model") for model in ollama.list().models]
+    if len(installedModels) == 0:
+        logging.error("No models installed on the system.")
+        raise Exception(
+            "There are no models installed on the system. Please install models using ollama pull <model-name>."
+        )
+except ConnectionError:
+    raise Exception("Start Ollama with ollama serve in another terminal.")
+
 
 # Get list of models names on the system.
-print(f"Models used: {MODELSUSED}")
 for i in MODELSUSED:
-    if i not in modelNames:
-        raise Exception(f"Model {i} not on system.")
-    logging.debug(f"Found model: {i}")
+    if i not in installedModels:
+        raise Exception(
+            f"Model {i} not on system. To install {i}, use ollama pull {i}."
+        )
+    else:
+        logging.debug(f"Models on system: {i}")
 
 
 SYSTEM = """You help correct radiology report errors. These include transcription errors, internal inconsistencies, insertion statements and translation errors. For each mistake, show the incorrect words and explain what the problem is."""
@@ -76,6 +100,8 @@ else:
     WRITEBYTE = "w"
     logging.debug("Created new dataset.")
     # Feed each report into the models.
+
+    # TODO: Remove the head method
     temp = removedCorrection
 
     reportDict: dict[str, list[str]] = {
@@ -87,7 +113,7 @@ else:
 
     prelimEvalDF = pd.DataFrame(reportDict)
 
-print(prelimEvalDF.shape)
+logging.debug(f"Dataframe loaded with shape {prelimEvalDF.shape}")
 
 # Ollama keeps models in memory, so better to have the for-loop as a report for each model.
 
@@ -106,7 +132,8 @@ def createReportIssues(row: str, MODELNAME: str):
     return response
 
 
-for modelName in MODELSUSED:
+if modelName in installedModels:
+    print(f"Model name specified: {modelName}")
     try:
         prelimEvalDF[modelName] = prelimEvalDF["Original report"].apply(
             lambda x: createReportIssues(x, modelName)
@@ -115,6 +142,10 @@ for modelName in MODELSUSED:
         prelimEvalDF.to_csv(
             PWD + f"/datasets/preliminary_eval_results_{modelName}.csv", mode="w"
         )
+        print("Returned data to .csv file.")
 
-
-# Convert dictionary into CSV file.
+else:
+    logging.error(f"Model name {modelName} could not be found on system.")
+    raise Exception(
+        f"The model name specified: {modelName} is not on the system."
+    )
