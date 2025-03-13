@@ -1,10 +1,15 @@
 # This file takes in the existing synthetic data that Dr Zhang has provided and for each report, randomly modifies each word.
 
-from collections import Counter
-from tkinter import W
 import pandas as pd
 import random
 from pprint import pprint
+
+random.seed(42)
+
+
+def red(string: str):
+    return f"\033[31m{string}\033[0m"
+
 
 dataframe = pd.read_csv("datasets/300ormore.csv")
 
@@ -231,10 +236,7 @@ nonsense = [
     "keyboard",
     "carriage",
 ]
-
-
 # Convert side confusion and near_homonym into dictionaries.
-
 sideConfusionDict = {}
 
 for mistakeWords in side_confusion:
@@ -258,23 +260,69 @@ for homonyms in near_homonym:
 # pprint(sideConfusionDict)
 # pprint(nearHomonymDict)
 
+errorTupleList = []
+for item in itemsToChange:
+    # Split the items by spaces
+    splitItem = item.split(" ")
 
-item: str = itemsToChange[0]
-# Split the items by spaces
-splitItem = item.split(" ")
-print(len(splitItem))
+    # countItem = Counter(splitItem)
+    # # This finds all the words in the item that can be replaced, by taking the intersection of the keys and items in the counter.
+    # wordsToReplace = sorted(
+    #     set(countItem.keys()).intersection(set(sideConfusionDict.keys()))
+    # )
+    # Each item has an error array, which keeps track of any errors added.
+    errorArray = [0, 0, 0, 0, 0]
+    for wordIndex in range(len(splitItem)):
+        word = splitItem[wordIndex]
+        flip = random.randrange(0, 2)
+        if flip == 0:
+            # Side confusions
+            if word in sideConfusionDict:
+                possibleWords = sideConfusionDict[word]
+                randomIndex = random.randrange(0, len(possibleWords))
+                replacementWord = list(possibleWords)[randomIndex]
+                # print(f"---\nReplacing {word} -> {replacementWord}")
+                # splitItem[wordIndex] = red(f"{replacementWord}({word})")
+                splitItem[wordIndex] = f"{replacementWord}"
+                errorArray[0] += 1
+                # print(word)
+        elif flip == 1:
+            # Near Homonyms
+            if word in nearHomonymDict:
+                homonyms = nearHomonymDict[word]
+                if len(homonyms) == 1:
+                    similarWord = list(homonyms)[0]
+                else:
+                    randomIndex = random.randrange(0, len(homonyms))
+                    similarWord = list(homonyms)[randomIndex]
+                # print(f"---\nReplacing {word} -> {similarWord}")
+                splitItem[wordIndex] = f"{similarWord}"
+                errorArray[2] += 1
 
-countItem = Counter(splitItem)
-# This finds all the words in the item that can be replaced, by taking the intersection of the keys and items in the counter. 
-wordsToReplace = sorted(set(countItem.keys()).intersection(set(sideConfusionDict.keys())))
+    errorEntry = " ".join(splitItem)
+    # print(f"Error count = {sum(errorArray)}")
+    errorTupleList.append((errorEntry, errorArray))
 
-for word in wordsToReplace:
-    # Gets through words to replace
-    possibleWords = sideConfusionDict[word]
-    wordCount = countItem[word]
-    randomIndex = random.randrange(0,len(possibleWords))
-    replacementWord = list(possibleWords)[randomIndex]
-    print(f"---\nThe word {word} is counted {countItem[word]} times in the text. Replacing {word} -> {replacementWord}")
-    
-    item = item.replace(f" {word} ", f"\033[31m {replacementWord} \033[0m", random.randrange(1, wordCount + 1))
-print(item)
+newDf = pd.DataFrame(
+    {
+        "Original Report" : [i for i in itemsToChange],
+        "Reports with Errors": [i[0] for i in errorTupleList],
+        "Errors": True,
+    }
+)
+
+errorDf = pd.DataFrame(
+    data=[i[1] for i in errorTupleList],
+    columns=[
+        "Side confusion",
+        "Omission",
+        "Near homonym",
+        "Nonsense",
+        "Extraneous Statement",
+    ],
+)
+
+syntheticData = pd.concat([newDf, errorDf], axis=1)
+
+print(syntheticData.head())
+syntheticData.to_csv("datasets/syntheticData.csv")
