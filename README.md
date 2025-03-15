@@ -10,7 +10,7 @@ The training dataset used is located [here](https://huggingface.co/datasets/ibra
 
 ### Prerequisites:
 
-- A `.env` file that contains a Hugging Face token(`$HF_TOKEN`). You can create this with the commands `touch .env` and `nano .env` to edit the file if you are on a Unix machine or MacOS. An example `.env` file is shown in `.env.example`. 
+- A `.env` file that contains a Hugging Face token(`$HF_TOKEN`). You can create this with the commands `touch .env` and `nano .env` to edit the file if you are on a Unix machine or MacOS. An example `.env` file is shown in `.env.example`. The Hugging Face token can be procured by going to the HuggingFace tokens page, located [here.](https://huggingface.co/settings/tokens)
 - [Ollama](https://ollama.com/download) installed on your machine.
 - Conda to replicate the development environment on your machine. To replicate the environment clone the repository, `cd` into the directory, and run the command: 
 
@@ -30,5 +30,6 @@ The preliminary evaluation results were run on a HPC supercomputer. As such, the
 
 ## Running Locally
 
-The main point of interaction is the Flask application, located in the `webview` folder. This will still require Ollama to be installed.
+The main point of interaction is the Flask application, located in the `webview` folder. This will still require Ollama to be installed. To run the Flask application locally, add `FLASK_APP=webview/app` to the env file. Then run `python3 -m flask run`. 
+
 `TODO`

@@ -305,7 +305,7 @@ for item in itemsToChange:
 
 newDf = pd.DataFrame(
     {
-        "Original Report" : [i for i in itemsToChange],
+        "Original Report": [i for i in itemsToChange],
         "Reports with Errors": [i[0] for i in errorTupleList],
         "Errors": True,
     }

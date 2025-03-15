@@ -13,6 +13,7 @@ import argparse
 
 class RadiologyError(BaseModel):
     """This class serves as a schema to act as as structured output for the models."""
+
     errorType: list[str]
     errorPhrases: list[str]
     errorExplanation: list[str]
@@ -104,7 +105,7 @@ else:
     # TODO: Remove the head method
     temp = removedCorrection
 
-    reportDict: dict[str, list[str]] = {
+    reportDict = {
         "Original report": temp,
         "mistral:latest": [""" """ for i in temp],
         "falcon3:latest": [""" """ for i in temp],
@@ -122,7 +123,7 @@ def createReportIssues(row: str, MODELNAME: str):
     """A function that creates a report using the ollama.generate function, taking in the name and the row. This allows it to be used with the dataframe.apply function."""
     logging.debug(f"{MODELNAME}: Finding errors")
     response = ollama.generate(
-        MODELNAME,
+        model=MODELNAME,
         prompt=SYSTEM + row,
         options={"temperature": 0},
         format=RadiologyError.model_json_schema(),
@@ -146,6 +147,4 @@ if modelName in installedModels:
 
 else:
     logging.error(f"Model name {modelName} could not be found on system.")
-    raise Exception(
-        f"The model name specified: {modelName} is not on the system."
-    )
+    raise Exception(f"The model name specified: {modelName} is not on the system.")
