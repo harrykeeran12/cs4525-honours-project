@@ -14,22 +14,21 @@ class RadiologyError(BaseModel):
 
 app = Flask(__name__)
 
+try:
+    modelList = [model.get("model") for model in ollama.list().models]
+except Exception:
+    raise Exception("Ollama not running. Please start ollama.")
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    return render_template("index.html", models=modelList)
 
 
 @app.post("/generate")
 def generate():
     """Takes in the model name + report information as a form. Outputs the possible errors, as JSON."""
-    SYSTEM = "You help correct radiology report errors. These include transcription errors, internal inconsistencies, insertion statements and translation errors. For every mistake found in the text, show the incorrect words and explain what the problem is. The errorPhrases array must be the same length as the errorType array and errorExplanation array. Ignore any errors deemed unnecessary."
-    try:
-        modelList = [model.get("model") for model in ollama.list().models]
-    except Exception:
-        return make_response(
-            jsonify({"error": "Ollama not running. Please start ollama. "}), 400
-        )
+    SYSTEM = "You help correct radiology report errors. These include transcription errors, internal inconsistencies, insertion statements and translation errors. For every mistake found in the text, show the incorrect words and explain what the problem is. The errorPhrases array must be the same length as the errorType array and errorExplanation array. Ignore any errors deemed unnecessary or redundant."
+
 
     modelName = request.form["modelName"]
     reportInfo = request.form["reportInformation"]
@@ -43,24 +42,25 @@ def generate():
             format=RadiologyError.model_json_schema(),
         )["response"]
 
+
         listOfErrors = []
 
         jsonResponse = json.loads(ollamaResponse)
+        print(jsonResponse)
         for errorNumber in range(len(jsonResponse["errorPhrases"])):
             errorPhrase = jsonResponse["errorPhrases"][errorNumber]
-            errorDescription =  jsonResponse["errorExplanation"][errorNumber]
-            print(errorPhrase)
+            errorDescription = jsonResponse["errorExplanation"][errorNumber]
             reportInfo = reportInfo.replace("\n", "<br></br>")
             reportInfo = reportInfo.replace(errorPhrase, f"<mark>{errorPhrase}</mark>")
             listOfErrors.append((errorPhrase, errorDescription))
-        htmlResponse = f'<p class="px-2 py-3 h-[50vh] overflow-y-auto" id="correction">{reportInfo}</p>'
-
-        htmlList = [f"<li class=\"flex flex-col gap-2\"><h2 class=\"font-semibold my-2\">⁉ {error[0]}</h2><p>{error[1]}</p></li>" for error in listOfErrors]
-
-        unorderedList = f"<ul class=\"bg-blue-100 text-black-100 p-1 px-2 mt-5 rounded-lg\">{"<br></br>".join(htmlList)}</ul>"
+        htmlResponse = render_template(
+            "generatedResponse.html",
+            correctedOutput=reportInfo,
+            listOfErrors=listOfErrors,
+        )
 
         return make_response(
-            htmlResponse+unorderedList,
+            htmlResponse,
             200,
         )
     else:
