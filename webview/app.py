@@ -19,6 +19,7 @@ try:
 except Exception:
     raise Exception("Ollama not running. Please start ollama.")
 
+
 @app.route("/")
 def index():
     return render_template("index.html", models=modelList)
@@ -28,7 +29,6 @@ def index():
 def generate():
     """Takes in the model name + report information as a form. Outputs the possible errors, as JSON."""
     SYSTEM = "You help correct radiology report errors. These include transcription errors, internal inconsistencies, insertion statements and translation errors. For every mistake found in the text, show the incorrect words and explain what the problem is. The errorPhrases array must be the same length as the errorType array and errorExplanation array. Ignore any errors deemed unnecessary or redundant."
-
 
     modelName = request.form["modelName"]
     reportInfo = request.form["reportInformation"]
@@ -41,7 +41,6 @@ def generate():
             options={"temperature": 0},
             format=RadiologyError.model_json_schema(),
         )["response"]
-
 
         listOfErrors = []
 
@@ -61,7 +60,7 @@ def generate():
 
         return make_response(
             htmlResponse,
-            200,
+            201,
         )
     else:
         return make_response(

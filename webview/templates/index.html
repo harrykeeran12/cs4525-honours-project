@@ -4,6 +4,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../static/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../static/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../static/images/favicon-16x16.png">
+  <link rel="manifest" href="../static/images/site.webmanifest">
   <!-- <script src="https://unpkg.com/@tailwindcss/browser@4"></script> -->
   <!-- Script for tailwind. -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -14,109 +18,30 @@
 </head>
 
 <body class="bg-red-50 w-screen h-screen">
-  <div class="p-7 w-full grid grid-cols-4 grid-rows-1 items-start gap-2 bg-blue-50 h-full ">
-    <section class="flex flex-col col-span-2 h-[100%] min-w-[45vw]">
+  <div class="p-7 w-full flex flex-col md:flex-row items-start gap-5 md:gap-2 bg-blue-50 h-full ">
+    <section class="flex flex-col h-[100%] w-full">
       <form class="flex flex-col gap-4 px-2" hx-post="/generate" hx-target="#correction" hx-swap="outerHTML">
         <label for="reportInformation"><strong>Report Information:</strong></label>
         <textarea id="reportInformation" name="reportInformation" spellcheck="true"
-          class="min-h-[20rem] rounded-md px-2 py-3" style="resize:none;" required></textarea>
+          class="min-h-[20rem] w-auto rounded-md px-2 py-3" style="resize:none;" required></textarea>
         <label for="modelName"><strong>Choose LLM:</strong></label>
         <select name="modelName" id="modelName"
-          class="w-1/3 p-2 rounded-sm border-2 hover:border-gray-300 border-blue-200 border-solid">
+          class="min-w-1/3 max-w-xs p-2 rounded-sm border-2 hover:border-gray-300 border-blue-200 border-solid">
           {% for model in models %}
             <option value={{model}}>{{model}}</option>
           {% endfor %}
         </select>
-        <button class="bg-blue-200 rounded-md flex flex-row justify-center p-4 w-1/2 hover:bg-gray-300">
+        <button class="bg-blue-200 rounded-md flex flex-row justify-center p-4 min-w-1/2 max-w-lg hover:bg-gray-300">
           <input type="submit" value="Send Request" class=""/>
         </button>
       </form>
     </section>
     <!-- <span class="bg-red-100 h-[75vh] w-[2px] items-center margin-auto"></span> -->
-    <section class="col-span-2 min-w-[45vw] flex flex-col bg-neutral-50 rounded-md gap-3">
-      <p class="px-2 py-3 h-[50vh] overflow-y-auto" id="correction">Lorem ipsum odor amet, consectetuer adipiscing elit.
-        Morbi litora
-        habitasse
-        orci magna turpis maximus vehicula. Primis
-        velit sollicitudin nunc venenatis magna lacinia dui. Quis fusce platea suscipit pulvinar sociosqu posuere dis
-        dapibus.
-        Nisl aliquet torquent mi ridiculus auctor vivamus. Sollicitudin auctor ut nibh enim nam mus tristique. Netus
-        elit turpis
-        rutrum malesuada curae.
-        <br>
-        <mark>Facilisis aliquet mollis vivamus inceptos vel efficitur taciti nibh nisl. Congue ex libero dapibus egestas
-          sem
-          hendrerit.</mark> Pellentesque tincidunt mattis euismod leo erat euismod laoreet id. Placerat fusce mus
-        porttitor ultricies
-        turpis mi. Torquent volutpat convallis bibendum risus enim urna at lorem potenti. Rutrum fermentum cursus
-        habitasse
-        sapien leo phasellus nam. Felis viverra orci tristique blandit lacus. Vestibulum aliquet urna blandit maecenas
-        cras
-        convallis. Lectus curabitur duis himenaeos aenean ullamcorper erat.
-
-        Eleifend commodo amet quisque justo nisi facilisi. Leo dictumst cursus fringilla ad suscipit vestibulum rutrum
-        phasellus
-        porta. Neque habitasse ex facilisi massa fringilla. Adipiscing viverra auctor inceptos, augue class ligula
-        natoque.
-        Nostra dignissim accumsan aenean scelerisque congue aliquet leo augue. Semper cras elit finibus interdum
-        malesuada
-        accumsan. Congue quisque vel in fames ultrices, nisl congue posuere lacinia. Amet feugiat quis dictum turpis
-        hac? Tempor
-        himenaeos vestibulum diam nisl lectus. Eu elementum posuere vitae nisi facilisis nulla.
-
-        Augue urna magnis habitant ullamcorper metus finibus eu rutrum elementum. Velit sed semper aliquam placerat
-        fusce nostra
-        adipiscing. Dignissim ullamcorper cursus sed placerat montes congue eu. Blandit suspendisse urna facilisis
-        condimentum
-        litora semper nisl. At netus sapien mauris tincidunt nec imperdiet sed porta. Arcu lacus vulputate conubia sit
-        habitant
-        fringilla malesuada lacus hac? Maecenas posuere suscipit elit interdum justo. Velit ut nunc lorem donec
-        phasellus.
-
-        Orci cursus consequat praesent praesent eget, sodales fermentum magna mauris. Scelerisque tincidunt mi fames
-        quisque eu;
-        sodales mus. Natoque ad dictum vitae quisque penatibus maecenas. Nec malesuada ex lorem at ultricies gravida
-        mattis.
-        Penatibus at aenean ullamcorper placerat efficitur phasellus purus. Lacus cras feugiat viverra nec conubia
-        augue. Et
-        euismod at torquent ad cubilia.
-
-        Sit et aptent facilisi at tempor velit urna consequat. Class inceptos est etiam nec nulla libero praesent
-        iaculis. Diam
-        gravida dictum magnis ut neque vivamus leo integer. Facilisis leo proin erat tincidunt accumsan. Amet efficitur
-        himenaeos varius facilisis hac natoque. Senectus a aliquet justo aliquet porta. Sit nascetur bibendum dictum vel
-        conubia
-        aliquam mi curabitur. Posuere massa feugiat curae auctor massa; luctus vulputate euismod ante. Ac ligula potenti
-        inceptos arcu a auctor nostra facilisis.
-
-        Orci maximus enim sapien justo pretium proin felis arcu. Condimentum etiam erat in ante; nibh efficitur est.
-        Nibh lectus
-        eu magnis penatibus senectus suscipit habitant suscipit? Dui sed non mattis pulvinar ad facilisis. Torquent
-        commodo
-        fringilla ipsum nullam conubia. Commodo dictum potenti natoque consectetur tincidunt rhoncus habitasse magnis.
-
-        Egestas integer ornare curae consectetur commodo at lobortis eleifend malesuada. Hendrerit sollicitudin ac;
-        molestie
-        varius nibh primis. Sociosqu placerat fames vehicula venenatis tellus ullamcorper nec integer facilisis. Eget
-        volutpat
-        turpis praesent duis aenean. Tempus aliquet consequat mus tincidunt primis. Nam phasellus blandit purus
-        ultricies turpis
-        tempor nullam. Vel convallis aptent himenaeos ridiculus placerat massa.
+    <section class="flex flex-col bg-neutral-50 rounded-md gap-3 min-w-md md:max-w-[45vw] w-full">
+      <p class="px-2 py-3 h-[50vh] overflow-y-auto" id="correction">
+        <mark>Facilisis aliquet mollis vivamus inceptos vel efficitur taciti nibh nisl. Congue ex libero dapibus egestas sem hendrerit.</mark> 
+        {{ lipsum(html=False, min=10) }}
       </p>
-      <!-- <ul class="bg-blue-100 text-black-100 p-1 px-2 mt-5 rounded-lg">
-        <li class="flex flex-col gap-2">
-          <h2 class="font-semibold my-2">⁉ Error phrase:</h2>
-          <p>Lorem ipsum odor amet, consectetuer adipiscing elit. Nostra venenatis condimentum volutpat risus sed massa. Posuere per
-            gravida commodo ultricies; etiam praesent risus.</p>
-        </li>
-        <span class="h-[1px] w-full bg-gray-300"></span>
-        <li class="flex flex-col gap-2">
-          <h2 class="font-semibold my-2">⁉ Error phrase 2:</h2>
-          <p>Lorem ipsum odor amet, consectetuer adipiscing elit. Nostra venenatis condimentum volutpat risus sed massa. Posuere
-            per
-            gravida commodo ultricies; etiam praesent risus.</p>
-        </li>
-      </ul> -->
     </section>
   </div>
 </body>

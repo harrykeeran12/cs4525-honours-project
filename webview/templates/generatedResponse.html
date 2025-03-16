@@ -4,7 +4,7 @@
 <ul class="bg-blue-100 text-black-100 h-[20vh] overflow-y-auto p-1 px-2 mt-5 rounded-lg">
   {% for error in listOfErrors %}
     <li class="flex flex-col gap-2 min-h-[10vh]">
-      <h2 class="font-semibold my-2">⁉ {{error[0]}}</h2>
+      <h2 class="font-semibold my-2">[{{loop.index}}] {{error[0]}}</h2>
       <p>{{error[1]}}</p>
     </li>
   {% endfor %}
