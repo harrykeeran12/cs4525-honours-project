@@ -5,7 +5,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <!-- <script src="https://unpkg.com/@tailwindcss/browser@4"></script> -->
+  <!-- Script for tailwind. -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Script for htmx -->
+  <script src="https://unpkg.com/htmx.org@2.0.4"></script>
 
   <title>NLP and Radiology Tool</title>
 </head>
@@ -13,14 +16,14 @@
 <body class="bg-red-50 w-screen h-screen">
   <div class="p-7 w-full grid grid-cols-4 grid-rows-1 items-start gap-2 bg-blue-50 h-full ">
     <section class="flex flex-col col-span-2 h-[100%] min-w-[45vw]">
-      <form class="flex flex-col gap-4 px-2">
+      <form class="flex flex-col gap-4 px-2" hx-post="/generate" hx-target="#correction" hx-swap="outerHTML">
         <label for="reportInformation"><strong>Report Information:</strong></label>
         <textarea id="reportInformation" name="reportInformation" spellcheck="true"
           class="min-h-[20rem] rounded-md px-2 py-3" style="resize:none;" required></textarea>
         <label for="modelName"><strong>Choose LLM:</strong></label>
         <select name="modelName" id="modelName"
           class="w-1/3 p-2 rounded-sm border-2 hover:border-gray-300 border-blue-200 border-solid">
-          <option value="mistral">mistral:latest</option>
+          <option value="mistral:latest">mistral:latest</option>
           <option value="falcon3:latest">falcon3:latest</option>
           <option value="qwen2.5:latest">qwen2.5:latest</option>
         </select>
@@ -30,8 +33,9 @@
       </form>
     </section>
     <!-- <span class="bg-red-100 h-[75vh] w-[2px] items-center margin-auto"></span> -->
-    <section class="col-span-2 min-w-[45vw] flex flex-col bg-neutral-50 rounded-md">
-      <p class="px-2 py-3 h-[75vh] overflow-y-auto ">Lorem ipsum odor amet, consectetuer adipiscing elit. Morbi litora
+    <section class="col-span-2 min-w-[45vw] flex flex-col bg-neutral-50 rounded-md gap-3">
+      <p class="px-2 py-3 h-[50vh] overflow-y-auto" id="correction">Lorem ipsum odor amet, consectetuer adipiscing elit.
+        Morbi litora
         habitasse
         orci magna turpis maximus vehicula. Primis
         velit sollicitudin nunc venenatis magna lacinia dui. Quis fusce platea suscipit pulvinar sociosqu posuere dis
@@ -99,7 +103,20 @@
         ultricies turpis
         tempor nullam. Vel convallis aptent himenaeos ridiculus placerat massa.
       </p>
-      <div></div>
+      <!-- <ul class="bg-blue-100 text-black-100 p-1 px-2 mt-5 rounded-lg">
+        <li class="flex flex-col gap-2">
+          <h2 class="font-semibold my-2">⁉ Error phrase:</h2>
+          <p>Lorem ipsum odor amet, consectetuer adipiscing elit. Nostra venenatis condimentum volutpat risus sed massa. Posuere per
+            gravida commodo ultricies; etiam praesent risus.</p>
+        </li>
+        <span class="h-[1px] w-full bg-gray-300"></span>
+        <li class="flex flex-col gap-2">
+          <h2 class="font-semibold my-2">⁉ Error phrase 2:</h2>
+          <p>Lorem ipsum odor amet, consectetuer adipiscing elit. Nostra venenatis condimentum volutpat risus sed massa. Posuere
+            per
+            gravida commodo ultricies; etiam praesent risus.</p>
+        </li>
+      </ul> -->
     </section>
   </div>
 </body>

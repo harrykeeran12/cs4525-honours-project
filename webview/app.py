@@ -1,6 +1,7 @@
 from flask import Flask, make_response, render_template, request, jsonify
 import ollama
 from pydantic import BaseModel
+import json
 
 
 class RadiologyError(BaseModel):
@@ -41,8 +42,25 @@ def generate():
             options={"temperature": 0},
             format=RadiologyError.model_json_schema(),
         )["response"]
+
+        listOfErrors = []
+
+        jsonResponse = json.loads(ollamaResponse)
+        for errorNumber in range(len(jsonResponse["errorPhrases"])):
+            errorPhrase = jsonResponse["errorPhrases"][errorNumber]
+            errorDescription =  jsonResponse["errorExplanation"][errorNumber]
+            print(errorPhrase)
+            reportInfo = reportInfo.replace("\n", "<br></br>")
+            reportInfo = reportInfo.replace(errorPhrase, f"<mark>{errorPhrase}</mark>")
+            listOfErrors.append((errorPhrase, errorDescription))
+        htmlResponse = f'<p class="px-2 py-3 h-[50vh] overflow-y-auto" id="correction">{reportInfo}</p>'
+
+        htmlList = [f"<li class=\"flex flex-col gap-2\"><h2 class=\"font-semibold my-2\">⁉ {error[0]}</h2><p>{error[1]}</p></li>" for error in listOfErrors]
+
+        unorderedList = f"<ul class=\"bg-blue-100 text-black-100 p-1 px-2 mt-5 rounded-lg\">{"<br></br>".join(htmlList)}</ul>"
+
         return make_response(
-            jsonify(ollamaResponse),
+            htmlResponse+unorderedList,
             200,
         )
     else:
