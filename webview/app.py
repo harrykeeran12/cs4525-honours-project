@@ -37,7 +37,9 @@ def generate():
         # Ollama generates here:
         ollamaResponse = ollama.generate(
             model=modelName,
-            prompt=SYSTEM + reportInfo,
+            system=SYSTEM,
+            prompt=reportInfo,
+            keep_alive=0,
             options={"temperature": 0},
             format=RadiologyError.model_json_schema(),
         )["response"]

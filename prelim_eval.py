@@ -124,7 +124,8 @@ def createReportIssues(row: str, MODELNAME: str):
     logging.debug(f"{MODELNAME}: Finding errors")
     response = ollama.generate(
         model=MODELNAME,
-        prompt=SYSTEM + row,
+        system=SYSTEM,
+        prompt=row,
         options={"temperature": 0},
         format=RadiologyError.model_json_schema(),
     )["response"]
