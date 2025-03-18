@@ -46,17 +46,17 @@ sleep 10
 
 # Pull the models from the ollama servers.
 
-./bin/ollama pull mistral:latest
+# ./bin/ollama pull mistral:latest
 
 ./bin/ollama pull falcon3:latest
 
-./bin/ollama pull qwen2.5:latest
+# ./bin/ollama pull qwen2.5:latest
 
 # Use the slurm script to run the preliminary evaluation script. 
 
 # srun python honours_project/prelim_eval.py mistral:latest
-# srun python honours_project/prelim_eval.py falcon3:latest
-srun python honours_project/prelim_eval.py qwen2.5:latest
+srun python honours_project/prelim_eval.py falcon3:latest
+# srun python honours_project/prelim_eval.py qwen2.5:latest
 
 conda deactivate
 
