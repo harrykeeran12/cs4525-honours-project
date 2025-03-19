@@ -7,16 +7,8 @@ from pprint import pprint
 from pathlib import Path
 import logging
 import datetime
-from pydantic import BaseModel
 import argparse
-
-
-class RadiologyError(BaseModel):
-    """This class serves as a schema to act as as structured output for the models."""
-
-    errorType: list[str]
-    errorPhrases: list[str]
-    errorExplanation: list[str]
+from schema import RadiologyError
 
 
 CMDPARSER = argparse.ArgumentParser(
@@ -103,7 +95,7 @@ else:
     # Feed each report into the models.
 
     # TODO: Remove the head method
-    temp = removedCorrection
+    temp = removedCorrection.head(1)
 
     reportDict = {
         "Original report": temp,

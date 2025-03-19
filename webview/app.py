@@ -1,15 +1,8 @@
+from ..schema import RadiologyError
 from flask import Flask, make_response, render_template, request, jsonify
 import ollama
-from pydantic import BaseModel
+
 import json
-
-
-class RadiologyError(BaseModel):
-    """This class serves as a schema to act as as structured output for the models."""
-
-    errorType: list[str]
-    errorPhrases: list[str]
-    errorExplanation: list[str]
 
 
 app = Flask(__name__)
@@ -45,7 +38,7 @@ def generate():
     Return your analysis in the following JSON format:
     {
         "errorPhrases": "exact text with error",
-        "errorType": "one of the four error types",
+        "errorType": "an array containing the four error types",
         "errorExplanation": "explanation of the problem",
     }
 
@@ -74,7 +67,9 @@ def generate():
             errorPhrase = jsonResponse["errorPhrases"][errorNumber]
             errorDescription = jsonResponse["errorExplanation"][errorNumber]
             reportInfo = reportInfo.replace("\n", "</br>")
-            reportInfo = reportInfo.replace(errorPhrase, f"<mark> {errorPhrase} </mark>")
+            reportInfo = reportInfo.replace(
+                errorPhrase, f"<mark> {errorPhrase} </mark>"
+            )
             listOfErrors.append((errorPhrase, errorDescription))
         htmlResponse = render_template(
             "generatedResponse.html",
