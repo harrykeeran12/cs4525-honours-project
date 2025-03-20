@@ -129,7 +129,7 @@ def createReportIssues(row: str, MODELNAME: str):
 if modelName in installedModels:
     print(f"Model name specified: {modelName}")
     try:
-        prelimEvalDF[modelName] = prelimEvalDF["Original report"].apply(
+        prelimEvalDF[modelName] = removedCorrection.apply(
             lambda x: createReportIssues(x, modelName)
         )
     finally:
