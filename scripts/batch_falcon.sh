@@ -4,7 +4,7 @@
 #SBATCH --mem=16G
 #SBATCH --ntasks-per-node=1 
 #SBATCH --partition=gpu 
-#SBATCH --gres=gpu:4 
+#SBATCH --gres=gpu:7 
 #SBATCH --mail-user=u03he21@abdn.ac.uk
 #SBATCH --mail-type=ALL
 #SBATCH --output=prelimLog-%j.out
