@@ -1,4 +1,4 @@
-from ..schema import RadiologyError
+from ..schema import RadiologyErrors
 from flask import Flask, make_response, render_template, request, jsonify
 import ollama
 
@@ -56,26 +56,27 @@ def generate():
             prompt=reportInfo,
             keep_alive=0,
             options={"temperature": 0},
-            format=RadiologyError.model_json_schema(),
+            format=RadiologyErrors.model_json_schema(),
         )["response"]
 
         listOfErrors = []
 
-        jsonResponse = json.loads(ollamaResponse)
-        print(jsonResponse)
-        for errorNumber in range(len(jsonResponse["errorPhrases"])):
-            errorPhrase = jsonResponse["errorPhrases"][errorNumber]
-            errorDescription = jsonResponse["errorExplanation"][errorNumber]
-            reportInfo = reportInfo.replace("\n", "</br>")
-            reportInfo = reportInfo.replace(
-                errorPhrase, f"<mark> {errorPhrase} </mark>"
+        jsonResponses = json.loads(ollamaResponse)
+        for jsonResponse in jsonResponses:
+            print(jsonResponse)
+            for errorNumber in range(len(jsonResponse["errorPhrases"])):
+                errorPhrase = jsonResponse["errorPhrases"][errorNumber]
+                errorDescription = jsonResponse["errorExplanation"][errorNumber]
+                reportInfo = reportInfo.replace("\n", "</br>")
+                reportInfo = reportInfo.replace(
+                    errorPhrase, f"<mark> {errorPhrase} </mark>"
+                )
+                listOfErrors.append((errorPhrase, errorDescription))
+            htmlResponse = render_template(
+                "generatedResponse.html",
+                correctedOutput=reportInfo,
+                listOfErrors=listOfErrors,
             )
-            listOfErrors.append((errorPhrase, errorDescription))
-        htmlResponse = render_template(
-            "generatedResponse.html",
-            correctedOutput=reportInfo,
-            listOfErrors=listOfErrors,
-        )
 
         return make_response(
             htmlResponse,

@@ -8,7 +8,7 @@ from pathlib import Path
 import logging
 import datetime
 import argparse
-from schema import RadiologyError
+from schema import RadiologyErrors
 
 
 CMDPARSER = argparse.ArgumentParser(
@@ -119,7 +119,7 @@ def createReportIssues(row: str, MODELNAME: str):
         system=SYSTEM,
         prompt=row,
         options={"temperature": 0},
-        format=RadiologyError.model_json_schema(),
+        format=RadiologyErrors.model_json_schema(),
     )["response"]
     logging.debug(f"{MODELNAME}: Completed finding errors.")
     logging.info(f"{MODELNAME}: {response}")
