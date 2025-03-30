@@ -1,0 +1,172 @@
+# Commented out IPython magic to ensure Python compatibility.
+# %pip install pandas evaluate mauve-text
+from pprint import pprint
+import pandas as pd
+import json
+import evaluate
+import numpy as np
+
+accuracy_metric = evaluate.load("accuracy")
+
+evaluation_metric = evaluate.load("bertscore")
+# print(evaluate.list_evaluation_modules())
+# Read the csv file
+df = pd.read_csv("datasets/annotated_testing_data.csv")
+
+
+def cleanJSON(s: str):
+    """Unescape the JSON strings, as they have \n markers in them:"""
+    decoded = bytes(s, "utf-8").decode("unicode_escape")
+    return decoded
+
+
+def errorIsolation(otherDF: pd.DataFrame):
+    """Isolate the errors into their own columns from the JSON."""
+    otherDF["Omission"] = otherDF["Error Array"].apply(lambda s: s["Omission"])
+
+    otherDF["Internal Inconsistency"] = otherDF["Error Array"].apply(
+        lambda s: s["Internal Inconsistency"]
+    )
+
+    otherDF["Transcription Error"] = otherDF["Error Array"].apply(
+        lambda s: s["Transcription Error"]
+    )
+
+    otherDF["Extraneous Statement"] = otherDF["Error Array"].apply(
+        lambda s: s["Extraneous Statement"]
+    )
+
+
+def JSONtoErrorArray(jsonString: str):
+    """Write function to turn the JSON strings into a count of the errors."""
+    errorArray = [0, 0, 0, 0]
+    jsonString = json.loads(jsonString)
+    for i in jsonString["errorsForWholeText"]:
+        if i["errorType"] == "Internal Inconsistency":
+            errorArray[0] += 1
+        elif i["errorType"] == "Omission":
+            errorArray[1] += 1
+        elif i["errorType"] == "Transcription Error":
+            errorArray[2] += 1
+        elif i["errorType"] == "Extraneous Statement":
+            errorArray[3] += 1
+        else:
+            pass
+    return {
+        "Internal Inconsistency": errorArray[0],
+        "Omission": errorArray[1],
+        "Transcription Error": errorArray[2],
+        "Extraneous Statement": errorArray[3],
+    }
+
+
+def dataCorrection(COLUMN_NAME: str, otherDF: pd.DataFrame):
+    """Takes in a dataframe and where the unescaped JSON strings are stored, and creates columns required for the evaluation."""
+
+    if COLUMN_NAME not in otherDF.columns:
+        raise ValueError(f"Column {COLUMN_NAME} not found in dataframe.")
+
+    otherDF["JSON"] = otherDF[COLUMN_NAME].apply(lambda t: json.loads(t))
+
+    otherDF["Error Array"] = otherDF[COLUMN_NAME].apply(lambda s: JSONtoErrorArray(s))
+
+    # For all the errors in errorsForWholeText, get the explanations
+
+    otherDF["Error Explanations"] = otherDF["JSON"].apply(lambda t: "\n".join(["".join(s["errorExplanation"]) for s in t["errorsForWholeText"]]))
+
+
+    otherDF["Total Errors"] = otherDF["JSON"].apply(
+        lambda s: len(s["errorsForWholeText"])
+    )
+
+    errorIsolation(otherDF)
+
+    otherDF.columns
+
+
+def dataEvaluation(otherDF: pd.DataFrame):
+    """Takes in a dataframe and evaluates the metrics."""
+    total_accuracy = accuracy_metric.compute(
+        predictions=otherDF["Total Errors"], references=df["Total Errors"]
+    )
+
+    omission = accuracy_metric.compute(
+        predictions=otherDF["Omission"], references=df["Omission"]
+    )
+
+    internal_inconsistency = accuracy_metric.compute(
+        predictions=otherDF["Internal Inconsistency"],
+        references=df["Internal Inconsistency"],
+    )
+
+    extraneous_statement = accuracy_metric.compute(
+        predictions=otherDF["Extraneous Statement"],
+        references=df["Extraneous Statement"],
+    )
+
+    transcription_error = accuracy_metric.compute(
+        predictions=otherDF["Transcription Error"], references=df["Transcription Error"]
+    )
+
+    print(f"Total accuracy: {total_accuracy}\n")
+    print(f"Omission: {omission}\n")
+    print(f"Internal Inconsistency: {internal_inconsistency}\n")
+    print(f"Extraneous Statement: {extraneous_statement}\n")
+    print(f"Transcription Error: {transcription_error}\n")
+
+    # Want to check the error explanations for semantic similaries.
+
+    bertScore = evaluation_metric.compute(
+        predictions=otherDF["Error Explanations"],
+        references=df["Error Explanations"],
+        lang="en",
+        model_type="distilbert-base-uncased",
+    )
+
+    print(f"Average BERT-Score Precision: {np.mean(bertScore['precision'])}")
+    print(f"Average BERT-Score Recall: {np.mean(bertScore['recall'])}")
+    print(f"Average BERT-Score F1-Score: {np.mean(bertScore['f1'])}")
+
+
+# Decode the strings.
+df["Decoded"] = df["Reference JSON Output"].apply(lambda x: cleanJSON(x))
+
+# Convert to JSON.
+df["JSON Objects"] = df["Decoded"].apply(lambda s: json.loads(s))
+
+df["Error Array"] = df["Decoded"].apply(lambda s: JSONtoErrorArray(s))
+
+df["Error Explanations"] = df["JSON Objects"].apply(lambda t: "\n".join(["".join(s["errorExplanation"]) for s in t["errorsForWholeText"]]))
+
+# Find the total number of errors in each JSON string.
+df["Total Errors"] = df["Error Array"].apply(lambda s: sum(s.values()))
+
+errorIsolation(df)
+
+# Add the data generated by the models and clean them up.
+
+mdf = pd.read_csv("datasets/mistral_latest_inference.csv")
+
+dataCorrection("mistral:latest", mdf)
+
+qdf = pd.read_csv("datasets/qwen2.5_latest_inference.csv")
+
+dataCorrection("qwen2.5:latest", qdf)
+
+fdf = pd.read_csv("datasets/falcon3_latest_inference.csv")
+
+dataCorrection("falcon3:latest", fdf)
+
+# Evaluation of data generated by prompt 1:
+
+print("Mistral Evaluation Prompt 1")
+
+dataEvaluation(mdf)
+
+print("Qwen Evaluation Prompt 1")
+
+dataEvaluation(qdf)
+
+print("Falcon Evaluation Prompt 1")
+
+dataEvaluation(fdf)

@@ -1,8 +1,10 @@
-# This file takes in the existing synthetic data that Dr Zhang has provided and for each report, randomly modifies each word.
+# This file takes in the existing synthetic data that Dr Zhang has provided and for each report, randomly modifies each word. The 4 errors are: omissions, internal inconsistencies, extraneous statements, transcription errors.
 
+from typing import List
 import pandas as pd
 import random
 from pprint import pprint
+from schema import RadiologyError, ErrorType
 
 random.seed(42)
 
@@ -17,7 +19,7 @@ itemsToChange = dataframe["Correct Items"]
 
 print(f"Current number of data to change: {len(itemsToChange)}")
 
-side_confusion = [
+internalInconsistency = [
     ["anterior", "posterior"],
     ["medial", "lateral"],
     ["superior", "inferior"],
@@ -75,7 +77,7 @@ side_confusion = [
     ["upper", "lower"],
 ]
 
-near_homonym = [
+transcription = [
     ["abscess", "access", "assess"],
     ["achalasia", "atelectasis", "epistaxis"],
     ["adrenal", "renal"],
@@ -225,7 +227,7 @@ omission = [
     "less",
 ]
 
-nonsense = [
+extraneous = [
     "the total",
     "quina",
     "management",
@@ -236,10 +238,11 @@ nonsense = [
     "keyboard",
     "carriage",
 ]
+
 # Convert side confusion and near_homonym into dictionaries.
 sideConfusionDict = {}
 
-for mistakeWords in side_confusion:
+for mistakeWords in internalInconsistency:
     for word in mistakeWords:
         # Create a set from the mistake words
         mistakeSet = set(mistakeWords)
@@ -249,7 +252,7 @@ for mistakeWords in side_confusion:
 
 nearHomonymDict = {}
 
-for homonyms in near_homonym:
+for homonyms in transcription:
     #   print(homonyms)
     for currentHomonym in homonyms:
         # print(currentHomonym)
@@ -261,33 +264,38 @@ for homonyms in near_homonym:
 # pprint(nearHomonymDict)
 
 errorTupleList = []
+errorJSONList: List[List[RadiologyError]] = []
 for item in itemsToChange:
     # Split the items by spaces
     splitItem = item.split(" ")
-
-    # countItem = Counter(splitItem)
-    # # This finds all the words in the item that can be replaced, by taking the intersection of the keys and items in the counter.
-    # wordsToReplace = sorted(
-    #     set(countItem.keys()).intersection(set(sideConfusionDict.keys()))
-    # )
+    jsonList: List[RadiologyError] = []
     # Each item has an error array, which keeps track of any errors added.
-    errorArray = [0, 0, 0, 0, 0]
+    errorArray = [0, 0, 0, 0]
     for wordIndex in range(len(splitItem)):
         word = splitItem[wordIndex]
-        flip = random.randrange(0, 2)
+        flip = random.randrange(0, 4)
         if flip == 0:
-            # Side confusions
+            # Internal Inconsistency
             if word in sideConfusionDict:
                 possibleWords = sideConfusionDict[word]
                 randomIndex = random.randrange(0, len(possibleWords))
                 replacementWord = list(possibleWords)[randomIndex]
                 # print(f"---\nReplacing {word} -> {replacementWord}")
                 # splitItem[wordIndex] = red(f"{replacementWord}({word})")
+                jsonList.append(
+                    RadiologyError(
+                        errorType=ErrorType.InternalInconsistency,
+                        errorPhrases=[f"{word}"],
+                        errorExplanation=[
+                            f"There is a side confusion as it should be {word}, instead of {replacementWord}"
+                        ],
+                    )
+                )
                 splitItem[wordIndex] = f"{replacementWord}"
                 errorArray[0] += 1
                 # print(word)
         elif flip == 1:
-            # Near Homonyms
+            # Transcription Errors
             if word in nearHomonymDict:
                 homonyms = nearHomonymDict[word]
                 if len(homonyms) == 1:
@@ -296,11 +304,28 @@ for item in itemsToChange:
                     randomIndex = random.randrange(0, len(homonyms))
                     similarWord = list(homonyms)[randomIndex]
                 # print(f"---\nReplacing {word} -> {similarWord}")
+                jsonList.append(
+                    RadiologyError(
+                        errorType=ErrorType.TranscriptionError,
+                        errorPhrases=[f"{word}"],
+                        errorExplanation=[
+                            f"There is a transcription error as it should be {word}, instead of {similarWord}"
+                        ],
+                    )
+                )
                 splitItem[wordIndex] = f"{similarWord}"
                 errorArray[2] += 1
+        elif flip == 2:
+            # Omission
+            if word in omission:
+                splitItem[wordIndex] = ""
+        elif flip == 3:
+            # Extraneous statement
+            pass
 
     errorEntry = " ".join(splitItem)
     # print(f"Error count = {sum(errorArray)}")
+    errorJSONList.append(jsonList)
     errorTupleList.append((errorEntry, errorArray))
 
 newDf = pd.DataFrame(
@@ -314,15 +339,14 @@ newDf = pd.DataFrame(
 errorDf = pd.DataFrame(
     data=[i[1] for i in errorTupleList],
     columns=[
-        "Side confusion",
+        "Internal Inconsistency",
         "Omission",
-        "Near homonym",
-        "Nonsense",
+        "Transcription Error",
         "Extraneous Statement",
     ],
 )
 
+pprint([e.model_dump_json() for e in jsonList])
 syntheticData = pd.concat([newDf, errorDf], axis=1)
 
-print(syntheticData.head())
 syntheticData.to_csv("datasets/syntheticData.csv")

@@ -43,6 +43,6 @@ newDF.drop_duplicates(inplace=True)
 newDF = newDF.sample(frac=1).reset_index(drop=True)
 
 outputfile = "training_data1.csv"
-print(f"Creating a new file called: {outputfile} with reports from {REPO_ID}")
+# print(f"Creating a new file called: {outputfile} with reports from {REPO_ID}.")
 newDF.to_csv(f"datasets/{outputfile}")
 # display(newDF)
