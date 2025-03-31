@@ -4,7 +4,7 @@ from typing import List
 import pandas as pd
 import random
 from pprint import pprint
-from schema import RadiologyError, ErrorType
+from schema import RadiologyError, ErrorType, RadiologyErrors
 
 random.seed(42)
 
@@ -264,11 +264,11 @@ for homonyms in transcription:
 # pprint(nearHomonymDict)
 
 errorTupleList = []
-errorJSONList: List[List[RadiologyError]] = []
+errorJSONList: List[RadiologyErrors] = []
 for item in itemsToChange:
     # Split the items by spaces
     splitItem = item.split(" ")
-    jsonList: List[RadiologyError] = []
+    jsonList: RadiologyErrors = []
     # Each item has an error array, which keeps track of any errors added.
     errorArray = [0, 0, 0, 0]
     for wordIndex in range(len(splitItem)):
@@ -287,9 +287,9 @@ for item in itemsToChange:
                         errorType=ErrorType.InternalInconsistency,
                         errorPhrases=[f"{word}"],
                         errorExplanation=[
-                            f"There is a side confusion as it should be {word}, instead of {replacementWord}"
+                            f"There is a side confusion as it should be {replacementWord}, instead of {word}"
                         ],
-                    )
+                    ).model_dump_json()
                 )
                 splitItem[wordIndex] = f"{replacementWord}"
                 errorArray[0] += 1
@@ -311,7 +311,7 @@ for item in itemsToChange:
                         errorExplanation=[
                             f"There is a transcription error as it should be {word}, instead of {similarWord}"
                         ],
-                    )
+                    ).model_dump_json()
                 )
                 splitItem[wordIndex] = f"{similarWord}"
                 errorArray[2] += 1
@@ -322,10 +322,9 @@ for item in itemsToChange:
         elif flip == 3:
             # Extraneous statement
             pass
-
+    errorJSONList.append("\n".join(jsonList))
     errorEntry = " ".join(splitItem)
     # print(f"Error count = {sum(errorArray)}")
-    errorJSONList.append(jsonList)
     errorTupleList.append((errorEntry, errorArray))
 
 newDf = pd.DataFrame(
@@ -346,7 +345,14 @@ errorDf = pd.DataFrame(
     ],
 )
 
-pprint([e.model_dump_json() for e in jsonList])
-syntheticData = pd.concat([newDf, errorDf], axis=1)
+
+jsonDF = pd.DataFrame(data=errorJSONList)
+
+# print(jsonDF)
+
+jsonDF.to_csv("datasets/json.csv")
+
+print(f"Length of error list: {len(errorJSONList)}")
+syntheticData = pd.concat([newDf, errorDf, jsonDF], axis=1)
 
 syntheticData.to_csv("datasets/syntheticData.csv")
