@@ -5,18 +5,29 @@ import pandas as pd
 import json
 import evaluate
 import numpy as np
+from sentence_transformers import SentenceTransformer
+
+sBERTModel = SentenceTransformer("all-MiniLM-L6-v2")
 
 accuracy_metric = evaluate.load("accuracy")
 
 evaluation_metric = evaluate.load("bertscore")
-# print(evaluate.list_evaluation_modules())
+
 # Read the csv file
 df = pd.read_csv("datasets/annotated_testing_data.csv")
 
-print(f"Number of omissions: {sum(df['Omission'])}")
-print(f"Number of internal inconsistencies: {sum(df['Internal Inconsistency'])}")
-print(f"Number of extraneous statements: {sum(df['Extraneous Statement'])}")
-print(f"Number of transcription errors: {sum(df['Transcription Error'])}")
+print(f"Number of omissions in testing data: {sum(df['Omission'])}")
+
+print(
+    f"Number of internal inconsistencies in testing data: {sum(df['Internal Inconsistency'])}"
+)
+print(
+    f"Number of extraneous statements in testing data: {sum(df['Extraneous Statement'])}"
+)
+print(
+    f"Number of transcription errors in testing data: {sum(df['Transcription Error'])}"
+)
+
 
 def cleanJSON(s: str):
     """Unescape the JSON strings, as they have \n markers in them:"""
@@ -76,8 +87,15 @@ def dataCorrection(COLUMN_NAME: str, otherDF: pd.DataFrame):
 
     # For all the errors in errorsForWholeText, get the explanations
 
-    otherDF["Error Explanations"] = otherDF["JSON"].apply(lambda t: "\n".join(["".join(s["errorExplanation"]) for s in t["errorsForWholeText"]]))
+    otherDF["Error Explanations"] = otherDF["JSON"].apply(
+        lambda t: "\n".join(
+            ["".join(s["errorExplanation"]) for s in t["errorsForWholeText"]]
+        )
+    )
 
+    otherDF["Embeddings"] = otherDF["Error Explanations"].apply(
+        lambda e: sBERTModel.encode(e)
+    )
 
     otherDF["Total Errors"] = otherDF["JSON"].apply(
         lambda s: len(s["errorsForWholeText"])
@@ -86,6 +104,26 @@ def dataCorrection(COLUMN_NAME: str, otherDF: pd.DataFrame):
     errorIsolation(otherDF)
 
     otherDF.columns
+
+
+def dataFrameSimilarity(df1: pd.DataFrame, df2: pd.DataFrame):
+    """Uses the SBERT model to calculate sentence similarity of the error explanations."""
+    if len(df1) != len(df2):
+        raise Exception("Dataframes are not of the same size.")
+    else:
+        length = len(df1)
+        arr = []
+        # npa = np.empty(len(df1))
+        for i in range(length):
+            # Encode the value:
+            # print(df1["Error Explanations"][i], df2["Error Explanations"][i])
+            embed1 = sBERTModel.encode(df1["Error Explanations"][i])
+            embed2 = sBERTModel.encode(df2["Error Explanations"][i])
+            sim = sBERTModel.similarity(embed1, embed2)
+            arr.append(sim[0])
+            # np.append(npa, values=sim[0])
+        print(arr)
+        return np.mean(arr, dtype=np.float64)
 
 
 def dataEvaluation(columnName: str, otherDF: pd.DataFrame):
@@ -125,7 +163,12 @@ def dataEvaluation(columnName: str, otherDF: pd.DataFrame):
         references=df["Error Explanations"],
         lang="en",
         model_type="distilbert-base-uncased",
+        use_fast_tokenizer=True,
     )
+
+    # Average Explanation Similarity.
+
+    print(f"Average SBERT Similarity = {dataFrameSimilarity(df, otherDF)}")
 
     evaluationResults: dict[str, float] = {
         "Name": columnName,
@@ -136,7 +179,8 @@ def dataEvaluation(columnName: str, otherDF: pd.DataFrame):
         "transcriptionError": transcription_error["accuracy"],
         "avg_BERT_precision": np.mean(bertScore["precision"]),
         "avg_BERT_recall": np.mean(bertScore["recall"]),
-        "avg_BERT_f1": np.mean(bertScore['f1'])
+        "avg_BERT_f1": np.mean(bertScore["f1"]),
+        "avg_similarity": dataFrameSimilarity(df, otherDF),
     }
     return evaluationResults
 
@@ -151,7 +195,13 @@ df["Error Array"] = df["Decoded"].apply(lambda s: JSONtoErrorArray(s))
 
 # print(df["Error Array"])
 
-df["Error Explanations"] = df["JSON Objects"].apply(lambda t: "\n".join(["".join(s["errorExplanation"]) for s in t["errorsForWholeText"]]))
+df["Error Explanations"] = df["JSON Objects"].apply(
+    lambda t: "\n".join(
+        ["".join(s["errorExplanation"]) for s in t["errorsForWholeText"]]
+    )
+)
+
+df["Embeddings"] = df["Error Explanations"].apply(lambda e: sBERTModel.encode(e))
 
 # Find the total number of errors in each JSON string.
 df["Total Errors"] = df["Error Array"].apply(lambda s: sum(s.values()))
@@ -198,9 +248,12 @@ evaluationDataFrame = pd.DataFrame(
         "avg_BERT_precision",
         "avg_BERT_recall",
         "avg_BERT_f1",
+        "avg_similarity",
     ],
 )
-print("Mistral Evaluation Prompt 1 Evaluation")
+# print(f"{df['Error Explanations'][0]} \n\t\n {mtdf['Error Explanations'][0]}")
+
+print("Concatenating dataframes.")
 
 evaluationDataFrame = pd.concat(
     [
@@ -214,6 +267,8 @@ evaluationDataFrame = pd.concat(
     ],
     ignore_index=True,
 )
+# print("Mistral Evaluation Prompt 1 Evaluation")
+
 # print(dataEvaluation("Mistral Prompt 1",mdf))
 
 # print("Qwen Evaluation Prompt 1 Evaluation")

@@ -17,13 +17,8 @@ The training dataset used is located [here](https://huggingface.co/datasets/ibra
 ```
 conda env create --file environment.yml
 ```
-or
 
-```
-conda create -n hons python=3.12
-conda activate hons
-conda install -c conda-forge ollama-python python-dotenv huggingface_hub ollama pandas flask
-```
+> Note: If there is already an environment on your machine, and changes are created to the folder, update your environment using ```conda env update -f environment.yml```. 
 
 The preliminary evaluation results were run on a HPC supercomputer. As such, the scripts located in the `scripts/` directory were designed to be run on a Linux machine. 
 

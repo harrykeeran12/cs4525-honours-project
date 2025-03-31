@@ -12,6 +12,7 @@ dependencies:
   - conda-forge::huggingface_hub
   - conda-forge::ollama
   - conda-forge::pydantic
+  - conda-forge::sentence-transformers
   - scikit-learn
   - conda-forge::evaluate
   - pytorch>2.3.0
