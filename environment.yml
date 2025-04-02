@@ -7,6 +7,7 @@ dependencies:
   - datasets
   - ipykernel
   - python=3.12
+  - anaconda::flask
   - conda-forge::ollama-python
   - conda-forge::python-dotenv
   - conda-forge::huggingface_hub

@@ -61,16 +61,16 @@ def generate():
 
         listOfErrors = []
 
-        jsonResponses = json.loads(ollamaResponse)
+        jsonResponses = json.loads(ollamaResponse)["errorsForWholeText"]
         for jsonResponse in jsonResponses:
             print(jsonResponse)
             for errorNumber in range(len(jsonResponse["errorPhrases"])):
                 errorPhrase = jsonResponse["errorPhrases"][errorNumber]
                 errorDescription = jsonResponse["errorExplanation"][errorNumber]
-                reportInfo = reportInfo.replace("\n", "</br>")
                 reportInfo = reportInfo.replace(
                     errorPhrase, f"<mark> {errorPhrase} </mark>"
                 )
+                reportInfo = reportInfo.replace("\n", "</br>")
                 listOfErrors.append((errorPhrase, errorDescription))
             htmlResponse = render_template(
                 "generatedResponse.html",
