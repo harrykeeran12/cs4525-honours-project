@@ -13,7 +13,7 @@ def red(string: str):
     return f"\033[31m{string}\033[0m"
 
 
-dataframe = pd.read_csv("datasets/300ormore.csv")
+dataframe = pd.read_csv("datasets/training_data1.csv")
 
 itemsToChange = dataframe["Correct Items"]
 
@@ -350,7 +350,7 @@ jsonDF = pd.DataFrame(data=errorJSONList)
 
 # print(jsonDF)
 
-jsonDF.to_csv("datasets/json.csv")
+# jsonDF.to_csv("datasets/json.csv")
 
 print(f"Length of error list: {len(errorJSONList)}")
 syntheticData = pd.concat([newDf, errorDf, jsonDF], axis=1)
