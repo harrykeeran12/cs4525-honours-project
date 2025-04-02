@@ -7,6 +7,7 @@ import evaluate
 import numpy as np
 from sentence_transformers import SentenceTransformer
 from pathlib import Path
+from schema import RadiologyErrors
 
 sBERTModel = SentenceTransformer("all-MiniLM-L6-v2")
 
@@ -20,6 +21,8 @@ similarityFile = "datasets/similarityResults.csv"
 
 # Read the csv file
 df = pd.read_csv("datasets/annotated_testing_data.csv")
+
+print("Reference Data Results: ")
 
 print(f"Number of omissions in testing data: {sum(df['Omission'])}")
 
@@ -57,11 +60,11 @@ def errorIsolation(otherDF: pd.DataFrame):
     )
 
 
-def JSONtoErrorArray(jsonString: str):
+def JSONtoErrorArray(jsonString: RadiologyErrors):
     """Write function to turn the JSON strings into a count of the errors."""
     errorArray = [0, 0, 0, 0]
-    jsonString = json.loads(jsonString)
-    for i in jsonString["errorsForWholeText"]:
+    radioError = json.loads(jsonString.model_dump_json())
+    for i in radioError["errorsForWholeText"]:
         if i["errorType"] == "Internal Inconsistency":
             errorArray[0] += 1
         elif i["errorType"] == "Omission":
@@ -86,25 +89,24 @@ def dataCorrection(COLUMN_NAME: str, otherDF: pd.DataFrame):
     if COLUMN_NAME not in otherDF.columns:
         raise ValueError(f"Column {COLUMN_NAME} not found in dataframe.")
 
-    otherDF["JSON"] = otherDF[COLUMN_NAME].apply(lambda t: json.loads(t))
+    otherDF["JSON"] = otherDF[COLUMN_NAME].apply(
+        lambda t: RadiologyErrors.model_validate_json(t)
+    )
+    # print(otherDF["JSON"][0])
 
-    otherDF["Error Array"] = otherDF[COLUMN_NAME].apply(lambda s: JSONtoErrorArray(s))
+    otherDF["Error Array"] = otherDF["JSON"].apply(lambda s: JSONtoErrorArray(s))
 
     # For all the errors in errorsForWholeText, get the explanations
 
     otherDF["Error Explanations"] = otherDF["JSON"].apply(
-        lambda t: "\n".join(
-            ["".join(s["errorExplanation"]) for s in t["errorsForWholeText"]]
-        )
+        lambda t: "\n".join(["".join(s.errorExplanation) for s in t.errorsForWholeText])
     )
 
     otherDF["Embeddings"] = otherDF["Error Explanations"].apply(
         lambda e: sBERTModel.encode(e)
     )
 
-    otherDF["Total Errors"] = otherDF["JSON"].apply(
-        lambda s: len(s["errorsForWholeText"])
-    )
+    otherDF["Total Errors"] = otherDF["JSON"].apply(lambda s: len(s.errorsForWholeText))
 
     errorIsolation(otherDF)
 
@@ -118,7 +120,6 @@ def dataFrameSimilarity(df1: pd.DataFrame, df2: pd.DataFrame):
     else:
         length = len(df1)
         arr = []
-        # npa = np.empty(len(df1))
         for i in range(length):
             # Encode the value:
             # print(df1["Error Explanations"][i], df2["Error Explanations"][i])
@@ -126,8 +127,6 @@ def dataFrameSimilarity(df1: pd.DataFrame, df2: pd.DataFrame):
             embed2 = sBERTModel.encode(df2["Error Explanations"][i])
             sim = sBERTModel.similarity(embed1, embed2)
             arr.append(sim.item())
-            # np.append(npa, values=sim[0])
-        # print(arr)
         return pd.Series(arr)
 
 
@@ -171,12 +170,6 @@ def dataEvaluation(columnName: str, otherDF: pd.DataFrame):
         use_fast_tokenizer=True,
     )
 
-    # Average Explanation Similarity.
-
-    # print(f"Average SBERT Similarity = {dataFrameSimilarity(df, otherDF)}")
-
-    sbertOutput = dataFrameSimilarity(df, otherDF)
-
     evaluationResults: dict[str, float] = {
         "Name": columnName,
         "totalAccuracy": total_accuracy["accuracy"],
@@ -192,19 +185,16 @@ def dataEvaluation(columnName: str, otherDF: pd.DataFrame):
 
 
 # Decode the strings.
-df["Decoded"] = df["Reference JSON Output"].apply(lambda x: cleanJSON(x))
-
-# Convert to JSON.
-df["JSON Objects"] = df["Decoded"].apply(lambda s: json.loads(s))
+df["Decoded"] = df["Reference JSON Output"].apply(
+    lambda x: RadiologyErrors.model_validate_json(cleanJSON(x))
+)
 
 df["Error Array"] = df["Decoded"].apply(lambda s: JSONtoErrorArray(s))
 
 # print(df["Error Array"])
 
-df["Error Explanations"] = df["JSON Objects"].apply(
-    lambda t: "\n".join(
-        ["".join(s["errorExplanation"]) for s in t["errorsForWholeText"]]
-    )
+df["Error Explanations"] = df["Decoded"].apply(
+    lambda t: "\n".join(["".join(s.errorExplanation) for s in t.errorsForWholeText])
 )
 
 # Find the total number of errors in each JSON string.
