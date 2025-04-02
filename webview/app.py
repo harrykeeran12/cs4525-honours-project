@@ -52,7 +52,7 @@ def generate():
         # Ollama generates here:
         ollamaResponse = ollama.generate(
             model=modelName,
-            system=SYSTEM2,
+            system=SYSTEM,
             prompt=reportInfo,
             keep_alive=0,
             options={"temperature": 0},
@@ -62,9 +62,11 @@ def generate():
         listOfErrors = []
 
         jsonResponses = json.loads(ollamaResponse)["errorsForWholeText"]
+        print(jsonResponses)
         for jsonResponse in jsonResponses:
             print(jsonResponse)
-            for errorNumber in range(len(jsonResponse["errorPhrases"])):
+            for errorNumber in range(0, len(jsonResponse["errorPhrases"])):
+                print(errorNumber)
                 errorPhrase = jsonResponse["errorPhrases"][errorNumber]
                 errorDescription = jsonResponse["errorExplanation"][errorNumber]
                 reportInfo = reportInfo.replace(
@@ -72,11 +74,11 @@ def generate():
                 )
                 reportInfo = reportInfo.replace("\n", "</br>")
                 listOfErrors.append((errorPhrase, errorDescription))
-            htmlResponse = render_template(
-                "generatedResponse.html",
-                correctedOutput=reportInfo,
-                listOfErrors=listOfErrors,
-            )
+        htmlResponse = render_template(
+            "generatedResponse.html",
+            correctedOutput=reportInfo,
+            listOfErrors=listOfErrors,
+        )
 
         return make_response(
             htmlResponse,
