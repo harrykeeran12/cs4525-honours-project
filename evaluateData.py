@@ -195,7 +195,7 @@ def dataFrameComparison(otherDF: pd.DataFrame):
         referenceList = df["Decoded"][index].errorsForWholeText
         # print(predictedExplanations)
 
-        for refIndex in referenceList:
+        for refIndex in range(len(referenceList)):
             referenceError = referenceList[refIndex]
             referenceErrorPhrase = " ".join(referenceError.errorPhrases)
             simRef = sBERTModel.encode(referenceErrorPhrase)
@@ -206,7 +206,7 @@ def dataFrameComparison(otherDF: pd.DataFrame):
             for predictedError in predictedList:
                 predictedErrorPhrase = " ".join(predictedError.errorPhrases)
                 print(
-                    f"\t - (\n{red(predictedErrorPhrase)} \n{red(predictedError.errorExplanation)} \n {f'Similarity: {sBERTModel.similarity(simRef, sBERTModel.encode(predictedErrorPhrase))}'}"
+                    f"\t - (\n{red(predictedErrorPhrase)} \n {f'Similarity: {sBERTModel.similarity(simRef, sBERTModel.encode(predictedErrorPhrase))}'}"
                 )
             print(f"Current TP count: {len(TPs)}\n Current FN count: {len(FNs)}\n")
             prompt = input(
@@ -221,10 +221,8 @@ def dataFrameComparison(otherDF: pd.DataFrame):
                 confusionMatrix["FN"] += 1
             else:
                 pass
-            FP += outputLength
     print(f"Count of True Positives: {Counter(TPs)}")
     print(f"Count of False Negatives: {Counter(FNs)}")
-    print(f"Count of False Positives: {FP}")
     pd.DataFrame({})
     return confusionMatrix
 
@@ -287,6 +285,7 @@ def main():
     f3df = pd.read_csv("datasets/falcon3_latest_inference.csv")
 
     dataCorrection("falcon3:latest", f3df)
+
 
     if not Path.exists(Path(evalFile)):
         evaluationDataFrame = pd.DataFrame(

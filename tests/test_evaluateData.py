@@ -36,25 +36,29 @@ class TestEvaluateData(unittest.TestCase):
         df["Counted E"] = df["Error Array"].apply(lambda ea: ea["Extraneous Statement"])
         print("Results in Reference Data vs Counted Reference Data Results: ")
 
-        # print(
-        #     f"Omissions: {sum(df['Omission'])}: Number of counted omissions in testing data: {sum(df['Counted O'])}"
-        # )
+        print(
+            f"Omissions: {sum(df['Omission'])}: Number of counted omissions in testing data: {sum(df['Counted O'])}"
+        )
 
-        # print(
-        #     f"Internal Inconsistency: {sum(df['Internal Inconsistency'])}Number of counted internal inconsistencies in testing data: {sum(df['Counted I'])}"
-        # )
-        # print(
-        #     f"Extraneous Statements: {sum(df['Extraneous Statement'])} Number of counted extraneous statements in testing data: {sum(df['Counted E'])}"
-        # )
-        # print(
-        #     f"Transcription Errors: {sum(df['Transcription Error'])}Number of counted transcription errors in testing data: {sum(df['Counted T'])}"
-        # )
+        print(
+            f"Internal Inconsistency: {sum(df['Internal Inconsistency'])}Number of counted internal inconsistencies in testing data: {sum(df['Counted I'])}"
+        )
+        print(
+            f"Extraneous Statements: {sum(df['Extraneous Statement'])} Number of counted extraneous statements in testing data: {sum(df['Counted E'])}"
+        )
+        print(
+            f"Transcription Errors: {sum(df['Transcription Error'])}Number of counted transcription errors in testing data: {sum(df['Counted T'])}"
+        )
 
         # df["Omission"] = df["Counted O"]
         # df["Extraneous Statement"] = df["Counted E"]
         # df["Internal Inconsistency"] = df["Counted I"]
         # df["Transcription Error"] = df["Counted T"]
         # df.to_csv("datasets/annotated_testing_data.csv")
+
+        print(sum(df['Omission'] + df["Extraneous Statement"] + df["Internal Inconsistency"] + df["Transcription Error"]))
+
+
         self.assertEqual(
             sum(df["Omission"]),
             sum(df["Counted O"]),
