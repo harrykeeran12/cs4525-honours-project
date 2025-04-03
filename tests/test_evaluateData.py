@@ -49,6 +49,12 @@ class TestEvaluateData(unittest.TestCase):
         # print(
         #     f"Transcription Errors: {sum(df['Transcription Error'])}Number of counted transcription errors in testing data: {sum(df['Counted T'])}"
         # )
+
+        # df["Omission"] = df["Counted O"]
+        # df["Extraneous Statement"] = df["Counted E"]
+        # df["Internal Inconsistency"] = df["Counted I"]
+        # df["Transcription Error"] = df["Counted T"]
+        # df.to_csv("datasets/annotated_testing_data.csv")
         self.assertEqual(
             sum(df["Omission"]),
             sum(df["Counted O"]),

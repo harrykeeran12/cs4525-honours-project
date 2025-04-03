@@ -8,6 +8,7 @@ import numpy as np
 from sentence_transformers import SentenceTransformer
 from pathlib import Path
 from schema import RadiologyErrors
+from collections import Counter
 
 sBERTModel = SentenceTransformer("all-MiniLM-L6-v2")
 
@@ -184,40 +185,47 @@ def dataEvaluation(columnName: str, otherDF: pd.DataFrame):
 def dataFrameComparison(otherDF: pd.DataFrame):
     """Compares a dataframe with the reference checking if they identified the correct errors, and had similar explanations(calculated by SBERT) depending on a specific threshold. Returns the confusion matrix."""
 
-    confusionMatrix = {"TP": 0, "FN": 0, "FP": 0, "TN": 0}
-
+    confusionMatrix = {"TP": 0, "FN": 0}
     TPs = []
     FNs = []
-    print(len(df["Decoded"]))
+    FP = 0
     for index in range(len(otherDF["JSON"])):
         # Get all radiology errors.
         predictedList = otherDF["JSON"][index].errorsForWholeText
         referenceList = df["Decoded"][index].errorsForWholeText
         # print(predictedExplanations)
 
-        for referenceError in referenceList:
+        for refIndex in referenceList:
+            referenceError = referenceList[refIndex]
             referenceErrorPhrase = " ".join(referenceError.errorPhrases)
             simRef = sBERTModel.encode(referenceErrorPhrase)
             print(
-                f"({index}) {green(referenceErrorPhrase)}\n {green(referenceError.errorExplanation)}"
+                f"({index} : {refIndex}) {green(referenceErrorPhrase)}\n {green(referenceError.errorExplanation)}"
             )
+            outputLength = len(predictedList)
             for predictedError in predictedList:
                 predictedErrorPhrase = " ".join(predictedError.errorPhrases)
                 print(
                     f"\t - (\n{red(predictedErrorPhrase)} \n{red(predictedError.errorExplanation)} \n {f'Similarity: {sBERTModel.similarity(simRef, sBERTModel.encode(predictedErrorPhrase))}'}"
                 )
-            prompt = input("Does a match exist? TP, FN or FP: ")
-            if prompt == "TP":
-                TPs.append(referenceError)
+            print(f"Current TP count: {len(TPs)}\n Current FN count: {len(FNs)}\n")
+            prompt = input(
+                f"Does a match exist at this index ({index} : {refIndex}) - TP or FN?: "
+            )
+            if prompt == "T":
+                TPs.append(referenceError.errorType)
+                outputLength -= 1
                 confusionMatrix["TP"] += 1
-            elif prompt == "FN":
-                FNs.append(referenceError)
+            elif prompt == "F":
+                FNs.append(referenceError.errorType)
                 confusionMatrix["FN"] += 1
-            elif prompt == "FP":
-                confusionMatrix["FP"] += 1
             else:
                 pass
-
+            FP += outputLength
+    print(f"Count of True Positives: {Counter(TPs)}")
+    print(f"Count of False Negatives: {Counter(FNs)}")
+    print(f"Count of False Positives: {FP}")
+    pd.DataFrame({})
     return confusionMatrix
 
 
