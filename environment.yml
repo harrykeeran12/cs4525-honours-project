@@ -14,8 +14,9 @@ dependencies:
   - conda-forge::ollama
   - conda-forge::pydantic
   - conda-forge::sentence-transformers
-  - scikit-learn
+  - conda-forge::nltk
   - conda-forge::evaluate
+  - scikit-learn
   - pytorch>2.3.0
   - transformers>=4.50.0
   - pip:

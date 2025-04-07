@@ -4,7 +4,7 @@ from typing import List
 import pandas as pd
 import random
 from pprint import pprint
-from schema import RadiologyError, ErrorType, RadiologyErrors
+from schema import RadiologyError, RadiologyErrors, ErrorType
 
 random.seed(42)
 
