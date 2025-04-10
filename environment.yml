@@ -13,7 +13,7 @@ dependencies:
   - conda-forge::huggingface_hub
   - conda-forge::ollama
   - conda-forge::pydantic
-  - conda-forge::sentence-transformers
+  - conda-forge::sentence-transformers==3.4.1
   - conda-forge::nltk
   - conda-forge::evaluate
   - scikit-learn
