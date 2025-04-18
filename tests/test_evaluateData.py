@@ -34,21 +34,21 @@ class TestEvaluateData(unittest.TestCase):
         df["Counted O"] = df["Error Array"].apply(lambda ea: ea["Omission"])
         df["Counted T"] = df["Error Array"].apply(lambda ea: ea["Transcription Error"])
         df["Counted E"] = df["Error Array"].apply(lambda ea: ea["Extraneous Statement"])
-        print("Results in Reference Data vs Counted Reference Data Results: ")
+        # print("Results in Reference Data vs Counted Reference Data Results: ")
 
-        print(
-            f"Omissions: {sum(df['Omission'])}: Number of counted omissions in testing data: {sum(df['Counted O'])}"
-        )
+        # print(
+        #     f"Omissions: {sum(df['Omission'])}: Number of counted omissions in testing data: {sum(df['Counted O'])}"
+        # )
 
-        print(
-            f"Internal Inconsistency: {sum(df['Internal Inconsistency'])}Number of counted internal inconsistencies in testing data: {sum(df['Counted I'])}"
-        )
-        print(
-            f"Extraneous Statements: {sum(df['Extraneous Statement'])} Number of counted extraneous statements in testing data: {sum(df['Counted E'])}"
-        )
-        print(
-            f"Transcription Errors: {sum(df['Transcription Error'])}Number of counted transcription errors in testing data: {sum(df['Counted T'])}"
-        )
+        # print(
+        #     f"Internal Inconsistency: {sum(df['Internal Inconsistency'])}Number of counted internal inconsistencies in testing data: {sum(df['Counted I'])}"
+        # )
+        # print(
+        #     f"Extraneous Statements: {sum(df['Extraneous Statement'])} Number of counted extraneous statements in testing data: {sum(df['Counted E'])}"
+        # )
+        # print(
+        #     f"Transcription Errors: {sum(df['Transcription Error'])}Number of counted transcription errors in testing data: {sum(df['Counted T'])}"
+        # )
 
         # df["Omission"] = df["Counted O"]
         # df["Extraneous Statement"] = df["Counted E"]
@@ -56,7 +56,7 @@ class TestEvaluateData(unittest.TestCase):
         # df["Transcription Error"] = df["Counted T"]
         # df.to_csv("datasets/annotated_testing_data.csv")
 
-        print(sum(df['Omission'] + df["Extraneous Statement"] + df["Internal Inconsistency"] + df["Transcription Error"]))
+        # print(sum(df['Omission'] + df["Extraneous Statement"] + df["Internal Inconsistency"] + df["Transcription Error"]))
 
 
         self.assertEqual(
@@ -83,63 +83,75 @@ class TestEvaluateData(unittest.TestCase):
     def test_prompt1_mistral(self):
         """Test if the file for prompt 1 of mistral exists."""
         self.assertTrue(
-            Path.exists(Path("datasets/mistral_latest_inference.csv")),
+            Path.exists(Path("datasets/inference/mistral_latest_inference.csv")),
             "Please run the prelim_eval.py file, or consult the README.md .",
         )
 
     def test_prompt1_qwen(self):
         """Test if the file for prompt 1 of qwen exists."""
         self.assertTrue(
-            Path.exists(Path("datasets/qwen2.5_latest_inference.csv")),
+            Path.exists(Path("datasets/inference/qwen2.5_latest_inference.csv")),
             "Please run the prelim_eval.py file, or consult the README.md .",
         )
 
     def test_prompt1_falcon(self):
         """Test if the file for prompt 1 of falcon exists."""
         self.assertTrue(
-            Path.exists(Path("datasets/falcon3_latest_inference.csv")),
+            Path.exists(Path("datasets/inference/falcon3_latest_inference.csv")),
             "Please run the prelim_eval.py file, or consult the README.md .",
         )
 
     def test_prompt2_mistral(self):
         """Test if the file for prompt 2 of mistral exists."""
         self.assertTrue(
-            Path.exists(Path("datasets/mistral_latest_inference_prompt2.csv")),
+            Path.exists(
+                Path("datasets/inference/mistral_latest_inference_prompt2.csv")
+            ),
             "Please run the prelim_eval.py file, or consult the README.md .",
         )
 
     def test_prompt2_qwen(self):
         """Test if the file for prompt 2 of qwen exists."""
         self.assertTrue(
-            Path.exists(Path("datasets/qwen2.5_latest_inference_prompt2.csv")),
+            Path.exists(
+                Path("datasets/inference/qwen2.5_latest_inference_prompt2.csv")
+            ),
             "Please run the prelim_eval.py file, or consult the README.md .",
         )
 
     def test_prompt2_falcon(self):
         """Test if the file for prompt 2 of falcon exists."""
         self.assertTrue(
-            Path.exists(Path("datasets/falcon3_latest_inference_prompt2.csv")),
+            Path.exists(
+                Path("datasets/inference/falcon3_latest_inference_prompt2.csv")
+            ),
             "Please run the prelim_eval.py file, or consult the README.md .",
         )
 
     def test_prompt3_mistral(self):
         """Test if the file for prompt 3 of mistral exists."""
         self.assertTrue(
-            Path.exists(Path("datasets/mistral_latest_inference_prompt3.csv")),
+            Path.exists(
+                Path("datasets/inference/mistral_latest_inference_prompt3.csv")
+            ),
             "Please run the prelim_eval.py file, or consult the README.md .",
         )
 
     def test_prompt3_qwen(self):
         """Test if the file for prompt 3 of qwen exists."""
         self.assertTrue(
-            Path.exists(Path("datasets/qwen2.5_latest_inference_prompt3.csv")),
+            Path.exists(
+                Path("datasets/inference/qwen2.5_latest_inference_prompt3.csv")
+            ),
             "Please run the prelim_eval.py file, or consult the README.md .",
         )
 
     def test_prompt3_falcon(self):
         """Test if the file for prompt 3 of falcon exists."""
         self.assertTrue(
-            Path.exists(Path("datasets/falcon3_latest_inference_prompt3.csv")),
+            Path.exists(
+                Path("datasets/inference/falcon3_latest_inference_prompt3.csv")
+            ),
             "Please run the prelim_eval.py file, or consult the README.md .",
         )
 
