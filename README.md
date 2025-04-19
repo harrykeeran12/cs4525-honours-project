@@ -4,27 +4,6 @@ This project aims to use smaller LLMs to correct and find errors in radiology re
 
 The training dataset used is located [here](https://huggingface.co/datasets/ibrahimhamamci/CT-RATE/tree/main/dataset/radiology_text_reports) and can be accessed using the `dataManipulation.py` script. 
 
+To run the application, follow the user manual, located [here](./manuals/USERMANUAL.md).
 
-
-## Development
-
-### Prerequisites:
-
-- A `.env` file that contains a Hugging Face token(`$HF_TOKEN`). You can create this with the commands `touch .env` and `nano .env` to edit the file if you are on a Unix machine or MacOS. An example `.env` file is shown in `.env.example`. The Hugging Face token can be procured by going to the HuggingFace tokens page, located [here.](https://huggingface.co/settings/tokens)
-- [Ollama](https://ollama.com/download) installed on your machine.
-- Conda to replicate the development environment on your machine. To replicate the environment clone the repository, `cd` into the directory, and run the command: 
-
-```
-conda env create --file environment.yml
-```
-
-> Note: If there is already an environment on your machine, and changes are created to the folder, update your environment using ```conda env update -f environment.yml```. 
-
-The preliminary evaluation results were run on a HPC supercomputer. As such, the scripts located in the `scripts/` directory were designed to be run on a Linux machine. 
-
-
-## Running Locally
-
-The main point of interaction is the Flask application, located in the `webview` folder. This will still require Ollama to be installed. To run the Flask application locally, add `FLASK_APP=webview/app` to the env file. Then run `python3 -m flask run`. 
-
-`TODO`
+To learn about the development of this application, consult the maintenance manual, located [here](./manuals/MAINTENANCE.md).
