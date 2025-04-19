@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from typing import List
 from enum import Enum
 
@@ -23,4 +23,4 @@ class RadiologyError(BaseModel):
 class RadiologyErrors(BaseModel):
     """Adding multiple errors for structured output."""
 
-    errorsForWholeText: List[RadiologyError]
+    errorsForWholeText: List[RadiologyError] | None
