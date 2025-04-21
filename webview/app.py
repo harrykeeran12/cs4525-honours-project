@@ -14,7 +14,7 @@ except Exception:
     raise Exception("Ollama not running. Please start ollama.")
 try:
     webbrowser.open("http://127.0.0.1:5000/")
-except Exception as e: 
+except Exception as e:
     raise e("Unable to open a web browser.")
 
 
@@ -112,9 +112,13 @@ def generate():
             ).errorsForWholeText
         except ValidationError as ve:
             return make_response(
-            jsonify({"error": "Data given back by model was not valid JSON. Please try a different model."}),
-            404,
-        )
+                jsonify(
+                    {
+                        "error": "Data given back by model was not valid JSON. Please try a different model."
+                    }
+                ),
+                404,
+            )
         # print(len(jsonResponses))
         if jsonResponses is not None:
             print(jsonResponses)
@@ -134,7 +138,10 @@ def generate():
                 listOfErrors=listOfErrors,
             )
         else:
-            htmlResponse = render_template("generatedResponse.html", correctedOutput=f"<b>No errors were found in the report below.</b></br>{json.dumps(reportInfo)}")
+            htmlResponse = render_template(
+                "generatedResponse.html",
+                correctedOutput=f"<b>No errors were found in the report below.</b></br>{json.dumps(reportInfo)}",
+            )
 
         return make_response(
             htmlResponse,
