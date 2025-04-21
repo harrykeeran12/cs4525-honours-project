@@ -9,6 +9,7 @@ from sentence_transformers import SentenceTransformer
 from pathlib import Path
 from schema import RadiologyErrors
 from collections import Counter
+import heapq
 
 sBERTModel = SentenceTransformer("all-MiniLM-L6-v2")
 
@@ -189,41 +190,61 @@ def dataFrameComparison(otherDF: pd.DataFrame):
     TPs = []
     FNs = []
     FP = 0
-    for index in range(len(otherDF["JSON"])):
-        # Get all radiology errors.
-        predictedList = otherDF["JSON"][index].errorsForWholeText
-        referenceList = df["Decoded"][index].errorsForWholeText
-        # print(predictedExplanations)
+    try:
+        for index in range(len(otherDF["JSON"])):
+            # Get all radiology errors.
+            predictedList = otherDF["JSON"][index].errorsForWholeText
+            referenceList = df["Decoded"][index].errorsForWholeText
+            # print(predictedExplanations)
 
-        for refIndex in range(len(referenceList)):
-            referenceError = referenceList[refIndex]
-            referenceErrorPhrase = " ".join(referenceError.errorPhrases)
-            simRef = sBERTModel.encode(referenceErrorPhrase)
-            print(
-                f"({index} : {refIndex}) {green(referenceErrorPhrase)}\n {green(referenceError.errorExplanation)}"
-            )
-            outputLength = len(predictedList)
-            for predictedError in predictedList:
-                predictedErrorPhrase = " ".join(predictedError.errorPhrases)
+            for refIndex in range(len(referenceList)):
+                referenceError = referenceList[refIndex]
+                referenceErrorPhrase = " ".join(referenceError.errorPhrases)
+                simRef = sBERTModel.encode(referenceErrorPhrase)
                 print(
-                    f"\t - (\n{red(predictedErrorPhrase)} \n {f'Similarity: {sBERTModel.similarity(simRef, sBERTModel.encode(predictedErrorPhrase))}'}"
+                    f"({index} : {refIndex}) {green(referenceErrorPhrase)}\n {green(referenceError.errorExplanation)}"
                 )
-            print(f"Current TP count: {len(TPs)}\n Current FN count: {len(FNs)}\n")
-            prompt = input(
-                f"Does a match exist at this index ({index} : {refIndex}) - TP or FN?: "
-            )
-            if prompt == "T":
-                TPs.append(referenceError.errorType)
-                outputLength -= 1
-                confusionMatrix["TP"] += 1
-            elif prompt == "F":
-                FNs.append(referenceError.errorType)
-                confusionMatrix["FN"] += 1
-            else:
-                pass
-    print(f"Count of True Positives: {Counter(TPs)}")
-    print(f"Count of False Negatives: {Counter(FNs)}")
-    pd.DataFrame({})
+                outputLength = len(predictedList)
+                pHeap = []
+
+                for predictedError in predictedList:
+                    predictedErrorPhrase = " ".join(predictedError.errorPhrases)
+                    similarityBetweenRef = sBERTModel.similarity(
+                        simRef, sBERTModel.encode(predictedErrorPhrase)
+                    )
+                    heapq.heappush(
+                        pHeap, (predictedErrorPhrase, -1 * similarityBetweenRef.item())
+                    )
+                    print(
+                        f"\t - (\n{red(predictedErrorPhrase)} \n Similarity: {similarityBetweenRef.item()}"
+                    )
+                print(f"Current TP count: {len(TPs)}\nCurrent FN count: {len(FNs)}\n")
+                # Check if the top of the heap is more than the threshold * -1
+                maxSim = heapq.heappop(pHeap)
+                print(maxSim)
+                if -1 * maxSim[1] >= THRESHOLD:
+                    print("Adding as a true positive. \n")
+                    TPs.append(referenceError.errorType)
+                    outputLength -= 1
+                    confusionMatrix["TP"] += 1
+                else:
+                    prompt = input(
+                        f"Does a match exist at this index ({index} : {refIndex}) - TP or FN?: "
+                    )
+                    if prompt == "T" or prompt == "TP":
+                        TPs.append(referenceError.errorType)
+                        outputLength -= 1
+                        confusionMatrix["TP"] += 1
+                    elif prompt == "F" or prompt == "FN":
+                        FNs.append(referenceError.errorType)
+                        confusionMatrix["FN"] += 1
+                    else:
+                        raise Exception("Wrong input for prompt.")
+    finally:
+        print(f"Count of True Positives: {Counter(TPs)}")
+        print(f"Count of False Negatives: {Counter(FNs)}")
+        confusionMatrix["TP"] = sum(Counter(TPs).values())
+        confusionMatrix["FN"] = sum(Counter(FNs).values())
     return confusionMatrix
 
 
@@ -285,7 +306,6 @@ def main():
     f3df = pd.read_csv("datasets/falcon3_latest_inference.csv")
 
     dataCorrection("falcon3:latest", f3df)
-
 
     if not Path.exists(Path(evalFile)):
         evaluationDataFrame = pd.DataFrame(
@@ -360,7 +380,7 @@ def main():
                 # "Mistral Prompt 2": dataFrameComparison(m2df),
                 # "Qwen Prompt 2": dataFrameComparison(q2df),
                 # "Falcon Prompt 2": dataFrameComparison(f2df),
-                "Mistral Prompt 3": dataFrameComparison(m3df),
+                # "Mistral Prompt 3": dataFrameComparison(m3df),
                 # "Qwen Prompt 3": dataFrameComparison(q3df),
                 # "Falcon Prompt 3": dataFrameComparison(f3df),
             },

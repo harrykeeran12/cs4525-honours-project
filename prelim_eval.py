@@ -9,6 +9,7 @@ import logging
 import datetime
 import argparse
 from schema import RadiologyErrors
+from prompts import SYSTEM
 
 
 CMDPARSER = argparse.ArgumentParser(
@@ -60,7 +61,7 @@ for i in MODELSUSED:
         logging.debug(f"Models on system: {i}")
 
 
-SYSTEM = """You help correct radiology report errors. These include transcription errors, internal inconsistencies, insertion statements and translation errors. For each mistake, show the incorrect words and explain what the problem is."""
+
 
 
 dataframe = pd.read_csv(PWD + "/datasets/testing_data.csv")

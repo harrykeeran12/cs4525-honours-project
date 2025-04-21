@@ -58,7 +58,6 @@ class TestEvaluateData(unittest.TestCase):
 
         # print(sum(df['Omission'] + df["Extraneous Statement"] + df["Internal Inconsistency"] + df["Transcription Error"]))
 
-
         self.assertEqual(
             sum(df["Omission"]),
             sum(df["Counted O"]),
