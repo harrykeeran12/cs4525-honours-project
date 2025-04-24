@@ -5,6 +5,8 @@ channels:
   - defaults
 dependencies:
   - datasets
+  - jupyter
+  - ipywidgets
   - ipykernel
   - python=3.12
   - anaconda::flask
@@ -19,6 +21,7 @@ dependencies:
   - scikit-learn
   - pytorch>2.3.0
   - transformers>=4.50.0
+  - pip
   - pip:
     - mauve-text
     - bert_score
