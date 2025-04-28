@@ -9,7 +9,7 @@ from sentence_transformers import SentenceTransformer
 from pathlib import Path
 from schema import RadiologyErrors
 from collections import Counter
-import heapq
+from rouge_score import rouge_scorer
 
 sBERTModel = SentenceTransformer("all-MiniLM-L6-v2")
 
@@ -43,20 +43,28 @@ def cleanJSON(s: str):
 
 
 def errorIsolation(otherDF: pd.DataFrame):
-    """Isolate the errors into their own columns from the JSON."""
-    otherDF["Omission"] = otherDF["Error Array"].apply(lambda s: s["Omission"])
+    """Isolate the errors into their own columns from the JSON. This can only be done after an error array column exists."""
 
-    otherDF["Internal Inconsistency"] = otherDF["Error Array"].apply(
-        lambda s: s["Internal Inconsistency"]
-    )
+    if "Error Array" not in otherDF.columns:
+        raise Exception(
+            "This function cannot run until an error array column exists in the dataframe."
+        )
+    else:
+        otherDF["Omission"] = otherDF["Error Array"].apply(lambda s: s["Omission"])
 
-    otherDF["Transcription Error"] = otherDF["Error Array"].apply(
-        lambda s: s["Transcription Error"]
-    )
+        otherDF["Internal Inconsistency"] = otherDF["Error Array"].apply(
+            lambda s: s["Internal Inconsistency"]
+        )
 
-    otherDF["Extraneous Statement"] = otherDF["Error Array"].apply(
-        lambda s: s["Extraneous Statement"]
-    )
+        otherDF["Transcription Error"] = otherDF["Error Array"].apply(
+            lambda s: s["Transcription Error"]
+        )
+
+        otherDF["Extraneous Statement"] = otherDF["Error Array"].apply(
+            lambda s: s["Extraneous Statement"]
+        )
+
+    # print(otherDF)
 
 
 def JSONtoErrorArray(jsonString: RadiologyErrors):
@@ -91,14 +99,15 @@ def dataCorrection(COLUMN_NAME: str, otherDF: pd.DataFrame):
     otherDF["JSON"] = otherDF[COLUMN_NAME].apply(
         lambda t: RadiologyErrors.model_validate_json(t)
     )
-    # print(otherDF["JSON"][0])
 
     otherDF["Error Array"] = otherDF["JSON"].apply(lambda s: JSONtoErrorArray(s))
 
     # For all the errors in errorsForWholeText, get the explanations
 
     otherDF["Error Explanations"] = otherDF["JSON"].apply(
-        lambda t: "\n".join(["".join(s.errorExplanation) for s in t.errorsForWholeText])
+        lambda t: "\n".join(
+            [";".join(s.errorExplanation) for s in t.errorsForWholeText]
+        )
     )
 
     otherDF["Embeddings"] = otherDF["Error Explanations"].apply(
@@ -106,6 +115,8 @@ def dataCorrection(COLUMN_NAME: str, otherDF: pd.DataFrame):
     )
 
     otherDF["Total Errors"] = otherDF["JSON"].apply(lambda s: len(s.errorsForWholeText))
+
+    print(sum(otherDF["Total Errors"]))
 
     errorIsolation(otherDF)
 
@@ -121,7 +132,6 @@ def dataFrameSimilarity(df1: pd.DataFrame, df2: pd.DataFrame):
         arr = []
         for i in range(length):
             # Encode the value:
-            # print(df1["Error Explanations"][i], df2["Error Explanations"][i])
             embed1 = sBERTModel.encode(df1["Error Explanations"][i])
             embed2 = sBERTModel.encode(df2["Error Explanations"][i])
             sim = sBERTModel.similarity(embed1, embed2)
@@ -129,13 +139,8 @@ def dataFrameSimilarity(df1: pd.DataFrame, df2: pd.DataFrame):
         return pd.Series(arr)
 
 
-def dataEvaluation(columnName: str, otherDF: pd.DataFrame):
+def accuracyEvaluation(columnName: str, otherDF: pd.DataFrame):
     """Takes in a dataframe and evaluates the metrics."""
-    total_accuracy = accuracy_metric.compute(
-        predictions=otherDF["Total Errors"],
-        references=df["Total Errors"],
-        normalize=False,
-    )
 
     omission = accuracy_metric.compute(
         predictions=otherDF["Omission"], references=df["Omission"], normalize=False
@@ -170,12 +175,10 @@ def dataEvaluation(columnName: str, otherDF: pd.DataFrame):
     )
 
     evaluationResults: dict[str, float] = {
-        "Name": columnName,
-        "totalAccuracy": total_accuracy["accuracy"],
-        "omission": omission["accuracy"],
-        "internalInconsistency": internal_inconsistency["accuracy"],
-        "extraneousStatement": extraneous_statement["accuracy"],
-        "transcriptionError": transcription_error["accuracy"],
+        "omission": sum(otherDF["Omission"]),
+        "internalInconsistency": sum(otherDF["Internal Inconsistency"]),
+        "extraneousStatement": sum(otherDF["Extraneous Statement"]),
+        "transcriptionError": sum(otherDF["Transcription Error"]),
         "avg_BERT_precision": np.mean(bertScore["precision"]),
         "avg_BERT_recall": np.mean(bertScore["recall"]),
         "avg_BERT_f1": np.mean(bertScore["f1"]),
@@ -184,67 +187,69 @@ def dataEvaluation(columnName: str, otherDF: pd.DataFrame):
 
 
 def dataFrameComparison(otherDF: pd.DataFrame):
-    """Compares a dataframe with the reference checking if they identified the correct errors, and had similar explanations(calculated by SBERT) depending on a specific threshold. Returns the confusion matrix."""
-
+    """Compares a dataframe with the reference checking if they identified the correct errors, and had similar explanations using ROUGE, depending on a specific threshold. Returns the confusion matrix."""
+    scorer = rouge_scorer.RougeScorer(["rougeL"])
     confusionMatrix = {"TP": 0, "FN": 0}
     TPs = []
     FNs = []
-    FP = 0
     try:
         for index in range(len(otherDF["JSON"])):
             # Get all radiology errors.
             predictedList = otherDF["JSON"][index].errorsForWholeText
             referenceList = df["Decoded"][index].errorsForWholeText
-            # print(predictedExplanations)
 
             for refIndex in range(len(referenceList)):
+                # Go through each radiology error.
                 referenceError = referenceList[refIndex]
-                referenceErrorPhrase = " ".join(referenceError.errorPhrases)
+                referenceErrorPhrase = ";".join(referenceError.errorPhrases)
                 simRef = sBERTModel.encode(referenceErrorPhrase)
                 print(
                     f"({index} : {refIndex}) {green(referenceErrorPhrase)}\n {green(referenceError.errorExplanation)}"
                 )
                 outputLength = len(predictedList)
-                pHeap = []
+                # pHeap = []
+                FOUND = False
 
                 for predictedError in predictedList:
-                    predictedErrorPhrase = " ".join(predictedError.errorPhrases)
+                    # Get all predicted errors.
+                    predictedErrorPhrase = ";".join(predictedError.errorPhrases)
+                    scores = scorer.score(
+                        referenceErrorPhrase,
+                        predictedErrorPhrase,
+                    )
                     similarityBetweenRef = sBERTModel.similarity(
                         simRef, sBERTModel.encode(predictedErrorPhrase)
                     )
-                    heapq.heappush(
-                        pHeap, (predictedErrorPhrase, -1 * similarityBetweenRef.item())
-                    )
+                    # heapq.heappush(
+                    #     pHeap, (predictedErrorPhrase, -1 * similarityBetweenRef.item())
+                    # )
                     print(
                         f"\t - (\n{red(predictedErrorPhrase)} \n Similarity: {similarityBetweenRef.item()}"
                     )
-                print(f"Current TP count: {len(TPs)}\nCurrent FN count: {len(FNs)}\n")
-                # Check if the top of the heap is more than the threshold * -1
-                maxSim = heapq.heappop(pHeap)
-                print(maxSim)
-                if -1 * maxSim[1] >= THRESHOLD:
-                    print("Adding as a true positive. \n")
-                    TPs.append(referenceError.errorType)
-                    outputLength -= 1
-                    confusionMatrix["TP"] += 1
-                else:
-                    prompt = input(
-                        f"Does a match exist at this index ({index} : {refIndex}) - TP or FN?: "
-                    )
-                    if prompt == "T" or prompt == "TP":
+                    # print(scores)
+                    if scores["rougeL"].recall > THRESHOLD and not FOUND:
                         TPs.append(referenceError.errorType)
                         outputLength -= 1
                         confusionMatrix["TP"] += 1
-                    elif prompt == "F" or prompt == "FN":
-                        FNs.append(referenceError.errorType)
-                        confusionMatrix["FN"] += 1
-                    else:
-                        raise Exception("Wrong input for prompt.")
+                        FOUND = True
+
+                if not FOUND:
+                    # If the reference error was not found at all, then the error is marked as a false negative(should have been found).
+                    FNs.append(referenceError.errorType)
+                    confusionMatrix["FN"] += 1
+
+                # print(f"Current TP count: {len(TPs)}\nCurrent FN count: {len(FNs)}\n")
+                # Check if the top of the heap is more than the threshold * -1
+                
     finally:
         print(f"Count of True Positives: {Counter(TPs)}")
         print(f"Count of False Negatives: {Counter(FNs)}")
-        confusionMatrix["TP"] = sum(Counter(TPs).values())
-        confusionMatrix["FN"] = sum(Counter(FNs).values())
+        confusionMatrix["Total Errors"] = sum(otherDF["Total Errors"])
+        confusionMatrix["FP"] = confusionMatrix["Total Errors"] - confusionMatrix["TP"]
+        if confusionMatrix["TP"] != 0 and confusionMatrix["FN"] != 0:
+            confusionMatrix["Recall"] = confusionMatrix["TP"] / (confusionMatrix["TP"] + confusionMatrix["FN"])
+        else:
+            confusionMatrix["Recall"] = 0
     return confusionMatrix
 
 
@@ -261,7 +266,9 @@ def main():
     df["Counted E"] = df["Error Array"].apply(lambda ea: ea["Extraneous Statement"])
 
     df["Error Explanations"] = df["Decoded"].apply(
-        lambda t: "\n".join(["".join(s.errorExplanation) for s in t.errorsForWholeText])
+        lambda t: "\n".join(
+            [";".join(s.errorExplanation) for s in t.errorsForWholeText]
+        )
     )
 
     # Find the total number of errors in each JSON string.
@@ -271,78 +278,71 @@ def main():
 
     # Add the data generated by the models and clean them up.
 
-    mdf = pd.read_csv("datasets/mistral_latest_inference.csv")
+    mdf = pd.read_csv("datasets/inference/mistral_latest_inference.csv")
 
     dataCorrection("mistral:latest", mdf)
 
-    qdf = pd.read_csv("datasets/qwen2.5_latest_inference.csv")
+    qdf = pd.read_csv("datasets/inference/qwen2.5_latest_inference.csv")
 
     dataCorrection("qwen2.5:latest", qdf)
 
-    fdf = pd.read_csv("datasets/falcon3_latest_inference.csv")
+    fdf = pd.read_csv("datasets/inference/falcon3_latest_inference.csv")
 
     dataCorrection("falcon3:latest", fdf)
 
-    m2df = pd.read_csv("datasets/mistral_latest_inference_prompt2.csv")
+    m2df = pd.read_csv("datasets/inference/mistral_latest_inference_prompt2.csv")
 
     dataCorrection("mistral:latest", m2df)
 
-    q2df = pd.read_csv("datasets/qwen2.5_latest_inference_prompt2.csv")
+    q2df = pd.read_csv("datasets/inference/qwen2.5_latest_inference_prompt2.csv")
 
     dataCorrection("qwen2.5:latest", q2df)
 
-    f2df = pd.read_csv("datasets/falcon3_latest_inference_prompt2.csv")
+    f2df = pd.read_csv("datasets/inference/falcon3_latest_inference_prompt2.csv")
 
     dataCorrection("falcon3:latest", f2df)
 
-    m3df = pd.read_csv("datasets/mistral_latest_inference_prompt3.csv")
+    m3df = pd.read_csv("datasets/inference/mistral_latest_inference_prompt3.csv")
 
     dataCorrection("mistral:latest", m3df)
 
-    q3df = pd.read_csv("datasets/qwen2.5_latest_inference.csv")
+    q3df = pd.read_csv("datasets/inference/qwen2.5_latest_inference.csv")
 
     dataCorrection("qwen2.5:latest", q3df)
 
-    f3df = pd.read_csv("datasets/falcon3_latest_inference.csv")
+    f3df = pd.read_csv("datasets/inference/falcon3_latest_inference.csv")
 
     dataCorrection("falcon3:latest", f3df)
 
+    finetuneDF = pd.read_csv("datasets/finetuned_inference_prompt3.csv")
+
+    dataCorrection(
+        "hf.co/harrykeeran12/radiology_error_mistral_gguf:Q4_K_M", finetuneDF
+    )
+
     if not Path.exists(Path(evalFile)):
+        pprint("Running evaluation file.")
         evaluationDataFrame = pd.DataFrame(
-            {},
-            columns=[
-                "Name",
-                "totalAccuracy",
-                "omission",
-                "internalInconsistency",
-                "extraneousStatement",
-                "transcriptionError",
-                "avg_BERT_precision",
-                "avg_BERT_recall",
-                "avg_BERT_f1",
-            ],
+            {
+                "Mistral Prompt 1": accuracyEvaluation("Mistral Prompt 1", mdf),
+                "Qwen Prompt 1": accuracyEvaluation("Qwen Prompt 1", qdf),
+                "Falcon Prompt 1": accuracyEvaluation("Falcon Prompt 1", fdf),
+                "Mistral Prompt 2": accuracyEvaluation("Mistral Prompt 2", m2df),
+                "Qwen Prompt 2": accuracyEvaluation("Qwen Prompt 2", q2df),
+                "Falcon Prompt 2": accuracyEvaluation("Falcon Prompt 2", f2df),
+                "Mistral Prompt 3": accuracyEvaluation("Mistral Prompt 3", m3df),
+                "Qwen Prompt 3": accuracyEvaluation("Qwen Prompt 3", q3df),
+                "Falcon Prompt 3": accuracyEvaluation("Falcon Prompt 3", f3df),
+                "Finetuned Model": accuracyEvaluation("Finetuned Mistral", finetuneDF),
+            },
         )
         # print(f"{df['Error Explanations'][0]} \n\t\n {mtdf['Error Explanations'][0]}")
 
         print("Concatenating dataframes.")
 
-        evaluationDataFrame = pd.concat(
-            [
-                evaluationDataFrame,
-                pd.DataFrame([dataEvaluation("Mistral Prompt 1", mdf)]),
-                pd.DataFrame([dataEvaluation("Qwen Prompt 1", qdf)]),
-                pd.DataFrame([dataEvaluation("Falcon Prompt 1", fdf)]),
-                pd.DataFrame([dataEvaluation("Mistral Prompt 2", m2df)]),
-                pd.DataFrame([dataEvaluation("Qwen Prompt 2", q2df)]),
-                pd.DataFrame([dataEvaluation("Falcon Prompt 2", f2df)]),
-                pd.DataFrame([dataEvaluation("Mistral Prompt 3", m3df)]),
-                pd.DataFrame([dataEvaluation("Qwen Prompt 3", q3df)]),
-                pd.DataFrame([dataEvaluation("Falcon Prompt 3", f3df)]),
-            ],
-            ignore_index=True,
-        )
-
         print(evaluationDataFrame)
+
+        # breakpoint()
 
         evaluationDataFrame.to_csv(evalFile)
     else:
@@ -350,6 +350,7 @@ def main():
             f"Evaluation file already exists. Please delete the file located at {evalFile} and run this program again."
         )
     if not Path.exists(Path(similarityFile)):
+        pprint("Running similarity checking.")
         similarityDataFrame = pd.DataFrame(
             {
                 "Mistral Prompt 1": dataFrameSimilarity(df, mdf),
@@ -361,10 +362,11 @@ def main():
                 "Mistral Prompt 3": dataFrameSimilarity(df, m3df),
                 "Qwen Prompt 3": dataFrameSimilarity(df, q3df),
                 "Falcon Prompt 3": dataFrameSimilarity(df, f3df),
+                "Finetuned Mistral": dataFrameSimilarity(df, finetuneDF),
             },
         )
 
-        print(similarityDataFrame)
+        # print(similarityDataFrame)
 
         similarityDataFrame.to_csv(similarityFile)
     else:
@@ -372,21 +374,23 @@ def main():
             f"Similarity dataset already exists. Please delete the file located at {similarityFile} and run this program again."
         )
     if not Path.exists(Path(confusionFile)):
+        pprint("Running confusion matrix.")
         confusionMatrix = pd.DataFrame(
             {
-                # "Mistral Prompt 1": dataFrameComparison(mdf),
-                # "Qwen Prompt 1": dataFrameComparison(qdf),
-                # "Falcon Prompt 1": dataFrameComparison(fdf),
-                # "Mistral Prompt 2": dataFrameComparison(m2df),
-                # "Qwen Prompt 2": dataFrameComparison(q2df),
-                # "Falcon Prompt 2": dataFrameComparison(f2df),
-                # "Mistral Prompt 3": dataFrameComparison(m3df),
-                # "Qwen Prompt 3": dataFrameComparison(q3df),
-                # "Falcon Prompt 3": dataFrameComparison(f3df),
+                "Mistral Prompt 1": dataFrameComparison(mdf),
+                "Qwen Prompt 1": dataFrameComparison(qdf),
+                "Falcon Prompt 1": dataFrameComparison(fdf),
+                "Mistral Prompt 2": dataFrameComparison(m2df),
+                "Qwen Prompt 2": dataFrameComparison(q2df),
+                "Falcon Prompt 2": dataFrameComparison(f2df),
+                "Mistral Prompt 3": dataFrameComparison(m3df),
+                "Qwen Prompt 3": dataFrameComparison(q3df),
+                "Falcon Prompt 3": dataFrameComparison(f3df),
+                "Finetuned Mistral": dataFrameComparison(finetuneDF),
             },
         )
 
-        print(confusionMatrix)
+        # print(confusionMatrix)
 
         confusionMatrix.to_csv(confusionFile)
     else:

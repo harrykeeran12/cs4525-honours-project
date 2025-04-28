@@ -18,6 +18,7 @@ dependencies:
   - conda-forge::sentence-transformers==3.4.1
   - conda-forge::nltk
   - conda-forge::evaluate
+  - conda-forge::rouge-score
   - scikit-learn
   - pytorch>2.3.0
   - transformers>=4.50.0
