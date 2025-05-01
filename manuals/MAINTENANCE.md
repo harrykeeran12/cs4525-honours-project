@@ -18,7 +18,7 @@ conda env create --file environment.yml
 
 > Note: To update the local environment after the `environment.yml` file has been updated, use the command ```conda env update --file environment.yml```. 
 
-### Prerequisites
+### Dependencies
 
 - A `.env` file that contains a Hugging Face token(`$HF_TOKEN`). You can create this with the commands `touch .env` and `nano .env` to edit the file if you are on a Unix machine or MacOS. An example `.env` file is shown in `.env.example`. The Hugging Face token can be acquired by going to the HuggingFace tokens page, located [here.](https://huggingface.co/settings/tokens)
 - [Ollama](https://ollama.com/download) installed on your machine.
@@ -29,7 +29,28 @@ conda env create --file environment.yml
 
 To run the builtin tests, run
 ```python3 -m unittest discover```. These tests, among other things, check whether the relevant files are present in the `./datasets` folder. 
+
+
  
 
 ### Directory Structure
-#TODO
+
+**The honours_project directory is split up into 7 folders:**
+- `datasets` which is designed to hold all the .csv files. 
+- `logs` which keeps the debug logs of all the scripts.
+- `manuals` which holds the user manual and the maintenance manual.
+- `modelfiles` which holds example Modelfiles designed for use with Ollama.
+- `scripts` which holds the HPC scripts.
+- `tests` which are a series of tests written using Python's `unittest` library, that check whether the correct datasets are downloaded. 
+- `webview` which houses the radiology tool, written in HTMX and hosted using Flask. The radiology tool can be accessed using `flask run`. 
+- `utils` which houses the schema and the prompts used in this experiment.
+
+The main files are:
+
+- `.env.example` an example of a .env file which is required for running the Jupyter notebooks. This should be renamed to .env after downloading the repository. 
+- `dataManipulation.py` a script to get the training dataset for this project from the CT-RATE dataset.
+- `environment.yml` which is a list of the packages required to run this project. 
+- `evaluateData.py` which is the evaluation suite after performing the inference.
+- `finetuning.ipynb` is the fine-tuning notebook.
+> Note that the finetuning.ipynb notebook requires an Nvidia GPU on your system. This has different requirements so it is best to run it on Google Colab using a Tesla T4 GPU.
+
