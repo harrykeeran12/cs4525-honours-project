@@ -8,8 +8,8 @@ from pathlib import Path
 import logging
 import datetime
 import argparse
-from schema import RadiologyErrors
-from prompts import SYSTEM
+from utils.schema import RadiologyErrors
+from utils.prompts import SYSTEM
 
 
 CMDPARSER = argparse.ArgumentParser(

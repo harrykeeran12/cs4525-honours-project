@@ -1,6 +1,6 @@
 from pydantic import ValidationError
-from ..schema import RadiologyErrors
-from ..prompts import SYSTEM, SYSTEM2, SYSTEM3
+from ..utils.schema import RadiologyErrors
+from ..utils.prompts import SYSTEM3
 from flask import Flask, make_response, render_template, request, jsonify
 import ollama
 import webbrowser
@@ -48,7 +48,7 @@ def generate():
             jsonResponses = RadiologyErrors.model_validate_json(
                 ollamaResponse
             ).errorsForWholeText
-        except ValidationError as ve:
+        except ValidationError:
             return make_response(
                 jsonify(
                     {
