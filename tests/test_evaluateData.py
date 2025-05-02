@@ -1,6 +1,6 @@
 import unittest
 from pathlib import Path
-from evaluateData import JSONtoErrorArray, cleanJSON
+from src.evaluateData import JSONtoErrorArray, cleanJSON
 import pandas as pd
 from utils.schema import RadiologyErrors
 # To run the tests, use python3 -m unittest tests/<name of this py file>.py

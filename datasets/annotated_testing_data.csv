@@ -1,0 +1,1376 @@
+,Unnamed: 0,N,Re-dictated,Removed Correction,Type of Error,Omission,Internal Inconsistency,Extraneous Statement,Transcription Error,Reference JSON Output,Decoded,Error Array,Counted I,Counted O,Counted T,Counted E
+0,0,1,"Clinical Information Provided:
+50-year-old female. Total hysterectomy yesterday. Intermittent PV bleeding. New hypotension, sweating, clammy.  ?  active haemorrhage
+.
+Technique:
+CT mesenteric angiogram:  unenhanced, arterial, and venous.
+.
+Findings:
+Comparison is made with previous examination.
+.
+Vascular:
+No ( ) haematoma with active contrast extravasation from distal left ovarian artery.
+No other site of contrast extravasation identified.  Normal opacification of the abdominal aorta and its major branches.
+.
+Extravascular:
+Pelvic haematoma measures 11 x 16 x 13 cm, with scattered low density fluid filled areas.  Active contrast extravasation into haematoma from distal left ovarian artery as described.
+Scattered pockets of moderate density fluid in the subphrenic spaces and intraperitoneally in keeping with haemoperitoneum.
+Scattered gas loculations in keeping with residual postoperative changes.
+Persistent intrahepatic and extrahepatic biliary dilatation with biliary stents. Pneumobilia.  No focal abnormality seen in solid upper abdominal organs. Empty urinary bladder with catheter in situ.
+Sigmoid diverticulosis with no active diverticulitis.  Remainder of unprepared large small bowel loops are within normal limits.
+.
+Dependent changes in lung bases.  Degenerative changes in thoracolumbar spine and sacroiliac joints.
+.
+Conclusion:
+Expanding pelvic haematoma with active haemorrhage at time of examination.  Likely from distal right (left) ovarian artery. 
+Urgent discussion with surgical team and/or interventional radiology would be of benefit.","Clinical Information Provided:
+50-year-old female. Total hysterectomy yesterday. Intermittent PV bleeding. New hypotension, sweating, clammy.  ?  active haemorrhage
+.
+Technique:
+CT mesenteric angiogram:  unenhanced, arterial, and venous.
+.
+Findings:
+Comparison is made with previous examination.
+.
+Vascular:
+No haematoma with active contrast extravasation from distal left ovarian artery.
+No other site of contrast extravasation identified.  Normal opacification of the abdominal aorta and its major branches.
+.
+Extravascular:
+Pelvic haematoma measures 11 x 16 x 13 cm, with scattered low density fluid filled areas.  Active contrast extravasation into haematoma from distal left ovarian artery as described.
+Scattered pockets of moderate density fluid in the subphrenic spaces and intraperitoneally in keeping with haemoperitoneum.
+Scattered gas loculations in keeping with residual postoperative changes.
+Persistent intrahepatic and extrahepatic biliary dilatation with biliary stents. Pneumobilia.  No focal abnormality seen in solid upper abdominal organs. Empty urinary bladder with catheter in situ.
+Sigmoid diverticulosis with no active diverticulitis.  Remainder of unprepared large small bowel loops are within normal limits.
+.
+Dependent changes in lung bases.  Degenerative changes in thoracolumbar spine and sacroiliac joints.
+.
+Conclusion:
+Expanding pelvic haematoma with active haemorrhage at time of examination.  Likely from distal right ovarian artery. 
+Urgent discussion with surgical team and/or interventional radiology would be of benefit.",Extraneous statement/internal inconsistency; Internal inconsistency (side confusion),0,2,0,0,"{\n    ""errorsForWholeText"": [\n        {\n            ""errorType"": ""Internal Inconsistency"",\n            ""errorPhrases"": [""No haematoma"", ""Expanding pelvic haematoma with active haemorrhage at time of examination""],\n            ""errorExplanation"": [""Mentioned a haematoma in the conclusion but in the findings it states there is no haematoma. ""]\n            \n        },{\n            ""errorType"": ""Internal Inconsistency"",\n            ""errorPhrases"": [""distal right ovarian artery"", ""Active contrast extravasation into haematoma from distal left ovarian artery as described.""],\n            ""errorExplanation"": [""Conclusions states the haematoma is in the distal right ovarian artery but the findings do not mention the distal right ovarian artery.""]\n            \n        }\n    ]\n}","errorsForWholeText=[RadiologyError(errorType=<ErrorType.InternalInconsistency: 'Internal Inconsistency'>, errorPhrases=['No haematoma', 'Expanding pelvic haematoma with active haemorrhage at time of examination'], errorExplanation=['Mentioned a haematoma in the conclusion but in the findings it states there is no haematoma. ']), RadiologyError(errorType=<ErrorType.InternalInconsistency: 'Internal Inconsistency'>, errorPhrases=['distal right ovarian artery', 'Active contrast extravasation into haematoma from distal left ovarian artery as described.'], errorExplanation=['Conclusions states the haematoma is in the distal right ovarian artery but the findings do not mention the distal right ovarian artery.'])]","{'Internal Inconsistency': 2, 'Omission': 0, 'Transcription Error': 0, 'Extraneous Statement': 0}",2,0,0,0
+1,1,2,"Clinical Information Provided:
+50-year-old female. Hx of Fall hit his head on the ground , from a mobility scooter, patient on anticoagulant Warfarin and nauseated. Intracranial haemorrhage and Neck (spine injury/Fracture)
+.
+Technique:
+CT neck and chest unenhanced.
+.
+Findings:
+No relevant previous examination available (for) comparison.
+.
+No acute injury to bony cranium.  No intra-axial/extra-axial haemorrhage.
+Basal cisterns are clear.  No hydrocephalus. 
+Gliotic infarction involving the entirety of left frontal parietal lobes, as well as left temporal lobe. 
+Evidence of resultant right-sided (left-sided) brainstem atrophy.  I note history of previous stroke.
+Ex vacuo dilatation of right lateral ventricle. 
+Normal appearance of craniocervical junction.
+.
+(No) Acute injury to bony cervical spine.  Preserved vertebral heights and bony alignment.  Wide patent bony spinal canal.
+Intact facet joints.  Generalised degenerative changes.  No suspicious bony lesion.
+Mildly displaced fracture to medial (sternal) head of right clavicle (see saved key image).  No further bony injury seen in visualised portion of thorax.
+Nonspecific 11 x 5 cm (mm) (see saved key image) spiculated nodule in left upper lobe, likely inflammatory in nature, though a follow-up CT chest in 3 months may be of benefit.
+Right apical subpleural scarring.  Dependent changes.
+.
+Conclusion:
+1. No acute intracranial finding.  In particular, no intra-axial/extra-axial haemorrhage.
+2. No acute injury to bony cervical spine.
+3. Displaced fracture to medial head of right clavicle.","Clinical Information Provided:
+50-year-old female. Hx of Fall hit his head on the ground , from a mobility scooter, patient on anticoagulant Warfarin and nauseated. Intracranial haemorrhage and Neck (spine injury/Fracture)
+.
+Technique:
+CT neck and chest unenhanced.
+.
+Findings:
+No relevant previous examination available comparison.
+.
+No acute injury to bony cranium.  No intra-axial/extra-axial haemorrhage.
+Basal cisterns are clear.  No hydrocephalus. 
+Gliotic infarction involving the entirety of left frontal parietal lobes, as well as left temporal lobe. 
+Evidence of resultant right-sided brainstem atrophy.  I note history of previous stroke.
+Ex vacuo dilatation of right lateral ventricle. 
+Normal appearance of craniocervical junction.
+.
+Acute injury to bony cervical spine.  Preserved vertebral heights and bony alignment.  Wide patent bony spinal canal.
+Intact facet joints.  Generalised degenerative changes.  No suspicious bony lesion.
+Mildly displaced fracture to medial head of right clavicle (see saved key image).  No further bony injury seen in visualised portion of thorax.
+Nonspecific 11 x 5 cm (see saved key image) spiculated nodule in left upper lobe, likely inflammatory in nature, though a follow-up CT chest in 3 months may be of benefit.
+Right apical subpleural scarring.  Dependent changes.
+.
+Conclusion:
+1. No acute intracranial finding.  In particular, no intra-axial/extra-axial haemorrhage.
+2. No acute injury to bony cervical spine.
+3. Displaced fracture to medial head of right clavicle.",Omission/grammatical; internal inconsistency (side confusion); Omission; 	transcription/internal inconsistency.,2,2,0,0,"{\n    ""errorsForWholeText"": [\n        {\n            ""errorType"": ""Omission"",\n            ""errorPhrases"": [\n                ""No relevant previous examination available comparison""\n            ],\n            ""errorExplanation"": [\n                ""The correct sentence should be \\""No relevant previous examination available for comparison\\"". ""\n            ]\n        },\n        {\n            ""errorType"": ""Internal Inconsistency"",\n            ""errorPhrases"": [\n                ""Evidence of resultant right-sided brainstem atrophy.""\n            ],\n            ""errorExplanation"": [\n                ""There is a side confusion, as it should be left sided brainstem atrophy.""\n            ]\n        },\n        {\n            ""errorType"": ""Omission"",\n            ""errorPhrases"": [\n                ""Acute injury to bony cervical spine.""\n            ],\n            ""errorExplanation"": [\n                ""This is an omission as it should be No acute injury to bony cervical spine.""\n            ]\n        },\n        {\n            ""errorType"": ""Internal Inconsistency"",\n            ""errorPhrases"": [\n                ""Nonspecific 11 x 5 cm (see saved key image) spiculated nodule in left upper lobe""\n            ],\n            ""errorExplanation"": [\n                ""The unit of measurement is wrong. It should be mm instead of cm. ""\n            ]\n        }\n    ]\n}","errorsForWholeText=[RadiologyError(errorType=<ErrorType.Omission: 'Omission'>, errorPhrases=['No relevant previous examination available comparison'], errorExplanation=['The correct sentence should be ""No relevant previous examination available for comparison"". ']), RadiologyError(errorType=<ErrorType.InternalInconsistency: 'Internal Inconsistency'>, errorPhrases=['Evidence of resultant right-sided brainstem atrophy.'], errorExplanation=['There is a side confusion, as it should be left sided brainstem atrophy.']), RadiologyError(errorType=<ErrorType.Omission: 'Omission'>, errorPhrases=['Acute injury to bony cervical spine.'], errorExplanation=['This is an omission as it should be No acute injury to bony cervical spine.']), RadiologyError(errorType=<ErrorType.InternalInconsistency: 'Internal Inconsistency'>, errorPhrases=['Nonspecific 11 x 5 cm (see saved key image) spiculated nodule in left upper lobe'], errorExplanation=['The unit of measurement is wrong. It should be mm instead of cm. '])]","{'Internal Inconsistency': 2, 'Omission': 2, 'Transcription Error': 0, 'Extraneous Statement': 0}",2,2,0,0
+2,2,3,"Clinical Information Provided:
+40-year-old female. 10 day history of L sided tonsillar abscess with L extensive lymphadenopathy. Able to swallow her own saliva and water.   ?extending tonsillar abscess
+.
+Technique:
+CT neck and chest with venous enhancement.
+.
+Findings:
+No relevant previous examination available (for) comparison.
+.
+Enlarged palatine tonsils bilaterally with a small (8 mm) enhancing collection seen associated be (with) inferior aspect of left palatine tonsil, but no extension into deeper structures.
+Codes (mucosal) enhancement and secretions seen within pharyngeal recesses.  No evidence of enhancement/oedema tracking inferior to the level oropharynx on this examination.
+Bilateral reactive cervical nodes.
+.
+Some opacification of ethmoidal air cells with otherwise normal aeration of paraspinal (paranasal) sinuses and mastoid air cells.
+Normal opacification of internal jugular veins.  Atelectasis in both lungs. 
+Supraclavicular and superior mediastinal lymphadenopathy with prominent, albeit subcentimetre axillary nodes likely reactive in nature.
+Beam hardening artefacts affecting visualisation of C7/T1.  No suspicious bony lesion.
+No focal abnormality seen in visualised portions (of) solid abdominal organs.
+.
+Conclusion:
+Small 8 mm enhancing collection suspicious for an abscess associated with the inferior aspect of left palatine tonsil with no evidence of extension into deeper structures at time of examination.","Clinical Information Provided:
+40-year-old female. 10 day history of L sided tonsillar abscess with L extensive lymphadenopathy. Able to swallow her own saliva and water.   ?extending tonsillar abscess
+.
+Technique:
+CT neck and chest with venous enhancement.
+.
+Findings:
+No relevant previous examination available comparison.
+.
+Enlarged palatine tonsils bilaterally with a small (8 mm) enhancing collection seen associated be inferior aspect of left palatine tonsil, but no extension into deeper structures.
+Codes enhancement and secretions seen within pharyngeal recesses.  No evidence of enhancement/oedema tracking inferior to the level oropharynx on this examination.
+Bilateral reactive cervical nodes.
+.
+Some opacification of ethmoidal air cells with otherwise normal aeration of paraspinal sinuses and mastoid air cells.
+Normal opacification of internal jugular veins.  Atelectasis in both lungs. 
+Supraclavicular and superior mediastinal lymphadenopathy with prominent, albeit subcentimetre axillary nodes likely reactive in nature.
+Beam hardening artefacts affecting visualisation of C7/T1.  No suspicious bony lesion.
+No focal abnormality seen in visualised portions solid abdominal organs.
+.
+Conclusion:
+Small 8 mm enhancing collection suspicious for an abscess associated with the inferior aspect of left palatine tonsil with no evidence of extension into deeper structures at time of examination.",Omission/grammatical; grammatical; transcription; omission/grammatical,3,0,0,1,"{\n    ""errorsForWholeText"": [\n        {\n            ""errorType"": ""Omission"",\n            ""errorPhrases"": [\n                ""No relevant previous examination available comparison.""\n            ],\n            ""errorExplanation"": [\n                ""This is an omission as the word for has been omitted. ""\n            ]\n        },\n        {\n            ""errorType"": ""Omission"",\n            ""errorPhrases"": [\n                ""associated be inferior aspect""\n            ],\n            ""errorExplanation"": [\n                ""This is a grammatical mistake, be should be replaced with the word with.""\n            ]\n        },\n        {\n            ""errorType"": ""Transcription Error"",\n            ""errorPhrases"": [\n                ""Codes enhancement and secretions seen within pharyngeal recesses.""\n            ],\n            ""errorExplanation"": [\n                ""The word mucosal was incorrectly transcribed as Codes.""\n            ]\n        },\n        {\n            ""errorType"": ""Omission"",\n            ""errorPhrases"": [\n                ""No focal abnormality seen in visualised portions solid abdominal organs.""\n            ],\n            ""errorExplanation"": [\n                ""The sentence is missing the word of. ""\n            ]\n        }\n    ]\n}","errorsForWholeText=[RadiologyError(errorType=<ErrorType.Omission: 'Omission'>, errorPhrases=['No relevant previous examination available comparison.'], errorExplanation=['This is an omission as the word for has been omitted. ']), RadiologyError(errorType=<ErrorType.Omission: 'Omission'>, errorPhrases=['associated be inferior aspect'], errorExplanation=['This is a grammatical mistake, be should be replaced with the word with.']), RadiologyError(errorType=<ErrorType.TranscriptionError: 'Transcription Error'>, errorPhrases=['Codes enhancement and secretions seen within pharyngeal recesses.'], errorExplanation=['The word mucosal was incorrectly transcribed as Codes.']), RadiologyError(errorType=<ErrorType.Omission: 'Omission'>, errorPhrases=['No focal abnormality seen in visualised portions solid abdominal organs.'], errorExplanation=['The sentence is missing the word of. '])]","{'Internal Inconsistency': 0, 'Omission': 3, 'Transcription Error': 1, 'Extraneous Statement': 0}",0,3,1,0
+3,3,4,"Clinical Information Provided:
+70-year-old male (female). Fall  4 days ago with trauma to the left side of the chest/upper limb. New Hb drop 123>> 86.  Significant tenderness in the left chest wall and left iliac fossa. History of diverticulosis, no PR bleeding. Confirmed haematoma in the left arm. To check for source of bleeding in thorax/abdomen
+.
+Technique:
+CT chest/abdomen/pelvis with portal venous enhancement.
+.
+Findings:
+No relevant previous examination available for comparison.
+.
+Chest:
+No acute injury to bony thorax or thoracic spine.  Degenerative changes.
+No pneumothorax or haemothorax.
+Dependent changes in lung bases.  No size significant thoracic lymphadenopathy.
+Right-sided mastectomy noted.  Soft tissue stranding and haematoma seen along incompletely visualised, lateral portion of left upper arm.
+.
+Abdomen/pelvis:
+Small to moderate volume of haemoperitoneum seen surrounding spleen, left subphrenic space, and in dependent portion of pelvis.
+Haemorrhage is likely splenic in origin, with haematoma making broad contact with lateral aspect of spleen, and associated with a focus of hypoattenuation (hyperattenuation) along the posterior aspect of the spleen (see saved key image) likely in keeping with laceration.  No evidence of active extravasation on this venous phase examination.
+No other focal abnormality seen in the remainder of solid upper abdominal organs.  Normal appearance of urinary bladder.
+Total hysterectomy. Pelvic pessary in situ.  Sigmoid diverticulosis with no active diverticulitis.  No other focal abnormality seen in unprepared large and small bowel loops.
+.
+No size significant abdominal/pelvic lymphadenopathy.
+No acute injury to bony cranium (pelvis).  Degenerative changes in lumbar spine and sacroiliac joints.  No suspicious bony lesion.
+.
+Conclusion:
+Pneumoperitoneum, likely splenic in origin, and associated with a small focus of splenic laceration.  No active contrast extravasation visualised at time of examination.","Clinical Information Provided:
+70-year-old male. Fall  4 days ago with trauma to the left side of the chest/upper limb. New Hb drop 123>> 86.  Significant tenderness in the left chest wall and left iliac fossa. History of diverticulosis, no PR bleeding. Confirmed haematoma in the left arm. To check for source of bleeding in thorax/abdomen
+.
+Technique:
+CT chest/abdomen/pelvis with portal venous enhancement.
+.
+Findings:
+No relevant previous examination available for comparison.
+.
+Chest:
+No acute injury to bony thorax or thoracic spine.  Degenerative changes.
+No pneumothorax or haemothorax.
+Dependent changes in lung bases.  No size significant thoracic lymphadenopathy.
+Right-sided mastectomy noted.  Soft tissue stranding and haematoma seen along incompletely visualised, lateral portion of left upper arm.
+.
+Abdomen/pelvis:
+Small to moderate volume of haemoperitoneum seen surrounding spleen, left subphrenic space, and in dependent portion of pelvis.
+Haemorrhage is likely splenic in origin, with haematoma making broad contact with lateral aspect of spleen, and associated with a focus of hypoattenuation along the posterior aspect of the spleen (see saved key image) likely in keeping with laceration.  No evidence of active extravasation on this venous phase examination.
+No other focal abnormality seen in the remainder of solid upper abdominal organs.  Normal appearance of urinary bladder.
+Total hysterectomy. Pelvic pessary in situ.  Sigmoid diverticulosis with no active diverticulitis.  No other focal abnormality seen in unprepared large and small bowel loops.
+.
+No size significant abdominal/pelvic lymphadenopathy.
+No acute injury to bony cranium.  Degenerative changes in lumbar spine and sacroiliac joints.  No suspicious bony lesion.
+.
+Conclusion:
+Pneumoperitoneum, likely splenic in origin, and associated with a small focus of splenic laceration.  No active contrast extravasation visualised at time of examination.",Transcription/internal inconsistency (see reference to ‚Äòhysterectomy‚Äô and ‚Äòpelvic pessary in situ‚Äô in last line under ‚Äòabdomen/pelvis‚Äô section.; transcription/internal inconsistency.,0,2,0,0,"{\n  ""errorsForWholeText"": [\n    {\n      ""errorType"": ""Internal Inconsistency"",\n      ""errorPhrases"": [\n                 ""70-year-old male."", ""Total hysterectomy. Pelvic pessary in situ.""\n            ],\n      ""errorExplanation"": [\n        ""There is an inconsistency.""\n      ]\n    },\n    {\n      ""errorType"": ""Internal Inconsistency"",\n      ""errorPhrases"": [\n                 ""No acute injury to bony cranium.""\n             ],\n      ""errorExplanation"": [\n        ""The pelvis was incorrectly transcribed as the cranium.""\n      ]\n    }\n  ]\n}","errorsForWholeText=[RadiologyError(errorType=<ErrorType.InternalInconsistency: 'Internal Inconsistency'>, errorPhrases=['70-year-old male.', 'Total hysterectomy. Pelvic pessary in situ.'], errorExplanation=['There is an inconsistency.']), RadiologyError(errorType=<ErrorType.InternalInconsistency: 'Internal Inconsistency'>, errorPhrases=['No acute injury to bony cranium.'], errorExplanation=['The pelvis was incorrectly transcribed as the cranium.'])]","{'Internal Inconsistency': 2, 'Omission': 0, 'Transcription Error': 0, 'Extraneous Statement': 0}",2,0,0,0
+4,4,5,"Clinical Information Provided:
+40-year-old male.  intoxicated / fell down 10 stairs/ gcs: 14/ sustained injury to left side chest/ tender, surgical emphysema/ multiple bruises over face.  ? traumatic injury. chest and head
+.
+Technique:
+CT head unenhanced.
+CT neck/chest/abdomen/pelvis with dual arterial - portal venous enhancement.
+.
+Findings:
+No relevant previous examination available for comparison.
+.
+Head:
+No acute injury to bony cranium.
+No intra-axial/extra-axial haemorrhage.  No hydrocephalus.
+Basal cisterns are clear.  Normal appearance of craniocervical junction.
+.
+Cervical spine:
+No acute bony injury.  A follow-up canal speaking anechoic occluded. ()
+Degenerative changes in cervical spine.  Normal opacification of internal carotid arteries and vertebral arteries.
+.
+Skeletal:
+Left-sided fourth through eighth rib fractures with associated small left-sided pneumothorax and soft tissue emphysema overlying left lateral chest wall and scapula.
+No flail segment.
+No further acute bony injury evident.
+Well corticated superior endplate fracture T8, likely longstanding.
+Degenerative changes in thoracolumbar spine and sacroiliac joints.
+.
+Chest:
+Left-sided pneumothorax associated with left-sided rib fractures with overlying subcutaneous emphysema as described.
+Severe background apical predominant centrilobular predominant emphysema.  Dependent changes in lung bases.
+Mixed density material seen in the right main bronchus (see saved key image) which may be in keeping with mucous or aspirated content.  Clinical correlation advised.
+No central pulmonary embolism.
+No size significant thoracic lymphadenopathy.
+.
+Abdomen/pelvis:
+No intra-abdominal/pelvic free gas or fluid.
+No focal abnormality seen in solid upper abdominal organs.
+Distended urinary bladder with diverticulae (diverticulum) seen posteriorly.
+Sigmoid diverticulosis with no active diverticulitis.  No other abnormality seen in unprepared large (and) small bowel loops.
+No size significant intra-abdominal/pelvic lymphadenopathy.
+.
+Vascular:
+Scattered non stenotic atherosclerotic changes with otherwise normal perfusion of major vessels.
+.
+Conclusions:
+No acute intracranial finding.  In () left-sided rib fractures with associated left-sided pneumothorax and overlying subcutaneous emphysema.","Clinical Information Provided:
+40-year-old male.  intoxicated / fell down 10 stairs/ gcs: 14/ sustained injury to left side chest/ tender, surgical emphysema/ multiple bruises over face.  ? traumatic injury. chest and head
+.
+Technique:
+CT head unenhanced.
+CT neck/chest/abdomen/pelvis with dual arterial - portal venous enhancement.
+.
+Findings:
+No relevant previous examination available for comparison.
+.
+Head:
+No acute injury to bony cranium.
+No intra-axial/extra-axial haemorrhage.  No hydrocephalus.
+Basal cisterns are clear.  Normal appearance of craniocervical junction.
+.
+Cervical spine:
+No acute bony injury.  A follow-up canal speaking anechoic occluded.
+Degenerative changes in cervical spine.  Normal opacification of internal carotid arteries and vertebral arteries.
+.
+Skeletal:
+Left-sided fourth through eighth rib fractures with associated small left-sided pneumothorax and soft tissue emphysema overlying left lateral chest wall and scapula.
+No flail segment.
+No further acute bony injury evident.
+Well corticated superior endplate fracture T8, likely longstanding.
+Degenerative changes in thoracolumbar spine and sacroiliac joints.
+.
+Chest:
+Left-sided pneumothorax associated with left-sided rib fractures with overlying subcutaneous emphysema as described.
+Severe background apical predominant centrilobular predominant emphysema.  Dependent changes in lung bases.
+Mixed density material seen in the right main bronchus (see saved key image) which may be in keeping with mucous or aspirated content.  Clinical correlation advised.
+No central pulmonary embolism.
+No size significant thoracic lymphadenopathy.
+.
+Abdomen/pelvis:
+No intra-abdominal/pelvic free gas or fluid.
+No focal abnormality seen in solid upper abdominal organs.
+Distended urinary bladder with diverticulae seen posteriorly.
+Sigmoid diverticulosis with no active diverticulitis.  No other abnormality seen in unprepared large small bowel loops.
+No size significant intra-abdominal/pelvic lymphadenopathy.
+.
+Vascular:
+Scattered non stenotic atherosclerotic changes with otherwise normal perfusion of major vessels.
+.
+Conclusions:
+No acute intracranial finding.  In left-sided rib fractures with associated left-sided pneumothorax and overlying subcutaneous emphysema.",Extraneous statement/nonsense;  extraneous statement.,0,0,2,0,"\n{\n  ""errorsForWholeText"": [\n    {\n      ""errorType"": ""Extraneous Statement"",\n      ""errorPhrases"": [\n                  ""A follow-up canal speaking anechoic occluded.""\n            ],\n      ""errorExplanation"": [\n        ""This is nonsense.""\n      ]\n    },\n    {\n      ""errorType"": ""Extraneous Statement"",\n      ""errorPhrases"":         [\n          ""In left-sided rib fractures with associated left-sided pneumothorax and overlying subcutaneous emphysema.""\n            ],\n      ""errorExplanation"": [\n        ""In does not need to be there and is extraneous.""\n      ]\n    }\n  ]\n}","errorsForWholeText=[RadiologyError(errorType=<ErrorType.ExtraneousStatement: 'Extraneous Statement'>, errorPhrases=['A follow-up canal speaking anechoic occluded.'], errorExplanation=['This is nonsense.']), RadiologyError(errorType=<ErrorType.ExtraneousStatement: 'Extraneous Statement'>, errorPhrases=['In left-sided rib fractures with associated left-sided pneumothorax and overlying subcutaneous emphysema.'], errorExplanation=['In does not need to be there and is extraneous.'])]","{'Internal Inconsistency': 0, 'Omission': 0, 'Transcription Error': 0, 'Extraneous Statement': 2}",0,0,0,2
+5,5,6,"Clinical Information Provided:
+30-year-old female. post-oesophagogastrectomy for T4N1Mo tumour extending into stomach. Critical care step-down been persistently pyrexial - now started on tazocin. need CT with oral contrast to assess anastomosis. ?leak
+.
+Technique:
+CT chest/abdomen with portal venous enhancement and oral contrast.
+.
+Findings:
+Previous examination dated (noted).
+.
+Ingested oral contrast can be seen pooling in dependent portion of gastric tube, approximately 13 cm distal to a (the) site of primary anastomosis.
+Slight contrast filled mural irregularity (see saved key image) on the gastric tube aspect of the side-to-side (side-to-end) anastomosis between proximal oesophagus and gastric tube, with no evidence of extraluminal contrast leak.
+No extra luminal contrast leak appreciated on this examination within limitation of dependent (posterior) positioning of oral contrast, and the anterior positioning of the longitudinal staple line of gastric tube.
+Oral contrast seen beneath the level of diaphragm.
+.
+3.6 x 1.1 cm (see saved key image) locule of gas with further small volume of fluid seen in posterior superior mediastinum, just medial to the oesophageal side to side anastomosis, with no associated contrast leak, likely reflecting residual postoperative changes.  Additional small gas loculations seen in fat adjacent to pulled up gastric tube (see saved key image) and upper oesophagus.
+Left-sided moderate sized pleural effusion with small residual locule dated pleural effusion in the right oblique fissure.  Right-sided chest drain in situ.  Small right apical pneumothorax.
+Atelectasis in lower lobes, middle lobe, and right upper lobe.  Severe emphysema in predominantly right chest wall, and paraspinal soft tissue, likely relating to recent (surgery.)
+.
+Trace pneumoperitoneum, likely relating to recent operation.  Small amount of intra-abdominal free fluid tracking along right pericolic cuff(gutter).
+Trace.  Nephric fluid bilaterally with otherwise normal appearance of kidneys.  No other focal abnormality seen in solid upper abdominal organs.
+Percutaneous jejunostomy in situ.  Nasogastric tube in situ, with tip seen terminating within the gastric tube above diaphragm.  No focal abnormality seen in visualised portion of large and small bowel loops.
+No size significant thoracic or abdominal lymphadenopathy.  Degenerative changes in thoracolumbar spine.  No suspicious bony lesion.
+. 
+Conclusion:
+1. No contrast leak demonstrated on this examination within limitation described.
+Two (2.) small gas and fluid loculations seen medial to sac to and (side-to-end) anastomosis, with no contrast seen within, likely in keeping with residual postoperative changes.","Clinical Information Provided:
+30-year-old female. post-oesophagogastrectomy for T4N1Mo tumour extending into stomach. Critical care step-down been persistently pyrexial - now started on tazocin. need CT with oral contrast to assess anastomosis. ?leak
+.
+Technique:
+CT chest/abdomen with portal venous enhancement and oral contrast.
+.
+Findings:
+Previous examination dated.
+.
+Ingested oral contrast can be seen pooling in dependent portion of gastric tube, approximately 13 cm distal to a site of primary anastomosis.
+Slight contrast filled mural irregularity (see saved key image) on the gastric tube aspect of the side-to-side anastomosis between proximal oesophagus and gastric tube, with no evidence of extraluminal contrast leak.
+No extra luminal contrast leak appreciated on this examination within limitation of dependent positioning of oral contrast, and the anterior positioning of the longitudinal staple line of gastric tube.
+Oral contrast seen beneath the level of diaphragm.
+.
+3.6 x 1.1 cm (see saved key image) locule of gas with further small volume of fluid seen in posterior superior mediastinum, just medial to the oesophageal side to side anastomosis, with no associated contrast leak, likely reflecting residual postoperative changes.  Additional small gas loculations seen in fat adjacent to pulled up gastric tube (see saved key image) and upper oesophagus.
+Left-sided moderate sized pleural effusion with small residual locule dated pleural effusion in the right oblique fissure.  Right-sided chest drain in situ.  Small right apical pneumothorax.
+Atelectasis in lower lobes, middle lobe, and right upper lobe.  Severe emphysema in predominantly right chest wall, and paraspinal soft tissue, likely relating to recent
+.
+Trace pneumoperitoneum, likely relating to recent operation.  Small amount of intra-abdominal free fluid tracking along right pericolic cuff.
+Trace.  Nephric fluid bilaterally with otherwise normal appearance of kidneys.  No other focal abnormality seen in solid upper abdominal organs.
+Percutaneous jejunostomy in situ.  Nasogastric tube in situ, with tip seen terminating within the gastric tube above diaphragm.  No focal abnormality seen in visualised portion of large and small bowel loops.
+No size significant thoracic or abdominal lymphadenopathy.  Degenerative changes in thoracolumbar spine.  No suspicious bony lesion.
+. 
+Conclusion:
+1. No contrast leak demonstrated on this examination within limitation described.
+Two small gas and fluid loculations seen medial to sac to and anastomosis, with no contrast seen within, likely in keeping with residual postoperative changes.",Transcription; grammatical; transcription; omission; nonsense; homonym/grammatical; transcription.,3,0,1,3,"{\n    ""errorsForWholeText"": [\n        {\n            ""errorType"": ""Transcription Error"",\n            ""errorPhrases"": [\n                ""Previous examination dated.""\n            ],\n            ""errorExplanation"": [\n                ""This is a transcription error as dated should be replaced with noted.""\n            ]\n        },\n        {\n            ""errorType"": ""Omission"",\n            ""errorPhrases"": [\n                ""distal to a site of primary anastomosis""\n            ],\n            ""errorExplanation"": [\n                ""This is a grammatical mistake as it should be the site rather than a site.""\n            ]\n        },\n        {\n            ""errorType"": ""Transcription Error"",\n            ""errorPhrases"": [\n                ""Slight contrast filled mural irregularity (see saved key image) on the gastric tube aspect of the side-to-side anastomosis ""\n            ],\n            ""errorExplanation"": [\n                ""Side-to-side should be replaced with side-to-end.""\n            ]\n        },\n        {\n            ""errorType"": ""Omission"",\n            ""errorPhrases"": [\n                ""likely relating to recent""\n            ],\n            ""errorExplanation"": [\n                ""This is an omission as the word surgery has been missed.""\n            ]\n        },\n        {\n            ""errorType"": ""Extraneous Statement"",\n            ""errorPhrases"": [\n                ""intra-abdominal free fluid tracking along right pericolic cuff.""\n            ],\n            ""errorExplanation"": [\n                ""The word cuff should be replaced with gutter.""\n            ]\n        },\n        {\n            ""errorType"": ""Omission"",\n            ""errorPhrases"": [\n                ""Two""\n            ],\n            ""errorExplanation"": [\n                ""This is inconsistent with the original numbers.""\n            ]\n        },\n        {\n            ""errorType"": ""Transcription Error"",\n            ""errorPhrases"": [\n                ""seen medial to sac to and anastomosis,""\n            ],\n            ""errorExplanation"": [\n                ""Sac to and should be side-to-end.""\n            ]\n        }\n    ]\n}","errorsForWholeText=[RadiologyError(errorType=<ErrorType.TranscriptionError: 'Transcription Error'>, errorPhrases=['Previous examination dated.'], errorExplanation=['This is a transcription error as dated should be replaced with noted.']), RadiologyError(errorType=<ErrorType.Omission: 'Omission'>, errorPhrases=['distal to a site of primary anastomosis'], errorExplanation=['This is a grammatical mistake as it should be the site rather than a site.']), RadiologyError(errorType=<ErrorType.TranscriptionError: 'Transcription Error'>, errorPhrases=['Slight contrast filled mural irregularity (see saved key image) on the gastric tube aspect of the side-to-side anastomosis '], errorExplanation=['Side-to-side should be replaced with side-to-end.']), RadiologyError(errorType=<ErrorType.Omission: 'Omission'>, errorPhrases=['likely relating to recent'], errorExplanation=['This is an omission as the word surgery has been missed.']), RadiologyError(errorType=<ErrorType.ExtraneousStatement: 'Extraneous Statement'>, errorPhrases=['intra-abdominal free fluid tracking along right pericolic cuff.'], errorExplanation=['The word cuff should be replaced with gutter.']), RadiologyError(errorType=<ErrorType.Omission: 'Omission'>, errorPhrases=['Two'], errorExplanation=['This is inconsistent with the original numbers.']), RadiologyError(errorType=<ErrorType.TranscriptionError: 'Transcription Error'>, errorPhrases=['seen medial to sac to and anastomosis,'], errorExplanation=['Sac to and should be side-to-end.'])]","{'Internal Inconsistency': 0, 'Omission': 3, 'Transcription Error': 3, 'Extraneous Statement': 1}",0,3,3,1
+6,6,7,"Clinical Information Provided:
+40-year-old female. Hx of CVST 2010s. Onset of severe headache with nausea, vomiting. retro-orbital pain, photophobia. PEARL. ?CVST
+.
+Technique:
+CT venogram intracranial.
+.
+Findings:
+Comparison is made with previous examinations.
+.
+Small amount of filling defects seen in trochlea (torcula), right sigmoid sinus, and proximal portion of right internal jugular vein, demonstrating slight interval reduction in volume since previous examination and comparable in appearance to more recent, likely representing residual changes after cannulisation (rencanalisation) of previous venous sinus thrombosis.
+Normal opacification of cerebral venous sinuses otherwise.
+Normal opacification of visualised portion of vertebral arteries and internal carotid arteries.
+No hydrocephalus.  Basal cisterns are clear.
+Mucoperiosteal disease involving maxillary sinuses and ethmoid air cells. Grossly normal CT appearance of globes and orbits.
+Normal appearance of craniocervical junction.
+.
+Conclusion:
+Residual changes in trochlea (torcula), right sigmoid sinus, and proximal portion of right internal jugular vein comparable to previous examinations.
+(No) Interval cerebral venous sinus thrombosis demonstrated on this examination.","Clinical Information Provided:
+40-year-old female. Hx of CVST 2010s. Onset of severe headache with nausea, vomiting. retro-orbital pain, photophobia. PEARL. ?CVST
+.
+Technique:
+CT venogram intracranial.
+.
+Findings:
+Comparison is made with previous examinations.
+.
+Small amount of filling defects seen in trochlea, right sigmoid sinus, and proximal portion of right internal jugular vein, demonstrating slight interval reduction in volume since previous examination and comparable in appearance to more recent, likely representing residual changes after cannulisation of previous venous sinus thrombosis.
+Normal opacification of cerebral venous sinuses otherwise.
+Normal opacification of visualised portion of vertebral arteries and internal carotid arteries.
+No hydrocephalus.  Basal cisterns are clear.
+Mucoperiosteal disease involving maxillary sinuses and ethmoid air cells. Grossly normal CT appearance of globes and orbits.
+Normal appearance of craniocervical junction.
+.
+Conclusion:
+Residual changes in trochlea, right sigmoid sinus, and proximal portion of right internal jugular vein comparable to previous examinations.
+Interval cerebral venous sinus thrombosis demonstrated on this examination.",Transcription/near-homonym; translational/near-homonym; transcription.near-homonym; Omission/internal inconsistency.,1,0,0,2,"{\n    ""errorsForWholeText"": [\n        {\n            ""errorType"": ""Transcription Error"",\n            ""errorPhrases"": [\n                ""demonstrating slight interval reduction in volume since previous examination and comparable in appearance to more recent, likely representing residual changes after cannulisation""\n            ],\n            ""errorExplanation"": [\n                ""This is a transcription error as cannulisation should be replaced with recanalisation.""\n            ]\n        },\n        {\n            ""errorType"": ""Transcription Error"",\n            ""errorPhrases"": [\n                ""trochlea""\n            ],\n            ""errorExplanation"": [\n                ""This is a transcription error as trochlea should be replaced with torcula.""\n            ]\n        },\n        {\n            ""errorType"": ""Omission"",\n            ""errorPhrases"": [\n                ""Interval cerebral venous sinus thrombosis""\n            ],\n            ""errorExplanation"": [\n                ""The word No is omitted from the start of Interval cerebal venous sinus thrombosis.""\n            ]\n        }\n    ]\n}","errorsForWholeText=[RadiologyError(errorType=<ErrorType.TranscriptionError: 'Transcription Error'>, errorPhrases=['demonstrating slight interval reduction in volume since previous examination and comparable in appearance to more recent, likely representing residual changes after cannulisation'], errorExplanation=['This is a transcription error as cannulisation should be replaced with recanalisation.']), RadiologyError(errorType=<ErrorType.TranscriptionError: 'Transcription Error'>, errorPhrases=['trochlea'], errorExplanation=['This is a transcription error as trochlea should be replaced with torcula.']), RadiologyError(errorType=<ErrorType.Omission: 'Omission'>, errorPhrases=['Interval cerebral venous sinus thrombosis'], errorExplanation=['The word No is omitted from the start of Interval cerebal venous sinus thrombosis.'])]","{'Internal Inconsistency': 0, 'Omission': 1, 'Transcription Error': 2, 'Extraneous Statement': 0}",0,1,2,0
+7,7,8,"Clinical Information Provided:
+50-year-old male. fall from 7feet high when ladder gave way. Landed on back. c/o lpower rib and back pain. o/e tender BL lower limbs and flank, guarding. pneumothorax. intra-abdominal injury
+.
+Technique:
+CT chest/abdomen/pelvis with dual arterial portal venous phase enhancement.
+.
+Findings:
+Chest:
+(No) pneumothorax, haemothorax, or pulmonary contusion.
+Old left fourth rib fracture.  No acute bony injury to sternum or thoracic spine.  Wide patent bony spinal canal.
+.
+Abdomen/pelvis:
+No intra-abdominal/pelvic free gas or fluid.
+No significant abnormality seen in solid upper abdominal organs.  Normal appearance of partially filled urinary bladder.
+Colonic diverticulosis with no active diverticulitis.  Remainder of unprepared large and small bowel loops are within normal limits.
+No acute bony injury.  Degenerative changes in thoracolumbar spine and sacroiliac joints. Wide patent bony spinal canal.
+.
+Vascular:
+Normal appearance of thoracic aorta with conventional configuration of aortic arch.
+Normal appearance of abdominal aorta and its major branches.  Normal opacification of iliac vessels and visualised proximal femoral vessels.
+.
+Conclusion:
+No pneumothorax.  No intra-abdominal traumatic injury.","Clinical Information Provided:
+50-year-old male. fall from 7feet high when ladder gave way. Landed on back. c/o lpower rib and back pain. o/e tender BL lower limbs and flank, guarding. pneumothorax. intra-abdominal injury
+.
+Technique:
+CT chest/abdomen/pelvis with dual arterial portal venous phase enhancement.
+.
+Findings:
+Chest:
+pneumothorax, haemothorax, or pulmonary contusion.
+Old left fourth rib fracture.  No acute bony injury to sternum or thoracic spine.  Wide patent bony spinal canal.
+.
+Abdomen/pelvis:
+No intra-abdominal/pelvic free gas or fluid.
+No significant abnormality seen in solid upper abdominal organs.  Normal appearance of partially filled urinary bladder.
+Colonic diverticulosis with no active diverticulitis.  Remainder of unprepared large and small bowel loops are within normal limits.
+No acute bony injury.  Degenerative changes in thoracolumbar spine and sacroiliac joints. Wide patent bony spinal canal.
+.
+Vascular:
+Normal appearance of thoracic aorta with conventional configuration of aortic arch.
+Normal appearance of abdominal aorta and its major branches.  Normal opacification of iliac vessels and visualised proximal femoral vessels.
+.
+Conclusion:
+No pneumothorax.  No intra-abdominal traumatic injury.",Omission,1,0,0,0,"{\n    ""errorsForWholeText"": [\n        {\n            ""errorType"": ""Omission"",\n            ""errorPhrases"": [\n                ""pneumothorax, haemothorax, or pulmonary contusion.""\n            ],\n            ""errorExplanation"": [\n                ""The word No is omitted from the start of pneumothorax, haemothorax, or pulmonary contusion.""\n            ]\n        }\n    ]\n}","errorsForWholeText=[RadiologyError(errorType=<ErrorType.Omission: 'Omission'>, errorPhrases=['pneumothorax, haemothorax, or pulmonary contusion.'], errorExplanation=['The word No is omitted from the start of pneumothorax, haemothorax, or pulmonary contusion.'])]","{'Internal Inconsistency': 0, 'Omission': 1, 'Transcription Error': 0, 'Extraneous Statement': 0}",0,1,0,0
+8,8,9,"Clinical Information Provided:
+70-year-old female. Patient admitted with sudden onset retrosternal chest pain radiating through to the back, 7-8/10, improved marginally with aspirin, has some ST depression on ECG although posterior ECG doesn't show clear NSTEMI - ?dissection; has had period of hypotension and pre-syncopal symptoms in department.  ?dissection
+.
+Technique:
+ECG gated CT angiogram aorta arch to groin.
+.
+Findings:
+No relevant previous examination available (for) comparison.
+.
+Vascular:
+Normal appearance of aortic root.  Conventional configuration of aortic arch and major vessels. 
+Trace atherosclerotic plaques with calcifications. 
+Normal appearance otherwise of descending thoracic aorta, abdominal aorta, celiac trunk, superior mesenteric artery, renal arteries, inferior mesenteric artery, iliac vessels, and visualised portion of proximal femoral vessels.
+.
+Extravascular:
+Extensive coronary calcifications involving all vessels, consistent with calcified coronary atheroma.
+No size significant thoracic lymphadenopathy.
+No focal abnormality seen in solid upper abdominal organs with arterial phase enhancement.
+Avid enhancement of stomach and small bowel loops.  No focal abnormality seen in colon.
+Minimally filled urinary bladder.  Anteverted uterus.  No adnexal mass evident.
+No frank abdominal/pelvic lymphadenopathy evident within limitation of paucity of intra-abdominal fat.
+.
+Anterropliotyhesis (Anterolisthesis) L3 on L4, with no associated pars defect.  Likely degenerative in nature. 
+Further degenerative changes seen in thoracolumbar spine and sacroiliac joints.
+No suspicious bony lesion.
+.
+Conclusion:
+No aortic dissection.
+Extensive coronary calcifications.","Clinical Information Provided:
+70-year-old female. Patient admitted with sudden onset retrosternal chest pain radiating through to the back, 7-8/10, improved marginally with aspirin, has some ST depression on ECG although posterior ECG doesn't show clear NSTEMI - ?dissection; has had period of hypotension and pre-syncopal symptoms in department.  ?dissection
+.
+Technique:
+ECG gated CT angiogram aorta arch to groin.
+.
+Findings:
+No relevant previous examination available comparison.
+.
+Vascular:
+Normal appearance of aortic root.  Conventional configuration of aortic arch and major vessels. 
+Trace atherosclerotic plaques with calcifications. 
+Normal appearance otherwise of descending thoracic aorta, abdominal aorta, celiac trunk, superior mesenteric artery, renal arteries, inferior mesenteric artery, iliac vessels, and visualised portion of proximal femoral vessels.
+.
+Extravascular:
+Extensive coronary calcifications involving all vessels, consistent with calcified coronary atheroma.
+No size significant thoracic lymphadenopathy.
+No focal abnormality seen in solid upper abdominal organs with arterial phase enhancement.
+Avid enhancement of stomach and small bowel loops.  No focal abnormality seen in colon.
+Minimally filled urinary bladder.  Anteverted uterus.  No adnexal mass evident.
+No frank abdominal/pelvic lymphadenopathy evident within limitation of paucity of intra-abdominal fat.
+.
+Anterropliotyhesis L3 on L4, with no associated pars defect.  Likely degenerative in nature. 
+Further degenerative changes seen in thoracolumbar spine and sacroiliac joints.
+No suspicious bony lesion.
+.
+Conclusion:
+No aortic dissection.
+Extensive coronary calcifications.",Omission; spelling.,1,0,0,1,"{\n  ""errorsForWholeText"": [\n    {\n      ""errorType"": ""Omission"",\n      ""errorPhrases"": [""No relevant previous examination available comparison.""],\n      ""errorExplanation"": [""The word for is omitted from between available and comparison.""]\n    }, {\n      ""errorType"": ""Transcription Error"",\n      ""errorPhrases"": [""Anterropliotyhesis L3 on L4, with no associated pars defect.""],\n      ""errorExplanation"": [""Anterropliotyhesis should be replaced with Anterolisthesis. Anterolisthesis refers to the alignment of the bones.""]\n    }\n  ]\n}\n","errorsForWholeText=[RadiologyError(errorType=<ErrorType.Omission: 'Omission'>, errorPhrases=['No relevant previous examination available comparison.'], errorExplanation=['The word for is omitted from between available and comparison.']), RadiologyError(errorType=<ErrorType.TranscriptionError: 'Transcription Error'>, errorPhrases=['Anterropliotyhesis L3 on L4, with no associated pars defect.'], errorExplanation=['Anterropliotyhesis should be replaced with Anterolisthesis. Anterolisthesis refers to the alignment of the bones.'])]","{'Internal Inconsistency': 0, 'Omission': 1, 'Transcription Error': 1, 'Extraneous Statement': 0}",0,1,1,0
+9,9,10,"Clinical Information Provided:
+50-year-old female.  Malignant hypertension, angina, chronic pain.  Collapsed, headache, raised blood pressure..  Severe central chest pain.?  Intracranial bleed.?  Aortic dissection.
+.
+Technique:
+CT head unenhanced.
+CT chest unenhanced.
+CT aortogram.
+.
+Findings:
+Head:
+No relevant previous examination available comparison.
+.
+No intra-axial/active haemorrhage.  No hydrocephalus.
+Basal cisterns are clear.  Normal appearance of craniocervical junction.
+.
+Method:
+Within limitation of an ungated examination, there is normal appearance of aortic root and ascending thoracic aorta.
+Conventional configuration of aortic arch major vessels.
+Scattered nonstenotic atherosclerotic plaques but otherwise normal appearance of descending thoracic aorta, abdominal aorta, its major branches, iliac vessels, and visualised proximal femoral vessels.
+No mural thrombus evident on unenhanced phase.
+.
+Extravascular:
+Dependent changes in posterior aspect of lungs.
+No intra-abdominal/pelvic free fluid or gas.
+No focal abnormality seen in solid upper abdominal organs.
+Partially filled urinary bladder.  Hysterectomy noted.
+Sigmoid diverticulosis.  Gastric band.  Trace nonspecific fatty stranding seen adjacent to proximal portion of the third part of duodenum (see saved key image), clinical correlation advised.  No other focal abnormality seen in unprepared large and small bowel loops.
+No size significant lymphadenopathy.
+No suspicious bony lesion.  Degenerative changes in thoracic or lumbar (thoracolumbar) spine and sacroiliac joints.
+.
+Conclusion.
+No acute intracranial finding.  In particular, no intra-axial/extra-axial haemorrhage.
+(No) Aortic dissection.","Clinical Information Provided:
+50-year-old female.  Malignant hypertension, angina, chronic pain.  Collapsed, headache, raised blood pressure..  Severe central chest pain.?  Intracranial bleed.?  Aortic dissection.
+.
+Technique:
+CT head unenhanced.
+CT chest unenhanced.
+CT aortogram.
+.
+Findings:
+Head:
+No relevant previous examination available comparison.
+.
+No intra-axial/active haemorrhage.  No hydrocephalus.
+Basal cisterns are clear.  Normal appearance of craniocervical junction.
+.
+Method:
+Within limitation of an ungated examination, there is normal appearance of aortic root and ascending thoracic aorta.
+Conventional configuration of aortic arch major vessels.
+Scattered nonstenotic atherosclerotic plaques but otherwise normal appearance of descending thoracic aorta, abdominal aorta, its major branches, iliac vessels, and visualised proximal femoral vessels.
+No mural thrombus evident on unenhanced phase.
+.
+Extravascular:
+Dependent changes in posterior aspect of lungs.
+No intra-abdominal/pelvic free fluid or gas.
+No focal abnormality seen in solid upper abdominal organs.
+Partially filled urinary bladder.  Hysterectomy noted.
+Sigmoid diverticulosis.  Gastric band.  Trace nonspecific fatty stranding seen adjacent to proximal portion of the third part of duodenum (see saved key image), clinical correlation advised.  No other focal abnormality seen in unprepared large and small bowel loops.
+No size significant lymphadenopathy.
+No suspicious bony lesion.  Degenerative changes in thoracic or lumbar spine and sacroiliac joints.
+.
+Conclusion.
+No acute intracranial finding.  In particular, no intra-axial/extra-axial haemorrhage.
+Aortic dissection.",Transcription; Omission,1,0,0,1,"{\n  ""errorsForWholeText"": [\n    {\n      ""errorType"": ""Transcription Error"",\n      ""errorPhrases"": [""Degenerative changes in thoracic or lumbar spine and sacroiliac joints.""],\n      ""errorExplanation"": [""This is a transcription error as thoracic or lumber should be thoracolumbar.""]\n    },\n    {\n      ""errorType"": ""Omission"",\n      ""errorPhrases"":[ ""Aortic dissection.""],\n      ""errorExplanation"": [""The word No is omitted from aortic dissection.""]\n    }\n  ]\n}\n","errorsForWholeText=[RadiologyError(errorType=<ErrorType.TranscriptionError: 'Transcription Error'>, errorPhrases=['Degenerative changes in thoracic or lumbar spine and sacroiliac joints.'], errorExplanation=['This is a transcription error as thoracic or lumber should be thoracolumbar.']), RadiologyError(errorType=<ErrorType.Omission: 'Omission'>, errorPhrases=['Aortic dissection.'], errorExplanation=['The word No is omitted from aortic dissection.'])]","{'Internal Inconsistency': 0, 'Omission': 1, 'Transcription Error': 1, 'Extraneous Statement': 0}",0,1,1,0
+10,10,11,"Clinical Information Provided:
+30-year-old male. IVDU- injected into R groin 4 days ago now presents with pain and difficulty walking on R leg with episodes of fever and CRP of 188. ?pseudoaneurysm ? deep collection
+.
+Technique:
+CT angiogram groin.
+.
+Findings:
+Vascular:
+Normal opacification of iliac vessels and visualised portion of proximal femoral vessels.
+Gas loculations seen in distended proximal right femoral vein extending into distal right external iliac vein with surrounding inflammatory fatty stranding.
+Reactive right inguinal nodes noted, with a few subcentimetre right external iliac nodes.
+Appearance may be in keeping with venous gas embolism from recent injection, or deep venous from both appliances with infective changes.  No discrete abscess evident.
+Assessment of venous filling is not achieved on this arterial examination.
+.
+No focal abnormality seen in visualised portion of solid upper abdominal organs or unprepared large and small bowel loops.
+Minimally filled urinary bladder.  No intra-abdominal/pelvic free gas or fluid.
+No suspicious bony lesion.
+.
+Conclusions:
+There is no aneurysm (No pseudoaneurysm).
+Gas loculations seen in distended proximal right femoral vein and distal right external iliac vein with surrounding fatty changes.  This may be in keeping with venous gas embolism from recent injection, or deep veins from the patterns with associated infective changes.
+Further evaluation with ultrasound may be considered appropriate.","Clinical Information Provided:
+30-year-old male. IVDU- injected into R groin 4 days ago now presents with pain and difficulty walking on R leg with episodes of fever and CRP of 188. ?pseudoaneurysm ? deep collection
+.
+Technique:
+CT angiogram groin.
+.
+Findings:
+Vascular:
+Normal opacification of iliac vessels and visualised portion of proximal femoral vessels.
+Gas loculations seen in distended proximal right femoral vein extending into distal right external iliac vein with surrounding inflammatory fatty stranding.
+Reactive right inguinal nodes noted, with a few subcentimetre right external iliac nodes.
+Appearance may be in keeping with venous gas embolism from recent injection, or deep venous from both appliances with infective changes.  No discrete abscess evident.
+Assessment of venous filling is not achieved on this arterial examination.
+.
+No focal abnormality seen in visualised portion of solid upper abdominal organs or unprepared large and small bowel loops.
+Minimally filled urinary bladder.  No intra-abdominal/pelvic free gas or fluid.
+No suspicious bony lesion.
+.
+Conclusions:
+There is no aneurysm.
+Gas loculations seen in distended proximal right femoral vein and distal right external iliac vein with surrounding fatty changes.  This may be in keeping with venous gas embolism from recent injection, or deep veins from the patterns with associated infective changes.
+Further evaluation with ultrasound may be considered appropriate.",Transcription,0,0,0,1,"{\n  ""errorsForWholeText"": [\n    {\n      ""errorType"": ""Transcription Error"",\n      ""errorPhrases"": [""There is no aneurysm ""],\n      ""errorExplanation"": [\n        ""This is a transcription error as no aneurysm should be no pseudoaneurysm.""\n      ]\n    }\n  ]\n}\n","errorsForWholeText=[RadiologyError(errorType=<ErrorType.TranscriptionError: 'Transcription Error'>, errorPhrases=['There is no aneurysm '], errorExplanation=['This is a transcription error as no aneurysm should be no pseudoaneurysm.'])]","{'Internal Inconsistency': 0, 'Omission': 0, 'Transcription Error': 1, 'Extraneous Statement': 0}",0,0,1,0
+11,11,12,"Clinical Information Provided:
+70-year-old male. saccular (mycotic) pseudoaneurysm located intravesicular between the origin of the coeliac artery and the superior mesenteric artery. Recent planning for surgical repair ?Extension / leak .
+.
+Technique:
+CT chest unenhanced.
+ECG gated CT aortogram arch to groin.
+.
+Findings:
+Comparison is made with previous examination.
+.
+Vascular:
+Normal appearance of aortic root.
+Nonstenotic calcified atherosclerotic plaques seen in ascending thoracic aorta, aortic arch and major vessels, and descending thoracic aorta.
+Normal opacification of thoracic aorta and major vessels, with conventional configuration of aortic arch otherwise.
+No mural haematoma evident on unenhanced images.
+.
+Further nonstenotic calcified atherosclerotic changes seen in the abdominal aorta and is (its) major branches, iliac vessels, and visualised portion of proximal femoral vessels, with normal contrast opacification.
+Stable appearance of known saccular abdominal aortic aneurysm located between coeliac trunk and the mesenteric artery, exerting slight mass effect to the latter.  Aneurysm comparable in appearance to previous examination.
+.
+Extravascular:
+Patchy ground-glass changes in the posterior aspect of right lower lobe, which may be in keeping with an infective focus.
+Dependent changes in lung bases.  Right-sided pacemaker leads in situ.  Small volume pericardial effusion, comparable to previous examination.
+No central pulmonary embolism.
+.
+No pneumoperitoneum.  No intra-abdominal/pelvic free fluid.
+Unchanged appearance of known hepatic cysts.  Unchanged ill-defined arterial enhancement in segment for a (IVa), seventh (VII), and one (I), with previously seen enhancement segment VIII less well appreciated on this occasion.
+No other focal abnormality seen in the remainder of solid upper abdominal organs.
+Partially filled urinary bladder of normal appearance.
+Colonic diverticulosis with no active diverticulitis.  No other focal abnormality seen in unprepared large and small bowel loops.
+No size significant abdominal/pelvic lymphadenopathy.
+.
+No suspicious bony lesion.  Degenerative changes in thoracic spine.
+.
+Conclusions:
+Unchanged appearance of known saccular abdominal aortic aneurysm.  No thoracic aortic dissection.","Clinical Information Provided:
+70-year-old male. saccular pseudoaneurysm located intravesicular between the origin of the coeliac artery and the superior mesenteric artery. Recent planning for surgical repair ?Extension / leak .
+.
+Technique:
+CT chest unenhanced.
+ECG gated CT aortogram arch to groin.
+.
+Findings:
+Comparison is made with previous examination.
+.
+Vascular:
+Normal appearance of aortic root.
+Nonstenotic calcified atherosclerotic plaques seen in ascending thoracic aorta, aortic arch and major vessels, and descending thoracic aorta.
+Normal opacification of thoracic aorta and major vessels, with conventional configuration of aortic arch otherwise.
+No mural haematoma evident on unenhanced images.
+.
+Further nonstenotic calcified atherosclerotic changes seen in the abdominal aorta and is major branches, iliac vessels, and visualised portion of proximal femoral vessels, with normal contrast opacification.
+Stable appearance of known saccular abdominal aortic aneurysm located between coeliac trunk and the mesenteric artery, exerting slight mass effect to the latter.  Aneurysm comparable in appearance to previous examination.
+.
+Extravascular:
+Patchy ground-glass changes in the posterior aspect of right lower lobe, which may be in keeping with an infective focus.
+Dependent changes in lung bases.  Right-sided pacemaker leads in situ.  Small volume pericardial effusion, comparable to previous examination.
+No central pulmonary embolism.
+.
+No pneumoperitoneum.  No intra-abdominal/pelvic free fluid.
+Unchanged appearance of known hepatic cysts.  Unchanged ill-defined arterial enhancement in segment for a, seventh, and one, with previously seen enhancement segment VIII less well appreciated on this occasion.
+No other focal abnormality seen in the remainder of solid upper abdominal organs.
+Partially filled urinary bladder of normal appearance.
+Colonic diverticulosis with no active diverticulitis.  No other focal abnormality seen in unprepared large and small bowel loops.
+No size significant abdominal/pelvic lymphadenopathy.
+.
+No suspicious bony lesion.  Degenerative changes in thoracic spine.
+.
+Conclusions:
+Unchanged appearance of known saccular abdominal aortic aneurysm.  No thoracic aortic dissection.",Transcription/grammar; transcription; transcription; transcription.,0,0,0,2,"{\n  ""errorsForWholeText"": [\n    {\n      ""errorType"": ""Transcription Error"",\n      ""errorPhrases"": [""Further nonstenotic calcified atherosclerotic changes seen in the abdominal aorta and is major branches, iliac vessels, and visualised portion of proximal femoral vessels, with normal contrast opacification.""],\n      ""errorExplanation"": [\n        ""This is a transcription error as is major branches must be its major branches as it refers to the aorta. ""\n      ]\n    },\n    {\n      ""errorType"": ""Transcription Error"",\n      ""errorPhrases"":[ ""Unchanged ill-defined arterial enhancement in segment for a, seventh, and one""],\n      ""errorExplanation"": [\n        ""This is a transcription error as for a should be IVa."",\n        ""This is a transcription error as seventh should be the Roman numeral VII."",\n        ""This is a transcription error as one should be I.""\n      ]\n    }\n    \n  ]\n}\n","errorsForWholeText=[RadiologyError(errorType=<ErrorType.TranscriptionError: 'Transcription Error'>, errorPhrases=['Further nonstenotic calcified atherosclerotic changes seen in the abdominal aorta and is major branches, iliac vessels, and visualised portion of proximal femoral vessels, with normal contrast opacification.'], errorExplanation=['This is a transcription error as is major branches must be its major branches as it refers to the aorta. ']), RadiologyError(errorType=<ErrorType.TranscriptionError: 'Transcription Error'>, errorPhrases=['Unchanged ill-defined arterial enhancement in segment for a, seventh, and one'], errorExplanation=['This is a transcription error as for a should be IVa.', 'This is a transcription error as seventh should be the Roman numeral VII.', 'This is a transcription error as one should be I.'])]","{'Internal Inconsistency': 0, 'Omission': 0, 'Transcription Error': 2, 'Extraneous Statement': 0}",0,0,2,0
+12,12,13,"Clinical Information Provided:
+60-year-old female. meningioma excision  Post op CT- left sigmoid sinus thrombosis. Now ongoing headache and lethargy - no focal neurology. d/w Neurosurgery - unclear relevance of thrombus; suggest d/w neurology who suggest CTV to exclude extension of thrombus.
+.
+Technique:
+CT venogram.
+.
+Findings:
+Comparison is made with previous examinations.
+Postoperative changes associated with foramen magnum meningioma debulking and posterior fossa craniotomy and C1 laminectomy noted.
+.
+Filling defect in keeping with venous sinus thrombosis visualised in left sigmoid sinus, extending superiorly into distal portion of left transverse sinus, and inferiorly just into the origin of left internal jugular vein.
+No (further) filling defect seen in the remainder of intracranial venous sinuses.  Foetal origin of right posterior cerebral artery, with hypoplastic P1.  Normal appearance otherwise of the remainder of major intracranial arteries.
+.
+Interval hydrocephalus evolving (involving) lateral, third, and fourth ventricles, with impression of a transition point at fifth rib and limited view (the Foramen of Magendie).
+The ( ) supratentorial sulcal effacement from resultant mass effect.  There is subtle basal cisterns crowding, with no frank uncal herniation.
+Interval enlargement of the posterior pseudomeningocele, measuring on this occasion 544 x 4.3 x 37.2 cm, the inferior component extending posteriorly inferiorly between trapezius to approximately the level of C5, just deep to the subcutaneous fat.
+.
+Conclusions:
+1. Interval hydrocephalus involving lateral, third, and fourth ventricles, with the impression of transition point at the level of grey and adjacent D (Foramen of Magendie).  In context of marked interval enlargement of serous meningocele, there is suspicious for a compressive, obstructive aetiology.  Urgent discussion with neurosurgery team advised.
+2. Persistent venous sinus thrombosis in left sigmoid sinus extending sprayed (superiorly) into distal portion of left transverse sinus, and inferiorly into the origin of the left internal jugular vein.","Clinical Information Provided:
+60-year-old female. meningioma excision  Post op CT- left sigmoid sinus thrombosis. Now ongoing headache and lethargy - no focal neurology. d/w Neurosurgery - unclear relevance of thrombus; suggest d/w neurology who suggest CTV to exclude extension of thrombus.
+.
+Technique:
+CT venogram.
+.
+Findings:
+Comparison is made with previous examinations.
+Postoperative changes associated with foramen magnum meningioma debulking and posterior fossa craniotomy and C1 laminectomy noted.
+.
+Filling defect in keeping with venous sinus thrombosis visualised in left sigmoid sinus, extending superiorly into distal portion of left transverse sinus, and inferiorly just into the origin of left internal jugular vein.
+No filling defect seen in the remainder of intracranial venous sinuses.  Foetal origin of right posterior cerebral artery, with hypoplastic P1.  Normal appearance otherwise of the remainder of major intracranial arteries.
+.
+Interval hydrocephalus evolving lateral, third, and fourth ventricles, with impression of a transition point at fifth rib and limited view.
+The supratentorial sulcal effacement from resultant mass effect.  There is subtle basal cisterns crowding, with no frank uncal herniation.
+Interval enlargement of the posterior pseudomeningocele, measuring on this occasion 544 x 4.3 x 37.2 cm, the inferior component extending posteriorly inferiorly between trapezius to approximately the level of C5, just deep to the subcutaneous fat.
+.
+Conclusions:
+1. Interval hydrocephalus involving lateral, third, and fourth ventricles, with the impression of transition point at the level of grey and adjacent D.  In context of marked interval enlargement of serous meningocele, there is suspicious for a compressive, obstructive aetiology.  Urgent discussion with neurosurgery team advised.
+2. Persistent venous sinus thrombosis in left sigmoid sinus extending sprayed into distal portion of left transverse sinus, and inferiorly into the origin of the left internal jugular vein.",Omission; transcription; transcription/nonsense; extraneous statement; transcription/nonsense; transcription/near-homonym.,1,0,1,4,"{\n  ""errorsForWholeText"": [\n    {\n      ""errorType"": ""Omission"",\n      ""errorPhrases"": [""No filling defect""],\n      ""errorExplanation"": [""The word further has been omitted. ""]\n    },\n    {\n      ""errorType"": ""Transcription Error"",\n      ""errorPhrases"": [""Interval hydrocephalus evolving lateral, third, and fourth ventricles""],\n      ""errorExplanation"": [\n        ""This is a transcription error as evolving must be involving.""\n      ]\n    },\n    {\n      ""errorType"": ""Transcription Error"",\n      ""errorPhrases"": ["" fifth rib and limited view""],\n      ""errorExplanation"": [\n        ""The Foramen of Magendie is transcribed wrongly as fifth rib and limited view.""\n      ]\n    },\n    {\n      ""errorType"": ""Extraneous Statement"",\n      ""errorPhrases"": [""The supratentorial sulcal effacement from resultant mass effect.""],\n      ""errorExplanation"": [""The was added incorrectly.""]\n    },\n    {\n      ""errorType"": ""Transcription Error"",\n      ""errorPhrases"": [""grey and adjacent D""],\n      ""errorExplanation"": [\n        ""The Foramen of Magendie is transcribed wrongly as grey and adjacent D.""\n      ]\n    },\n    {\n      ""errorType"": ""Transcription Error"",\n      ""errorPhrases"": [""extending sprayed into distal portion of left transverse sinus""],\n      ""errorExplanation"": [\n        ""This is a transcription error as sprayed should be superiorly.""\n      ]\n    }\n  ]\n}\n","errorsForWholeText=[RadiologyError(errorType=<ErrorType.Omission: 'Omission'>, errorPhrases=['No filling defect'], errorExplanation=['The word further has been omitted. ']), RadiologyError(errorType=<ErrorType.TranscriptionError: 'Transcription Error'>, errorPhrases=['Interval hydrocephalus evolving lateral, third, and fourth ventricles'], errorExplanation=['This is a transcription error as evolving must be involving.']), RadiologyError(errorType=<ErrorType.TranscriptionError: 'Transcription Error'>, errorPhrases=[' fifth rib and limited view'], errorExplanation=['The Foramen of Magendie is transcribed wrongly as fifth rib and limited view.']), RadiologyError(errorType=<ErrorType.ExtraneousStatement: 'Extraneous Statement'>, errorPhrases=['The supratentorial sulcal effacement from resultant mass effect.'], errorExplanation=['The was added incorrectly.']), RadiologyError(errorType=<ErrorType.TranscriptionError: 'Transcription Error'>, errorPhrases=['grey and adjacent D'], errorExplanation=['The Foramen of Magendie is transcribed wrongly as grey and adjacent D.']), RadiologyError(errorType=<ErrorType.TranscriptionError: 'Transcription Error'>, errorPhrases=['extending sprayed into distal portion of left transverse sinus'], errorExplanation=['This is a transcription error as sprayed should be superiorly.'])]","{'Internal Inconsistency': 0, 'Omission': 1, 'Transcription Error': 4, 'Extraneous Statement': 1}",0,1,4,1
+13,13,14,"Clinical Information Provided:
+40-year-old female.  Longstanding right sciatica. <24h acute low back pain, worsened sciatica, right leg weakness and genital numbness. ?CES
+.
+Technique:
+MRI lumbar and sacral spine: Sagittal T1, T2; Axial T2.
+.
+Findings:
+Comparison is made with previous examination.
+.
+Asymmetric protrusive migration of L5/S1 distal arterial (disc material) into predominantly right subarticular zone, (but) also central canal and right foraminal zones to a lesser extent.
+Crowding of cauda quina (equina) nerve roots at this level, though surrounding CSF remains (rim) present.
+The inferior (and) lateral element of migrated disc material can be seen in contact with right-sided L5 nerve roots as it and first (enters) the transverse foramen.
+Modic type 2 changes involving L5 appear (inferior) endplate, in keeping with fatty replacement of marrow.
+.
+No focal abnormality appreciated within imaged volume.
+.
+Conclusions:
+No cauda quina (equina) compression.
+L5/S1 dislocation (disc herniation) predominantly into right subarticular zones, in contact with right-sided L5 nerve root.","Clinical Information Provided:
+40-year-old female.  Longstanding right sciatica. <24h acute low back pain, worsened sciatica, right leg weakness and genital numbness. ?CES
+.
+Technique:
+MRI lumbar and sacral spine: Sagittal T1, T2; Axial T2.
+.
+Findings:
+Comparison is made with previous examination.
+.
+Asymmetric protrusive migration of L5/S1 distal arterial into predominantly right subarticular zone, also central canal and right foraminal zones to a lesser extent.
+Crowding of cauda quina nerve roots at this level, though surrounding CSF remains present.
+The inferior lateral element of migrated disc material can be seen in contact with right-sided L5 nerve roots as it and first the transverse foramen.
+Modic type 2 changes involving L5 appear endplate, in keeping with fatty replacement of marrow.
+.
+No focal abnormality appreciated within imaged volume.
+.
+Conclusions:
+No cauda quina compression.
+L5/S1 dislocation predominantly into right subarticular zones, in contact with right-sided L5 nerve root.",Transcription/nonsense; omisssion;  near-homonym; transcription; omission; transcription; transcription; transcription/near-homonym; transcription.,2,0,0,7,"{\n  ""errorsForWholeText"": [\n    {\n      ""errorType"": ""Transcription Error"",\n      ""errorPhrases"": [""distal arterial""],\n      ""errorExplanation"": [\n        ""This is a transcription error as distal arterial must be disc material.""\n      ]\n    },\n    {\n      ""errorType"": ""Omission"",\n      ""errorPhrases"": [""zone, also""],\n      ""errorExplanation"": [""The word but has been omitted. ""]\n    },\n    {\n      ""errorType"": ""Transcription Error"",\n      ""errorPhrases"": [""cauda quina""],\n      ""errorExplanation"": [\n        ""The word equina is transcribed wrongly as cauda quina.""\n      ]\n    },\n    {\n      ""errorType"": ""Transcription Error"",\n      ""errorPhrases"": [""CSF remains)""],\n      ""errorExplanation"": [""The word rim is transcribed wrongly as remains.""]\n    },\n    {\n      ""errorType"": ""Omission"",\n      ""errorPhrases"": [""inferior lateral element""],\n      ""errorExplanation"": [\n        ""The word and has been omitted between inferior and lateral. ""\n      ]\n    },\n    {\n      ""errorType"": ""Transcription Error"",\n      ""errorPhrases"": [""it and first the transverse foramen.""],\n      ""errorExplanation"": [\n        ""The word enters is transcribed wrongly as it and first.""\n      ]\n    },\n    {\n      ""errorType"": ""Transcription Error"",\n      ""errorPhrases"": [""Modic type 2 changes involving L5 appear endplate""],\n      ""errorExplanation"": [\n        ""The word inferior is transcribed wrongly as appear.""\n      ]\n    },\n    {\n      ""errorType"": ""Transcription Error"",\n      ""errorPhrases"": [""quina (equina)""],\n      ""errorExplanation"": [""The word equina is transcribed wrongly as quina.""]\n    },\n    {\n      ""errorType"": ""Transcription Error"",\n      ""errorPhrases"": [""L5/S1 dislocation predominantly into right subarticular zones,""],\n      ""errorExplanation"": [\n        ""The word disc herniation is transcribed as dislocation ""\n      ]\n    }\n  ]\n}\n","errorsForWholeText=[RadiologyError(errorType=<ErrorType.TranscriptionError: 'Transcription Error'>, errorPhrases=['distal arterial'], errorExplanation=['This is a transcription error as distal arterial must be disc material.']), RadiologyError(errorType=<ErrorType.Omission: 'Omission'>, errorPhrases=['zone, also'], errorExplanation=['The word but has been omitted. ']), RadiologyError(errorType=<ErrorType.TranscriptionError: 'Transcription Error'>, errorPhrases=['cauda quina'], errorExplanation=['The word equina is transcribed wrongly as cauda quina.']), RadiologyError(errorType=<ErrorType.TranscriptionError: 'Transcription Error'>, errorPhrases=['CSF remains)'], errorExplanation=['The word rim is transcribed wrongly as remains.']), RadiologyError(errorType=<ErrorType.Omission: 'Omission'>, errorPhrases=['inferior lateral element'], errorExplanation=['The word and has been omitted between inferior and lateral. ']), RadiologyError(errorType=<ErrorType.TranscriptionError: 'Transcription Error'>, errorPhrases=['it and first the transverse foramen.'], errorExplanation=['The word enters is transcribed wrongly as it and first.']), RadiologyError(errorType=<ErrorType.TranscriptionError: 'Transcription Error'>, errorPhrases=['Modic type 2 changes involving L5 appear endplate'], errorExplanation=['The word inferior is transcribed wrongly as appear.']), RadiologyError(errorType=<ErrorType.TranscriptionError: 'Transcription Error'>, errorPhrases=['quina (equina)'], errorExplanation=['The word equina is transcribed wrongly as quina.']), RadiologyError(errorType=<ErrorType.TranscriptionError: 'Transcription Error'>, errorPhrases=['L5/S1 dislocation predominantly into right subarticular zones,'], errorExplanation=['The word disc herniation is transcribed as dislocation '])]","{'Internal Inconsistency': 0, 'Omission': 2, 'Transcription Error': 7, 'Extraneous Statement': 0}",0,2,7,0
+14,14,15,"Clinical Information Provided:
+40-year-old female. B/L sciatica, urinary incontinence an dribbling, post-void bladder scan --- 485 ml. To rule out ongoing neurological compression
+.
+Technique:
+MRI lumbar/sacral spine: sagittal T1, T2; axial T2
+.
+Findings:
+No relevant previous examination available for comparison.
+.
+Degenerative disc disease is seen at multiple levels.
+T11/T12 posterior intervertebral disc protrusion into central canal zone, indenting the thecal sac and causing mild displacement of the cord posteriorly, though preserved CSF rim can be seen a ( ) around it.  Mild ligamentum flavum hypertrophy at this level.  Wide patent neural foramina.
+Further mild tissue (posterior) disc protrusion at the ( ) T10/T11 level with preserved CSF rim.  Wide patent neural foramina.
+Diffuse disc bulging L2/L3 with otherwise patent spinal and neural foramina.
+Well defined due to (T2) high signal lesions in T12, L4, and S1 vertebral body are likely to represent distended granulomas (incidental haemangiomas).
+.
+Conclusions:
+T11/T12 central canal zone disc protrusion causing some compression of the thecal sac posteriorly and no significant cord compression.","Clinical Information Provided:
+40-year-old female. B/L sciatica, urinary incontinence an dribbling, post-void bladder scan --- 485 ml. To rule out ongoing neurological compression
+.
+Technique:
+MRI lumbar/sacral spine: sagittal T1, T2; axial T2
+.
+Findings:
+No relevant previous examination available for comparison.
+.
+Degenerative disc disease is seen at multiple levels.
+T11/T12 posterior intervertebral disc protrusion into central canal zone, indenting the thecal sac and causing mild displacement of the cord posteriorly, though preserved CSF rim can be seen a around it.  Mild ligamentum flavum hypertrophy at this level.  Wide patent neural foramina.
+Further mild tissue disc protrusion at the T10/T11 level with preserved CSF rim.  Wide patent neural foramina.
+Diffuse disc bulging L2/L3 with otherwise patent spinal and neural foramina.
+Well defined due to high signal lesions in T12, L4, and S1 vertebral body are likely to represent distended granulomas
+.
+Conclusions:
+T11/T12 central canal zone disc protrusion causing some compression of the thecal sac posteriorly and no significant cord compression.",Nonsense/extraneous statement; transcription; extraneous statement; transcription; transcription,0,0,2,3,"{\n  ""errorsForWholeText"": [\n    {\n      ""errorType"": ""Extraneous Statement"",\n      ""errorPhrases"": [""though preserved CSF rim can be seen a around it.""],\n      ""errorExplanation"": [""The a is an extraneous statement.""]\n    },\n    {\n      ""errorType"": ""Transcription Error"",\n      ""errorPhrases"": [""Further mild tissue disc protrusion""],\n      ""errorExplanation"": [\n        ""The word posterior has been transcribed incorrectly as mild tissue.""\n      ]\n    },\n    {\n      ""errorType"": ""Extraneous Statement"",\n      ""errorPhrases"": [""the T10/T11 level with preserved CSF rim.""],\n      ""errorExplanation"": [""The word the does not need to be there.""]\n    },\n    {\n      ""errorType"": ""Transcription Error"",\n      ""errorPhrases"": [""Well defined due to high signal lesions""],\n      ""errorExplanation"": [\n        ""The word T2 is transcribed wrongly as due to.""\n      ]\n    },\n    {\n      ""errorType"": ""Transcription Error"",\n      ""errorPhrases"": [""represent distended granulomas (incidental haemangiomas).""],\n      ""errorExplanation"": [""The phrase incidental haemangiomas has been transcribed wrongly as distended granulomas.""]\n    }\n  ]\n}\n","errorsForWholeText=[RadiologyError(errorType=<ErrorType.ExtraneousStatement: 'Extraneous Statement'>, errorPhrases=['though preserved CSF rim can be seen a around it.'], errorExplanation=['The a is an extraneous statement.']), RadiologyError(errorType=<ErrorType.TranscriptionError: 'Transcription Error'>, errorPhrases=['Further mild tissue disc protrusion'], errorExplanation=['The word posterior has been transcribed incorrectly as mild tissue.']), RadiologyError(errorType=<ErrorType.ExtraneousStatement: 'Extraneous Statement'>, errorPhrases=['the T10/T11 level with preserved CSF rim.'], errorExplanation=['The word the does not need to be there.']), RadiologyError(errorType=<ErrorType.TranscriptionError: 'Transcription Error'>, errorPhrases=['Well defined due to high signal lesions'], errorExplanation=['The word T2 is transcribed wrongly as due to.']), RadiologyError(errorType=<ErrorType.TranscriptionError: 'Transcription Error'>, errorPhrases=['represent distended granulomas (incidental haemangiomas).'], errorExplanation=['The phrase incidental haemangiomas has been transcribed wrongly as distended granulomas.'])]","{'Internal Inconsistency': 0, 'Omission': 0, 'Transcription Error': 3, 'Extraneous Statement': 2}",0,0,3,2
+15,15,16,"Clinical Information Provided:
+60-year-old female.  presenting with worsening epigastric pain - yesterday after xmas dinner worsening epigastric pain with colicky right upper quadrant pain. Associated nausea. Bili 35. Recent gastric bypass surgery. patient has been having issues with epigastric pain and petersons hernia cannot be ruled out. Therefore if US doesn't show gallstones she will need to go to theatre today for diagnostic lap. ?Gallstones
+.
+Technique:
+Ultrasound abdomen.
+.
+Findings:
+Well distended gallbladder demonstrating borderline mural thickness (3 mm).  Presence of pericolic free fluid suggestive of acute cholecystitis.
+Normal (Mobile) small gallstones.
+Extrahepatic biliary dilatation to maximum diameter of 9 mm.  Transition point not visualised on this examination.
+Appearance in keeping with acute cholecystitis, with suspected choledocholithiasis.
+.
+No focal abnormality seen in liver parenchyma.
+Visualised portion of pancreatic neck are normal appearance.  Remainder pancreas not visualised due to overlying bowel gas.
+Normal size and appearance of kidneys.  Normal size and appearance of spleen.
+Normal size appearance of visualised portion abdominal aorta.
+Partially filled urinary bladder.  No intrapelvic free fluid.
+.
+Conclusions:
+Acute cystitis.  Cholelithiasis with suspected choledocholithiasis.","Clinical Information Provided:
+60-year-old female.  presenting with worsening epigastric pain - yesterday after xmas dinner worsening epigastric pain with colicky right upper quadrant pain. Associated nausea. Bili 35. Recent gastric bypass surgery. patient has been having issues with epigastric pain and petersons hernia cannot be ruled out. Therefore if US doesn't show gallstones she will need to go to theatre today for diagnostic lap. ?Gallstones
+.
+Technique:
+Ultrasound abdomen.
+.
+Findings:
+Well distended gallbladder demonstrating borderline mural thickness (3 mm).  Presence of pericolic free fluid suggestive of acute cholecystitis.
+Normal small gallstones.
+Extrahepatic biliary dilatation to maximum diameter of 9 mm.  Transition point not visualised on this examination.
+Appearance in keeping with acute cholecystitis, with suspected choledocholithiasis.
+.
+No focal abnormality seen in liver parenchyma.
+Visualised portion of pancreatic neck are normal appearance.  Remainder pancreas not visualised due to overlying bowel gas.
+Normal size and appearance of kidneys.  Normal size and appearance of spleen.
+Normal size appearance of visualised portion abdominal aorta.
+Partially filled urinary bladder.  No intrapelvic free fluid.
+.
+Conclusions:
+Acute cystitis.  Cholelithiasis with suspected choledocholithiasis.",Transcription,0,0,0,1,"{\n  ""errorsForWholeText"": [\n    {\n      ""errorType"": ""Transcription Error"",\n      ""errorPhrases"": [""Normal small gallstones.""],\n      ""errorExplanation"": [\n        ""The word mobile has been transcribed as normal. ""\n      ]\n    }\n  ]\n}\n","errorsForWholeText=[RadiologyError(errorType=<ErrorType.TranscriptionError: 'Transcription Error'>, errorPhrases=['Normal small gallstones.'], errorExplanation=['The word mobile has been transcribed as normal. '])]","{'Internal Inconsistency': 0, 'Omission': 0, 'Transcription Error': 1, 'Extraneous Statement': 0}",0,0,1,0
+16,16,19,"Clinical Information Provided:
+60-year-old male.  Sepsis, ?biliary. Obstructive LFT's with jaundice. ?biliary sepsis
+.
+Technique:
+Ultrasound abdomen/pelvis.
+.
+Findings:
+No relevant previous examination available comparison.
+.
+No further fatty (focal abnormality) seen in liver parenchyma.  Normal direction of (portal vein) flow demonstrated.  No biliary dilatation.
+Multiple mobile gallstones in an otherwise thin-walled gallbladder (0.14 cm).  No pericholecystic free fluid demonstrated.
+Pancreas not visualised due to overlying bowel gas.  No splenomegaly.  Normal size and appearance of kidneys.
+Normal appearance of partially filled urinary bladder.
+Normal appearance and diameter of visualised portion of abdominal aorta.
+Intra-abdominal/pelvic free fluid.
+.
+Conclusions:
+Cholelithiasis.
+No rib fracture (biliary obstruction) or features suggestive of acute cholecystitis.","Clinical Information Provided:
+60-year-old male.  Sepsis, ?biliary. Obstructive LFT's with jaundice. ?biliary sepsis
+.
+Technique:
+Ultrasound abdomen/pelvis.
+.
+Findings:
+No relevant previous examination available comparison.
+.
+No further fatty seen in liver parenchyma.  Normal direction of flow demonstrated.  No biliary dilatation.
+Multiple mobile gallstones in an otherwise thin-walled gallbladder (0.14 cm).  No pericholecystic free fluid demonstrated.
+Pancreas not visualised due to overlying bowel gas.  No splenomegaly.  Normal size and appearance of kidneys.
+Normal appearance of partially filled urinary bladder.
+Normal appearance and diameter of visualised portion of abdominal aorta.
+Intra-abdominal/pelvic free fluid.
+.
+Conclusions:
+Cholelithiasis.
+No rib fracture or features suggestive of acute cholecystitis.",Transcription; omission,1,0,0,1,"{\n  ""errorsForWholeText"": [\n    {\n      ""errorType"": ""Transcription Error"",\n      ""errorPhrases"": [""No further fatty  seen in liver parenchyma.""],\n      ""errorExplanation"": [\n        ""The words focal abnormality has been transcribed as further fatty. ""\n      ]\n    },{\n      ""errorType"": ""Omission"",\n      ""errorPhrases"": [""Normal direction of flow demonstrated""],\n      ""errorExplanation"": [""The words portal vein have been omitted, describing the type of flow.""]\n    }\n  ]\n}\n","errorsForWholeText=[RadiologyError(errorType=<ErrorType.TranscriptionError: 'Transcription Error'>, errorPhrases=['No further fatty  seen in liver parenchyma.'], errorExplanation=['The words focal abnormality has been transcribed as further fatty. ']), RadiologyError(errorType=<ErrorType.Omission: 'Omission'>, errorPhrases=['Normal direction of flow demonstrated'], errorExplanation=['The words portal vein have been omitted, describing the type of flow.'])]","{'Internal Inconsistency': 0, 'Omission': 1, 'Transcription Error': 1, 'Extraneous Statement': 0}",0,1,1,0
+17,17,20,"Clinical Information Provided:
+50-year-old female. Right arm swollen where PICC line was attempted last week. AML with severe thrombocytopenia. Cannot empirically anticoagulate. ?Deep vein thrombosis in an immunosuppressed thrombocytopenic patient
+.
+Technique:
+Ultrasound right arm venous.
+.
+Findings:
+Normal flow (and) compressibility demonstrated in right internal jugular vein.
+Normal flow demonstrated in right subclavian and axillary vein.
+Normal compressibility demonstrated in right cephalic and brachial veins from antecubital fossa caudally.
+Obstructive thrombus seen within the right basilic vein from the level of previous vascular access caudally, with no thrombus extending into axillary vein evident.
+Extensive oedema in right forearm.
+.
+Conclusions:
+Obstructive thrombus seen within right basilic vein.
+No thrombus extension into right axillary vein evident on this examination.
+No thrombus in the right brachial veins.","Clinical Information Provided:
+50-year-old female. Right arm swollen where PICC line was attempted last week. AML with severe thrombocytopenia. Cannot empirically anticoagulate. ?Deep vein thrombosis in an immunosuppressed thrombocytopenic patient
+.
+Technique:
+Ultrasound right arm venous.
+.
+Findings:
+Normal flow compressibility demonstrated in right internal jugular vein.
+Normal flow demonstrated in right subclavian and axillary vein.
+Normal compressibility demonstrated in right cephalic and brachial veins from antecubital fossa caudally.
+Obstructive thrombus seen within the right basilic vein from the level of previous vascular access caudally, with no thrombus extending into axillary vein evident.
+Extensive oedema in right forearm.
+.
+Conclusions:
+Obstructive thrombus seen within right basilic vein.
+No thrombus extension into right axillary vein evident on this examination.
+No thrombus in the right brachial veins.",Omission,1,0,0,0,"{\n  ""errorsForWholeText"": [{\n      ""errorType"": ""Omission"",\n      ""errorPhrases"": [""Normal flow compressibility demonstrated in right internal jugular vein.""],\n      ""errorExplanation"": [""The word and has been omitted from flow compressibility.""]\n    }\n  ]\n}\n","errorsForWholeText=[RadiologyError(errorType=<ErrorType.Omission: 'Omission'>, errorPhrases=['Normal flow compressibility demonstrated in right internal jugular vein.'], errorExplanation=['The word and has been omitted from flow compressibility.'])]","{'Internal Inconsistency': 0, 'Omission': 1, 'Transcription Error': 0, 'Extraneous Statement': 0}",0,1,0,0
+18,18,21,"Clinical information provided:
+Mechanical fall on Saturday - Head injury with LOC and vomiting and retching since Saturday. Cervical (c2-c4), mid thoracic and lower lumbar midline spinal tenderness. Right sided chest tenderness with right flank tenderness and bruising. Has been unable to mobilize well, unsteady on feet and confused. Patient has has a hx of osteoporosis and ankylosing spondylitis and has been taking steroids for PMR. Patient tachycardic and hypertensive. Silver trauma. r/o bleeding/#
+.
+Technique:
+Unenhanced CT head, CT neck, thorax, abdomen, and pelvis with IV contrast.
+.
+Findings:
+Artefact degrading image quality noted.
+Within the limitations of study, no intra or extra-axial haemorrhage or collection.  No cerebral contusion.
+Preserved grey-white matter differentiation.
+White matter changes in keeping with mild to moderate small vessel disease.
+Cerebral volume is commensurate with patient's age.
+Normal appearances of the ventricles and basal cisterns.  No hydrocephalus.
+Mild opacification of the right (side of) sphenoid sinus.  Remaining mastoid air cells are clear.
+No skull vault fracture.
+.
+No soft tissue oedema in the neck.
+No leakage of contrast seen in the main neck or intrathoracic blood vessels and its major branches to suggest active haemorrhage.
+.
+Multiple small areas of ground-glass changes in the right lung.  The left lung is clear.  Bilateral apical pleural thickening.
+No supraclavicular, axillary, mediastinal, internal thoracic, or hilar lymphadenopathy.
+No pneumothorax, pleural effusion, calcified pleural plaque, or abnormal pleural thickening.
+No pericardial effusion.  Mild calcified coronary arteries.
+.
+Normal appearances liver, spleen, adrenal glands, pancreas and kidneys.  No hydronephrosis or hydroureter.  The urinary bladder is mildly distended and outlines normally.  The gallbladder is thin-walled.  Normal calibre CBD.
+Normal appearances of the unprepared bowel.
+No intraperitoneal or intrapelvic free fluid or free gas.  No concerning lymphadenopathy.
+The (No) contrast leakage information (from major) intra-abdominal and intrapelvic blood vessels and its major branches.
+.
+No haematoma and soft tissues.
+Small sclerotic focus in T6 vertebra likely longstanding.  No acute bony fractures.
+.
+Conclusions:
+No evidence of intracranial/intra-abdominal haemorrhage.  No active contrast leak.  No acute bony injury.  Multiple small areas of ground-glass changes in the right lung likely infective/inflammatory.
+Possibility of pulmonary contusions also likely.","Clinical information provided:
+Mechanical fall on Saturday - Head injury with LOC and vomiting and retching since Saturday. Cervical, mid thoracic and lower lumbar midline spinal tenderness. Right sided chest tenderness with right flank tenderness and bruising. Has been unable to mobilize well, unsteady on feet and confused. Patient has has a hx of osteoporosis and ankylosing spondylitis and has been taking steroids for PMR. Patient tachycardic and hypertensive. Silver trauma. r/o bleeding/#
+.
+Technique:
+Unenhanced CT head, CT neck, thorax, abdomen, and pelvis with IV contrast.
+.
+Findings:
+Artefact degrading image quality noted.
+Within the limitations of study, no intra or extra-axial haemorrhage or collection.  No cerebral contusion.
+Preserved grey-white matter differentiation.
+White matter changes in keeping with mild to moderate small vessel disease.
+Cerebral volume is commensurate with patient's age.
+Normal appearances of the ventricles and basal cisterns.  No hydrocephalus.
+Mild opacification of the right sphenoid sinus.  Remaining mastoid air cells are clear.
+No skull vault fracture.
+.
+No soft tissue oedema in the neck.
+No leakage of contrast seen in the main neck or intrathoracic blood vessels and its major branches to suggest active haemorrhage.
+.
+Multiple small areas of ground-glass changes in the right lung.  The left lung is clear.  Bilateral apical pleural thickening.
+No supraclavicular, axillary, mediastinal, internal thoracic, or hilar lymphadenopathy.
+No pneumothorax, pleural effusion, calcified pleural plaque, or abnormal pleural thickening.
+No pericardial effusion.  Mild calcified coronary arteries.
+.
+Normal appearances liver, spleen, adrenal glands, pancreas and kidneys.  No hydronephrosis or hydroureter.  The urinary bladder is mildly distended and outlines normally.  The gallbladder is thin-walled.  Normal calibre CBD.
+Normal appearances of the unprepared bowel.
+No intraperitoneal or intrapelvic free fluid or free gas.  No concerning lymphadenopathy.
+The contrast leakage information intra-abdominal and intrapelvic blood vessels and its major branches.
+.
+No haematoma and soft tissues.
+Small sclerotic focus in T6 vertebra likely longstanding.  No acute bony fractures.
+.
+Conclusions:
+No evidence of intracranial/intra-abdominal haemorrhage.  No active contrast leak.  No acute bony injury.  Multiple small areas of ground-glass changes in the right lung likely infective/inflammatory.
+Possibility of pulmonary contusions also likely.",Omission; transcription; nonsense/transcription.,1,0,1,1,"{\n  ""errorsForWholeText"": [\n    {\n      ""errorType"": ""Omission"",\n      ""errorPhrases"": [""Mild opacification of the right sphenoid sinus""],\n      ""errorExplanation"": [\n        ""The words side of have been omitted from right sphenoid sinus.""\n      ]\n    },\n    {\n      ""errorType"": ""Transcription Error"",\n      ""errorPhrases"": [""The contrast leakage""],\n      ""errorExplanation"": [""The transcription should be No contrast leakage.""]\n    },\n    {\n      ""errorType"": ""Extraneous Statement"",\n      ""errorPhrases"": ["" information intra-abdominal and intrapelvic""],\n      ""errorExplanation"": [\n        ""The statement should be from major intra-abdominal and intrapelvic, instead of information.""\n      ]\n    }\n  ]\n}\n","errorsForWholeText=[RadiologyError(errorType=<ErrorType.Omission: 'Omission'>, errorPhrases=['Mild opacification of the right sphenoid sinus'], errorExplanation=['The words side of have been omitted from right sphenoid sinus.']), RadiologyError(errorType=<ErrorType.TranscriptionError: 'Transcription Error'>, errorPhrases=['The contrast leakage'], errorExplanation=['The transcription should be No contrast leakage.']), RadiologyError(errorType=<ErrorType.ExtraneousStatement: 'Extraneous Statement'>, errorPhrases=[' information intra-abdominal and intrapelvic'], errorExplanation=['The statement should be from major intra-abdominal and intrapelvic, instead of information.'])]","{'Internal Inconsistency': 0, 'Omission': 1, 'Transcription Error': 1, 'Extraneous Statement': 1}",0,1,1,1
+19,19,25,"Clinical information :
+fall flight of stairs, occipital wound, large laceration+ haematoma, vomiting coffee ground, confused, jaw pain , tender right side chest wall, reduced right basal air entry, tender bilateral hip, right > left hip, tender +++ lumbar spine, on apixaban  ? fracture ? ICB ? visceral trauma
+.
+Technique:
+CT head, CT neck, chest, abdomen and pelvis camp Bastion
+.
+Findings
+Head:
+There is an acute right-sided subdural haemorrhage measuring 15 mm in maximum depth along the right hemispheric concavity and along the full cerebral.  Possible trace volume of subarachnoid blood in the left and most focal spaces.  No intraparenchymal haemorrhage.
+Mild 3 mm midline shift to the right.  No hydrocephalus.  No herniation.  No fracture.  There is a large.  Subcutaneous haematoma.
+No established infarction in the right lentiform nucleus and right frontal lobe.  Patchy subcortical white matter hypoattenuation in keeping with moderate to severe small vessel disease.  Normal cranial cervical junction.  The paranasal sinuses and mastoid air cells are clear.
+.
+Neck:
+No major vessel injury.  Normal appearance of urinary catheter tract and salivary glands.  No lymphadenopathy.
+.
+Thorax:
+No pneumothorax, haemothorax, or pulmonary laceration.  Consolidation right base.  No cardiac or major vessel injury.  The thoracic aorta is aneurysmal measuring 4.5 mm (cm) at the level of ascending thoracic aorta.
+No lymphadenopathy.  Hiatus hernia.
+.
+Abdomen/pelvis:
+Normal liver, gallbladder, pancreas, spleen, adrenals, and kidneys (simple renal cysts), with no evidence of acute traumatic injury.  No gross abnormality of the unprepared bowel with no evidence of traumatic bowel wall or mesenteric artery.
+No major vessel injury.  No free fluid or gas within the abdomen or pelvis.  Distended urinary bladder which contains multiple diverticula.  No lymphadenopathy.
+.
+Skeletal:
+There is sacral fracture at the level of L3 (S3).  Fracture of the tip of L5 spinous process.  There is a cystic (associated) haematoma in the right gluteus muscle with multiple small foci of contrast was injected bleeding (blush suggestive of bleeding at time of scan.).
+No (The) vertebral body height and alignment is otherwise normal with no evidence of any acute fracture or facet joint dislocation.  No paravertebral soft tissue swelling.  Normal Atlantodental interval.  Multilevel degenerative changes in cervical spine.  Bilateral hip replacement.  Old anterior rib fractures.  No other bony abnormality.
+.
+Conclusions:
+- Right-sided acute subdural haemorrhage with associate soft tissue haematoma.  Possible trace volume subarachnoid blood.  No fracture identified.
+- Sacral fracture.  L5 spinous process fractures.  Associated right-sided with to haematoma or signs of bleeding at time of scan.
+- No left lower lobe consolidation which may be contusion or however, there is no associated fracture.
+- Urinary bladder retention.","Clinical information :
+fall flight of stairs, occipital wound, large laceration+ haematoma, vomiting coffee ground, confused, jaw pain , tender right side chest wall, reduced right basal air entry, tender bilateral hip, right > left hip, tender +++ lumbar spine, on apixaban  ? fracture ? ICB ? visceral trauma
+.
+Technique:
+CT head, CT neck, chest, abdomen and pelvis camp Bastion
+.
+Findings
+Head:
+There is an acute right-sided subdural haemorrhage measuring 15 mm in maximum depth along the right hemispheric concavity and along the full cerebral.  Possible trace volume of subarachnoid blood in the left and most focal spaces.  No intraparenchymal haemorrhage.
+Mild 3 mm midline shift to the right.  No hydrocephalus.  No herniation.  No fracture.  There is a large.  Subcutaneous haematoma.
+No established infarction in the right lentiform nucleus and right frontal lobe.  Patchy subcortical white matter hypoattenuation in keeping with moderate to severe small vessel disease.  Normal cranial cervical junction.  The paranasal sinuses and mastoid air cells are clear.
+.
+Neck:
+No major vessel injury.  Normal appearance of urinary catheter tract and salivary glands.  No lymphadenopathy.
+.
+Thorax:
+No pneumothorax, haemothorax, or pulmonary laceration.  Consolidation right base.  No cardiac or major vessel injury.  The thoracic aorta is aneurysmal measuring 4.5 mm at the level of ascending thoracic aorta.
+No lymphadenopathy.  Hiatus hernia.
+.
+Abdomen/pelvis:
+Normal liver, gallbladder, pancreas, spleen, adrenals, and kidneys, with no evidence of acute traumatic injury.  No gross abnormality of the unprepared bowel with no evidence of traumatic bowel wall or mesenteric artery.
+No major vessel injury.  No free fluid or gas within the abdomen or pelvis.  Distended urinary bladder which contains multiple diverticula.  No lymphadenopathy.
+.
+Skeletal:
+There is sacral fracture at the level of L3.  Fracture of the tip of L5 spinous process.  There is a cystic haematoma in the right gluteus muscle with multiple small foci of contrast was injected bleeding.
+No vertebral body height and alignment is otherwise normal with no evidence of any acute fracture or facet joint dislocation.  No paravertebral soft tissue swelling.  Normal Atlantodental interval.  Multilevel degenerative changes in cervical spine.  Bilateral hip replacement.  Old anterior rib fractures.  No other bony abnormality.
+.
+Conclusions:
+- Right-sided acute subdural haemorrhage with associate soft tissue haematoma.  Possible trace volume subarachnoid blood.  No fracture identified.
+- Sacral fracture.  L5 spinous process fractures.  Associated right-sided with to haematoma or signs of bleeding at time of scan.
+- No left lower lobe consolidation which may be contusion or however, there is no associated fracture.
+- Urinary bladder retention.",Transcription; transcription/internal inconsistency; transcription; transcription/nonsense; transcription.,0,0,1,4,"{\n  ""errorsForWholeText"": [\n    {\n      ""errorType"": ""Transcription Error"",\n      ""errorPhrases"": [""The thoracic aorta is aneurysmal measuring 4.5 mm at the level of ascending thoracic aorta.""],\n      ""errorExplanation"": [\n        ""The units are wrong. It should be cm instead of mm.""\n      ]\n    },\n    {\n      ""errorType"": ""Transcription Error"",\n      ""errorPhrases"": [""There is sacral fracture at the level of L3. ""],\n      ""errorExplanation"": [""The transcription should be S3 instead of L3.""]\n    },\n    {\n      ""errorType"": ""Transcription Error"",\n      ""errorPhrases"": [""There is a cystic haematoma in the right gluteus muscle""],\n      ""errorExplanation"": [\n        ""The transcription should be there is an associated haematoma.""\n      ]\n    },\n    {\n      ""errorType"": ""Extraneous Statement"",\n      ""errorPhrases"": [""foci of contrast was injected bleeding.""],\n      ""errorExplanation"": [\n        ""The statement should be blush suggestive of bleeding at time of scan, instead of injected bleeding.""\n      ]\n    },\n    {\n      ""errorType"": ""Transcription Error"",\n      ""errorPhrases"": [""No vertebral body height""],\n      ""errorExplanation"": [""The transcription should be the instead of no.""]\n    }\n  ]\n}\n","errorsForWholeText=[RadiologyError(errorType=<ErrorType.TranscriptionError: 'Transcription Error'>, errorPhrases=['The thoracic aorta is aneurysmal measuring 4.5 mm at the level of ascending thoracic aorta.'], errorExplanation=['The units are wrong. It should be cm instead of mm.']), RadiologyError(errorType=<ErrorType.TranscriptionError: 'Transcription Error'>, errorPhrases=['There is sacral fracture at the level of L3. '], errorExplanation=['The transcription should be S3 instead of L3.']), RadiologyError(errorType=<ErrorType.TranscriptionError: 'Transcription Error'>, errorPhrases=['There is a cystic haematoma in the right gluteus muscle'], errorExplanation=['The transcription should be there is an associated haematoma.']), RadiologyError(errorType=<ErrorType.ExtraneousStatement: 'Extraneous Statement'>, errorPhrases=['foci of contrast was injected bleeding.'], errorExplanation=['The statement should be blush suggestive of bleeding at time of scan, instead of injected bleeding.']), RadiologyError(errorType=<ErrorType.TranscriptionError: 'Transcription Error'>, errorPhrases=['No vertebral body height'], errorExplanation=['The transcription should be the instead of no.'])]","{'Internal Inconsistency': 0, 'Omission': 0, 'Transcription Error': 4, 'Extraneous Statement': 1}",0,0,4,1
+20,20,26,"Clinical information
+Grey trauma - BIBA in vacmat: fall & long lie going to toilet in early morning. Hit face, tender facial bones, periorbital haematoma. On apixaban. COPD low sats, poor air entry. R shoulder pain. L hand 5th MCP bruising. R leg shortened & rotated. Pain R knee. Hypotensive.
+.
+Technique:
+Unenhanced CT head.
+CT neck, chest, abdomen and pelvis with IV contrast
+.
+Findings:
+Head:
+No evidence of intracranial haemorrhage or cerebral contusion.
+Age related involutional changes.  No established cortical infarction or space-occupying lesion and no hydrocephalus.
+The visible paranasal sinuses and mastoid air cells are clear.  Nondisplaced fracture nasal bones.  No other acute bony injury.
+.
+Neck/chest/abdomen/pelvis:
+Bilateral basal atelectasis.  A large ascending thoracic aortic aneurysm seen on previous CT.  There is progression of aneurysmal dilatation distal to the arch measuring up to 7.4 cm maximum diameter.  Further dilatation at the aortic hiatus measuring up to 6.52 metres (6.5 cm).  The aneurysm continues down to the level of renal arteries. Infrarenal abdominal aorta is of normal calibre.  No evidence of dissection or contrast leakage.
+No pleural effusion or pneumothorax.
+.
+The liver, pancreas, spleen, adrenal glands, and kidneys are unremarkable.
+No retroperitoneal collection and no free fluid or gas.
+Incidental gallstones, gallbladder is otherwise normal.
+Mesenteric and omental fat is clear.
+No obvious abnormality in the unprepared bowel.
+Intact filled urinary bladder.
+.
+Additional changes lumbar spine.  No acute bony injury identified.
+.
+Conclusions:
+No bony visceral injury is identified.
+No intracranial haemorrhage or cerebral contusion.  Nondisplaced fracture facial (nasal) bones.
+Significant progression of known descending thoracic aortic aneurysm as described.  No evidence of dissection or leakage.","Clinical information
+Grey trauma - BIBA in vacmat: fall & long lie going to toilet in early morning. Hit face, tender facial bones, periorbital haematoma. On apixaban. COPD low sats, poor air entry. R shoulder pain. L hand 5th MCP bruising. R leg shortened & rotated. Pain R knee. Hypotensive.
+.
+Technique:
+Unenhanced CT head.
+CT neck, chest, abdomen and pelvis with IV contrast
+.
+Findings:
+Head:
+No evidence of intracranial haemorrhage or cerebral contusion.
+Age related involutional changes.  No established cortical infarction or space-occupying lesion and no hydrocephalus.
+The visible paranasal sinuses and mastoid air cells are clear.  Nondisplaced fracture nasal bones.  No other acute bony injury.
+.
+Neck/chest/abdomen/pelvis:
+Bilateral basal atelectasis.  A large ascending thoracic aortic aneurysm seen on previous CT.  There is progression of aneurysmal dilatation distal to the arch measuring up to 7.4 cm maximum diameter.  Further dilatation at the aortic hiatus measuring up to 6.52 metres.  The aneurysm continues down to the level of renal arteries. Infrarenal abdominal aorta is of normal calibre.  No evidence of dissection or contrast leakage.
+No pleural effusion or pneumothorax.
+.
+The liver, pancreas, spleen, adrenal glands, and kidneys are unremarkable.
+No retroperitoneal collection and no free fluid or gas.
+Incidental gallstones, gallbladder is otherwise normal.
+Mesenteric and omental fat is clear.
+No obvious abnormality in the unprepared bowel.
+Intact filled urinary bladder.
+.
+Additional changes lumbar spine.  No acute bony injury identified.
+.
+Conclusions:
+No bony visceral injury is identified.
+No intracranial haemorrhage or cerebral contusion.  Nondisplaced fracture facial bones.
+Significant progression of known descending thoracic aortic aneurysm as described.  No evidence of dissection or leakage.",Transcription/nonsense; transcription.,0,0,1,1,"{\n  ""errorsForWholeText"": [\n    {\n      ""errorType"": ""Extraneous Statement"",\n      ""errorPhrases"": [""Further dilatation at the aortic hiatus measuring up to 6.52 metres.""],\n      ""errorExplanation"": [""The aortic hiatus cannot be 6.52m. It is more likely that it is 6.5cm. ""]\n    },\n    {\n      ""errorType"": ""Transcription Error"",\n      ""errorPhrases"": [""Nondisplaced fracture facial bones.""],\n      ""errorExplanation"": [\n        ""The transcription should be nasal instead of facial.""\n      ]\n    }\n  ]\n}\n","errorsForWholeText=[RadiologyError(errorType=<ErrorType.ExtraneousStatement: 'Extraneous Statement'>, errorPhrases=['Further dilatation at the aortic hiatus measuring up to 6.52 metres.'], errorExplanation=['The aortic hiatus cannot be 6.52m. It is more likely that it is 6.5cm. ']), RadiologyError(errorType=<ErrorType.TranscriptionError: 'Transcription Error'>, errorPhrases=['Nondisplaced fracture facial bones.'], errorExplanation=['The transcription should be nasal instead of facial.'])]","{'Internal Inconsistency': 0, 'Omission': 0, 'Transcription Error': 1, 'Extraneous Statement': 1}",0,0,1,1
+21,21,27,"Clinical details provided:  Pedestrian involved in a road traffic collision. Head injury with loss of consciousness, neck pain, left chest pain, left hip pain.  Injury?  Leak?
+.
+Findings:
+Head. 
+No intracranial haemorrhage.  Normal grey-white matter differentiation.  Soft tissue haematoma overlying the right parietal and occipital bones.  The no skull vault fracture.  There is a suspicion of a nasal bone fracture although this is at the edge of the imaging and should be assessed clinically.
+.
+Chest abdomen and pelvis.
+No pneumothorax.  Minor atelectasis in the left lower lobe, but no pulmonary contusion or haemothorax. The great vessels are intact.
+.
+Extreme fatty change within the liver but no focal abnormality.  No organ injury.  No free fluid or free gas.  The bowel is unremarkable.  No enlarged nodes.
+.
+Skeleton.  Normal cervical spine alignment.  No fracture, facet joint dislocation or prevertebral soft tissue thickening.  The left vertebral artery arises directly from the aortic arch.  No cervical vessel abnormality. No acute bony injury.
+.
+Conclusion:  Minor haematoma overlying the occipital bone but no other findings of note. (Possible nasal bone fracture)","Clinical details provided:  Pedestrian involved in a road traffic collision. Head injury with loss of consciousness, neck pain, left chest pain, left hip pain.  Injury?  Leak?
+.
+Findings:
+Head. 
+No intracranial haemorrhage.  Normal grey-white matter differentiation.  Soft tissue haematoma overlying the right parietal and occipital bones.  The no skull vault fracture.  There is a suspicion of a nasal bone fracture although this is at the edge of the imaging and should be assessed clinically.
+.
+Chest abdomen and pelvis.
+No pneumothorax.  Minor atelectasis in the left lower lobe, but no pulmonary contusion or haemothorax. The great vessels are intact.
+.
+Extreme fatty change within the liver but no focal abnormality.  No organ injury.  No free fluid or free gas.  The bowel is unremarkable.  No enlarged nodes.
+.
+Skeleton.  Normal cervical spine alignment.  No fracture, facet joint dislocation or prevertebral soft tissue thickening.  The left vertebral artery arises directly from the aortic arch.  No cervical vessel abnormality. No acute bony injury.
+.
+Conclusion:  Minor haematoma overlying the occipital bone but no other findings of note. ",Omission,1,0,0,0,"{\n  ""errorsForWholeText"": [\n    {\n      ""errorType"": ""Omission"",\n      ""errorPhrases"": [""Minor haematoma overlying the occipital bone but no other findings of note.""],\n      ""errorExplanation"": [""There is an omission of the possible nasal bone fracture.""]\n    }\n  ]\n}\n","errorsForWholeText=[RadiologyError(errorType=<ErrorType.Omission: 'Omission'>, errorPhrases=['Minor haematoma overlying the occipital bone but no other findings of note.'], errorExplanation=['There is an omission of the possible nasal bone fracture.'])]","{'Internal Inconsistency': 0, 'Omission': 1, 'Transcription Error': 0, 'Extraneous Statement': 0}",0,1,0,0
+22,22,28,"Clinical details:
+Fall around 0100.  Doesn't remember fall or immediately after.  Now has right sided weakness, unclear if from before or after fall.  Reduced sensation rigt upper limb.  No external evidence of HI.  Tender C4-6.  Tender left anterior chest wall.  Generally tender abdomen with no guarding.  Tender L 3-4++.  ?ich ?#s
+.
+Findings:
+CT Trauma
+.
+Head and neckHead and neck:
+(No) Intracranial haemorrhage or extra-axial collection.  No acute cortical infarct.  Mild white matter microvascular changes in periventricular basal ganglia region.
+The ventricles and sulci are commensurate to patient's age.  No midline shift or hydrocephalus.
+No skull fracture.  Normal alignment of the cervical spine, no acute fracture or dislocation.  Compression fracture C4-5 likely longstanding.
+.
+Thorax:
+No aortic injury.  No pneumothorax or pleural effusion.  No pericardial effusion.
+Of upper lobe emphysema.  Patchy
+Previous median sternotomy.
+No acute rib fracture.  Healed fracture of left second rib.
+.
+Abdomen/pelvis:
+No liver or splenic injury.  Normal kidneys, adrenal, appearance of small bowel colon.  No intraperitoneal free fluid or gas.
+Unremarkable pelvic organs.
+In situ.
+.
+Bones:
+Normal alnment (alignment) of the thoracic spine, with no acute fracture or dislocation.  Previous fixation for five.  Mild nonacute compression fracture of T10 and T11.  No pelvic bone fracture.
+.  
+Conclusions:  
+No significant traumatic injury
+","Clinical details:
+Fall around 0100.  Doesn't remember fall or immediately after.  Now has right sided weakness, unclear if from before or after fall.  Reduced sensation rigt upper limb.  No external evidence of HI.  Tender C4-6.  Tender left anterior chest wall.  Generally tender abdomen with no guarding.  Tender L 3-4++.  ?ich ?#s
+.
+Findings:
+CT Trauma
+.
+Head and neckHead and neck:
+Intracranial haemorrhage or extra-axial collection.  No acute cortical infarct.  Mild white matter microvascular changes in periventricular basal ganglia region.
+The ventricles and sulci are commensurate to patient's age.  No midline shift or hydrocephalus.
+No skull fracture.  Normal alignment of the cervical spine, no acute fracture or dislocation.  Compression fracture C4-5 likely longstanding.
+.
+Thorax:
+No aortic injury.  No pneumothorax or pleural effusion.  No pericardial effusion.
+Of upper lobe emphysema.  Patchy
+Previous median sternotomy.
+No acute rib fracture.  Healed fracture of left second rib.
+.
+Abdomen/pelvis:
+No liver or splenic injury.  Normal kidneys, adrenal, appearance of small bowel colon.  No intraperitoneal free fluid or gas.
+Unremarkable pelvic organs.
+In situ.
+.
+Bones:
+Normal alnment of the thoracic spine, with no acute fracture or dislocation.  Previous fixation for five.  Mild nonacute compression fracture of T10 and T11.  No pelvic bone fracture.
+.  
+Conclusions:  
+No significant traumatic injury",Omission; spelling,1,0,0,1,"{\n  ""errorsForWholeText"": [\n    {\n      ""errorType"": ""Omission"",\n      ""errorPhrases"": [""Intracranial haemorrhage or extra-axial collection""],\n      ""errorExplanation"": [""There is an omission of the word no, as there is no intracranial haemorrhage.""]\n    },\n    {\n      ""errorType"": ""Transcription Error"",\n      ""errorPhrases"": [""Normal alnment of the thoracic spine""],\n      ""errorExplanation"": [""The word alignment was transcribed wrongly as alnment.""]\n    }\n  ]\n}\n","errorsForWholeText=[RadiologyError(errorType=<ErrorType.Omission: 'Omission'>, errorPhrases=['Intracranial haemorrhage or extra-axial collection'], errorExplanation=['There is an omission of the word no, as there is no intracranial haemorrhage.']), RadiologyError(errorType=<ErrorType.TranscriptionError: 'Transcription Error'>, errorPhrases=['Normal alnment of the thoracic spine'], errorExplanation=['The word alignment was transcribed wrongly as alnment.'])]","{'Internal Inconsistency': 0, 'Omission': 1, 'Transcription Error': 1, 'Extraneous Statement': 0}",0,1,1,0
+23,23,22,"FULL Report:
+CT scan of head.
+Unenhanced study.
+Scalp haematoma seen overlying right parietal region with thin layer of subdural haematoma over right frontoparietal region maximum depth 4mm.
+Minimal sulcal crowding but no other appreciable mass effect.
+Normal appearance to the left cerebral hemisphere.
+No acute intracerebral haemorrhage or space occupying lesion.
+No extra axial haemorrhage. ()
+Normal basal ganglia, thalami, brainstem and cerebellum.
+No skull fracture.
+
+CT scan of cervical spine.
+No acute fracture.
+Normal alignment.
+No prevertebral soft tissue swelling.
+.
+CT scan of chest, abdomen and pelvis with intravenous contrast.
+The airway is clear.
+The lungs are clear and fully expanded.
+No pneumothorax.
+No pleural or pericardial effusion.
+Normal enhancement of the mediastinal vessels.
+Normal appearance to the liver, gallbladder, pancreas, spleen and adrenal glands.
+Normal kidneys.
+The bladder is distended and the ureter's are prominent.
+No ascites.
+No free intraperitoneal gas.
+No fracture.
+
+Conclusion:
+Right frontoparietal haematoma
+No fracture.
+No acute visceral injury identified in the chest, abdomen or pelvis.","FULL Report:
+CT scan of head.
+Unenhanced study.
+Scalp haematoma seen overlying right parietal region with thin layer of subdural haematoma over right frontoparietal region maximum depth 4mm.
+Minimal sulcal crowding but no other appreciable mass effect.
+Normal appearance to the left cerebral hemisphere.
+No acute intracerebral haemorrhage or space occupying lesion.
+No extra axial haemorrhage.
+Normal basal ganglia, thalami, brainstem and cerebellum.
+No skull fracture.
+
+CT scan of cervical spine.
+No acute fracture.
+Normal alignment.
+No prevertebral soft tissue swelling.
+.
+CT scan of chest, abdomen and pelvis with intravenous contrast.
+The airway is clear.
+The lungs are clear and fully expanded.
+No pneumothorax.
+No pleural or pericardial effusion.
+Normal enhancement of the mediastinal vessels.
+Normal appearance to the liver, gallbladder, pancreas, spleen and adrenal glands.
+Normal kidneys.
+The bladder is distended and the ureter's are prominent.
+No ascites.
+No free intraperitoneal gas.
+No fracture.
+
+Conclusion:
+Right frontoparietal haematoma
+No fracture.
+No acute visceral injury identified in the chest, abdomen or pelvis.",Template error,0,0,1,0,"{\n  ""errorsForWholeText"": [\n    {\n      ""errorType"": ""Extraneous Statement"",\n      ""errorPhrases"": [""No extra axial haemorrhage.""],\n      ""errorExplanation"": [""The statement of no extra axial haemorhage is a template error.""]\n    }\n  ]\n}\n","errorsForWholeText=[RadiologyError(errorType=<ErrorType.ExtraneousStatement: 'Extraneous Statement'>, errorPhrases=['No extra axial haemorrhage.'], errorExplanation=['The statement of no extra axial haemorhage is a template error.'])]","{'Internal Inconsistency': 0, 'Omission': 0, 'Transcription Error': 0, 'Extraneous Statement': 1}",0,0,0,1
+24,24,23,"Clinical information: trauma
+
+Name of procedure: CT CT head, cervical spine, chest, abdomen and pelvis
+
+Technique: Polytrauma
+
+Findings
+CT head: No cranial vault or skull base fracture. No brain contusion. No haemorrhage. No acute obstruction. No collection. No space-occupying lesion.
+
+CT cervical spine: Severe multilevel cervical spondylosis. No acute bony injury.
+
+Lungs: No lung contusion. No laceration. No major airways obstruction. No haemothorax. No pneumothorax. No mediastinal haematoma. Intact bony thorax and sternum. Small right pleural effusion with minor atelectasis. Normal ( ).
+
+Intact diaphragm.
+
+Liver: Normal
+Biliary tract: Normal
+Pancreas: Normal
+Spleen: Normal
+Adrenal glands: Normal
+
+Kidneys: Normal
+Ureters: Normal
+Bladder: Normal
+
+Oesophagus: Normal
+Stomach: Normal
+Small bowel: Normal
+Appendix: Normal
+Large bowel: Normal
+
+Peritoneum: ¬†No haemoperitoneum. No pneumoperitoneum. No retroperitoneal haematoma.
+Omentum/mesentery: Normal
+Lymph nodes: Normal
+
+Vessels: Normal
+Pelvic viscera: Normal
+Perineum: Normal
+Abdominal wall/hernia: Normal
+
+Musculoskeletal:¬†Severe multilevel degenerative change in the spine. No acute bony injury.
+
+Conclusion
+No acute injury in the head, neck, chest, abdomen or pelvis.","Clinical information: trauma
+
+Name of procedure: CT CT head, cervical spine, chest, abdomen and pelvis
+
+Technique: Polytrauma
+
+Findings
+CT head: No cranial vault or skull base fracture. No brain contusion. No haemorrhage. No acute obstruction. No collection. No space-occupying lesion.
+
+CT cervical spine: Severe multilevel cervical spondylosis. No acute bony injury.
+
+Lungs: No lung contusion. No laceration. No major airways obstruction. No haemothorax. No pneumothorax. No mediastinal haematoma. Intact bony thorax and sternum. Small right pleural effusion with minor atelectasis.Normal.
+
+Intact diaphragm.
+
+Liver: Normal
+Biliary tract: Normal
+Pancreas: Normal
+Spleen: Normal
+Adrenal glands: Normal
+
+Kidneys: Normal
+Ureters: Normal
+Bladder: Normal
+
+Oesophagus: Normal
+Stomach: Normal
+Small bowel: Normal
+Appendix: Normal
+Large bowel: Normal
+
+Peritoneum: ¬†No haemoperitoneum. No pneumoperitoneum. No retroperitoneal haematoma.
+Omentum/mesentery: Normal
+Lymph nodes: Normal
+
+Vessels: Normal
+Pelvic viscera: Normal
+Perineum: Normal
+Abdominal wall/hernia: Normal
+
+Musculoskeletal:¬†Severe multilevel degenerative change in the spine. No acute bony injury.
+
+Conclusion
+No acute injury in the head, neck, chest, abdomen or pelvis.",Extraneous statement/template error.,0,0,1,0,"{\n  ""errorsForWholeText"": [\n    {\n      ""errorType"": ""Extraneous Statement"",\n      ""errorPhrases"": [""Small right pleural effusion with minor atelectasis. Normal""],\n      ""errorExplanation"": [""The word normal does not need to be here.""]\n    }\n  ]\n}\n","errorsForWholeText=[RadiologyError(errorType=<ErrorType.ExtraneousStatement: 'Extraneous Statement'>, errorPhrases=['Small right pleural effusion with minor atelectasis. Normal'], errorExplanation=['The word normal does not need to be here.'])]","{'Internal Inconsistency': 0, 'Omission': 0, 'Transcription Error': 0, 'Extraneous Statement': 1}",0,0,0,1
+25,25,24,"CT Thorax, abdomen and pelvis
+
+Findings
+Lung parenchyma: Normal
+Pleura: Normal
+Major airways: Normal
+Lymph nodes: Normal
+Pulmonary vessels: Normal
+Heart, pericardium, mediastinum: Normal
+
+Chest wall and breast: normal
+Supraclavicular, axillary and subpectoral lymph nodes: normal
+ 
+Liver: Normal
+Biliary tract: Gallstones of the gallbladder.
+Pancreas: Normal
+Spleen: Normal
+Adrenal glands: Normal
+
+Kidneys: Reduced corticomedullary differentiation
+Ureters: Normal
+Bladder: Normal
+
+Oesophagus: normal
+Stomach: Normal
+Small bowel: Normal
+Appendix: Normal
+Large bowel: Normal
+
+Peritoneum: No free fluid. No pneumoperitoneum. No drainable collection.
+Omentum/mesentery: Normal
+Lymph nodes: Normal
+
+Vessels: Calcific atheromatous change of aorta. Severe superior mesenteric artery stenosis. Diffuse concentric mural thickening of the aorta and major upper limb arteries. This appears more than could be explained by atherosclerosis alone.
+Pelvic viscera: Normal
+Perineum: Normal
+Abdominal wall/hernia: Normal
+
+Musculoskeletal: Mild degenerative change in the spine
+
+Conclusion:
+No definite source of sepsis. No acute surgical pathology. No collection. No intra-abdominal abnormality. (Gallstones. Reduced renal corticomedullary differentiation compatible with renal failure.)
+Diffuse concentric mural thickening of the aorta and major upper limb arteries. This appears more than could be explained by atherosclerosis alone. This raises the possibility of a major vessel vasculitis.","CT Thorax, abdomen and pelvis
+
+Findings
+Lung parenchyma: Normal
+Pleura: Normal
+Major airways: Normal
+Lymph nodes: Normal
+Pulmonary vessels: Normal
+Heart, pericardium, mediastinum: Normal
+
+Chest wall and breast: normal
+Supraclavicular, axillary and subpectoral lymph nodes: normal
+ 
+Liver: Normal
+Biliary tract: Gallstones of the gallbladder.
+Pancreas: Normal
+Spleen: Normal
+Adrenal glands: Normal
+
+Kidneys: Reduced corticomedullary differentiation
+Ureters: Normal
+Bladder: Normal
+
+Oesophagus: normal
+Stomach: Normal
+Small bowel: Normal
+Appendix: Normal
+Large bowel: Normal
+
+Peritoneum: No free fluid. No pneumoperitoneum. No drainable collection.
+Omentum/mesentery: Normal
+Lymph nodes: Normal
+
+Vessels: Calcific atheromatous change of aorta. Severe superior mesenteric artery stenosis. Diffuse concentric mural thickening of the aorta and major upper limb arteries. This appears more than could be explained by atherosclerosis alone.
+Pelvic viscera: Normal
+Perineum: Normal
+Abdominal wall/hernia: Normal
+
+Musculoskeletal: Mild degenerative change in the spine
+
+Conclusion:
+No definite source of sepsis. No acute surgical pathology. No collection. No intra-abdominal abnormality.
+Diffuse concentric mural thickening of the aorta and major upper limb arteries. This appears more than could be explained by atherosclerosis alone. This raises the possibility of a major vessel vasculitis.",Omission,1,0,0,0,"{\n  ""errorsForWholeText"": [\n    {\n      ""errorType"": ""Omission"",\n      ""errorPhrases"": [""No intra-abdominal abnormality.""],\n      ""errorExplanation"": [""There is a large omission where the dictaphone potentially had been cut off. This should have the words Gallstones. Reduced renal corticomedullary differentiation compatible with renal failure.""]\n    }\n  ]\n}\n","errorsForWholeText=[RadiologyError(errorType=<ErrorType.Omission: 'Omission'>, errorPhrases=['No intra-abdominal abnormality.'], errorExplanation=['There is a large omission where the dictaphone potentially had been cut off. This should have the words Gallstones. Reduced renal corticomedullary differentiation compatible with renal failure.'])]","{'Internal Inconsistency': 0, 'Omission': 1, 'Transcription Error': 0, 'Extraneous Statement': 0}",0,1,0,0
