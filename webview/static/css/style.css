@@ -13,3 +13,8 @@
   display: block;
   opacity: 1;
 }
+
+.htmx-request:not(.htmx-indicator) {
+  display: block;
+  opacity: 1;
+}

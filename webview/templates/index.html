@@ -1,55 +1,143 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="../static/images/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="../static/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="../static/images/favicon-16x16.png"
+    />
+    <link rel="manifest" href="../static/images/site.webmanifest" />
+    <!-- <script src="https://unpkg.com/@tailwindcss/browser@4"></script> -->
+    <!-- Script for tailwind. -->
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+    <link rel="stylesheet" href="../static/css/tailwindstyles.css" />
+    <!-- Script for htmx -->
+    <!-- <script src="https://unpkg.com/htmx.org@2.0.4"></script> -->
+    <!-- Offline htmx -->
+    <script src="../static/js/htmx.min.js"></script>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="apple-touch-icon" sizes="180x180" href="../static/images/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="../static/images/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="../static/images/favicon-16x16.png">
-  <link rel="manifest" href="../static/images/site.webmanifest">
-  <!-- <script src="https://unpkg.com/@tailwindcss/browser@4"></script> -->
-  <!-- Script for tailwind. -->
-  <!-- <script src="https://cdn.tailwindcss.com"></script> -->
-   <link rel="stylesheet" href="../static/css/tailwindstyles.css">
-  <!-- Script for htmx -->
-  <!-- <script src="https://unpkg.com/htmx.org@2.0.4"></script> -->
-  <!-- Offline htmx -->
-   <script src="../static/js/htmx.min.js"></script>
+    <link rel="stylesheet" href="../static/css/style.css" />
 
-  <link rel="stylesheet" href="../static/css/style.css">
+    <title>NLP and Radiology Tool</title>
+  </head>
 
-  <title>NLP and Radiology Tool</title>
-</head>
+  <script defer>
+    function replaceTextArea(number) {
+      let reportInfo = document.querySelector("#reportInformation")
+      if (number == 1) {
+        reportInfo.innerHTML = "Clinical Information:\nNot given.\nTechnique:\nNon-contrast images were taken in the axial plane with a section thickness of 1.5 mm.\n Findings:\nTrachea, both main bronchi are open. Mediastinal main vascular structures, heart contour, size are normal. Thoracic aorta diameter is normal. Pericardial effusion-thickening was not observed. Thoracic esophagus calibration was normal and no significant tumoral wall thickening was detected. In both axillary regions, there are oval-shaped lymph nodes with a short axis measuring up to 7 mm. No enlarged lymph nodes in prevascular, pre-paratracheal, subcarinal or bilateral hilar pathological dimensions were detected. When examined in the lung parenchyma window; Aeration of both lung parenchyma is normal and no nodular or infiltrative lesion is detected in the lung parenchyma. Pleural effusion-thickening was not detected. Upper abdominal organs included in the sections are normal. No space-occupying lesion was detected in the liver that entered the cross-sectional area. Bilateral adrenal glands were normal and no space-occupying lesion was detected. Bone structures in the study area are natural. Vertebral corpus heights are preserved.\nImpressions: \nThoracic CT examination within normal limits."
+      } else if(number == 2) {
+        reportInfo.innerHTML = "Clinical Information:\nNot given.\nTechnique:\n1.5 mm thick non-contrast sections were taken in the axial plane.\n Findings:\nTrachea and lumen of both main bronchi are open. No occlusive pathology was detected in the trachea and lumen of both main bronchi. Calibration of thoracic main vascular structures is natural. Heart contour size is natural. Pericardial thickening-effusion was not detected. A venous catheter is observed in the superior vena cava. Thoracic esophagus calibration was normal and no significant pathological wall thickening was detected. Mediastinal, hilar, axillary, supraclavicular short axis measured up to 10 mm, showing a tendency to confluence with each other, and suboptimal lymphadenopathies were observed. When examined in the lung parenchyma window; Dependent atelectasis fibrotic sequelae are present in the basal segments of the lower lobes of both lungs, the left lung upper lobe, the inferior lingula, and the right lung middle lobe. At the basal level of the lower lobe of the right lung, in series 2 image 364, there is a finding consistent with a bulla measuring 20 mm in size. Upper abdominal organs are included in the study partially and evaluated as suboptimal. A degenerative change, which does not differ, is observed in the central part of the 6th vertebral body. No lytic-destructive lesion was detected in bone structures.\nImpressions: \n Atelectatic changes in the form of thick bands in the basal levels of the lower lobes of both lungs and the inferior lingula of the left lung upper lobe.  Sequelae of atelectatic changes in the middle lobe of the right lung.  Appearance compatible with 20 mm bulla at the posterobasal level of the lower lobe of the right lung.  Mediastinal, hilar, axillary, supraclavicular lymphadenopathies with a short axis measuring up to 14 mm (20 mm in the previous examination), showing a dimensional reduction, which is considered suboptimal within the examination limits that tend to confluence with each other."
+      }
+      else if(number == 3){
+        reportInfo.innerHTML = "Clinical Information:\nNot given.\nTechnique:\nNon-contrast images were taken in the axial plane with a section thickness of 1.5 mm.\n Findings:\nTrachea, both main bronchi are open. Mediastinal main vascular structures, heart contour, size are normal. Thoracic aorta diameter is normal. Pericardial effusion-thickening was not observed. Thoracic esophagus calibration was normal and no significant tumoral wall thickening was detected. There are small lymph nodes measuring up to 15 mm2 in the mediastinum, especially in the paratracheal aorticopulmonary window. When examined in the lung parenchyma window; Patchy ground glass densities are observed in the bilateral posterior segment superiorities of both lung lower lobes, more prominently on the right, in a patchy manner. The findings were evaluated in favor of Covid-19 viral pneumonia and clinical laboratory correlation follow-up is recommended. A stone measuring up to 27 mm in size is observed in the gallbladder entering the examination area (cholelithiasis). There are changes in favor of steatosis in the liver parenchyma. Upper abdominal organs included in the sections are normal. No space-occupying lesion was detected in the liver that entered the cross-sectional area. Bilateral adrenal glands were normal and no space-occupying lesion was detected. Bone structures in the study area are natural. Vertebral corpus heights are preserved.\nImpressions: \nStones measuring up to 27 mm in size in the gallbladder (cholelithiasis), hepatosteatosis . Findings compatible with Covid-19 viral pneumonia in the lung parenchyma, clinical laboratory correlation and close follow-up are recommended.  Multiple lymph nodes in mediastinum and axillary regions."
+      }
+      else{
+        console.log("")
+      }
 
-<body class="bg-red-50 w-screen h-screen">
-  <div class="p-7 w-full flex flex-col md:flex-row items-start gap-5 md:gap-2 bg-blue-50 h-full ">
-    <section class="flex flex-col h-[100%] w-full">
-      <form class="flex flex-col gap-4 px-2" hx-post="/generate" hx-target="#correction" hx-swap="outerHTML" hx-indicator="#spinner">
-        <label for="reportInformation"><strong>Report Information:</strong></label>
-        <textarea id="reportInformation" name="reportInformation" spellcheck="true"
-          class="min-h-[20rem] w-auto rounded-md bg-neutral-50 px-2 py-3" style="resize:none;" required></textarea>
-        <label for="modelName"><strong>Choose LLM:</strong></label>
-        <select name="modelName" id="modelName"
-          class="min-w-1/3 max-w-xs p-2 rounded-sm bg-neutral-50 border-2 hover:border-gray-300 border-blue-200 border-solid">
-          {% for model in models %}
-            <option value={{model}}>{{model}}</option>
-          {% endfor %}
-        </select>
-        <button class="bg-blue-200 rounded-md flex flex-row justify-center p-4 min-w-1/2 max-w-lg hover:bg-gray-300">
-          <input type="submit" value="Send Request" class=""/>
-        </button>
-      </form>
-    </section>
-    <!-- <span class="bg-red-100 h-[75vh] w-[2px] items-center margin-auto"></span> -->
-    <section class="flex flex-col bg-neutral-50 rounded-md gap-3 min-w-md md:max-w-[45vw] w-full" id="correction">
-      <p class="px-2 py-3 h-[50vh] overflow-y-auto">
-        <img id="spinner" class="htmx-indicator m-auto" src="../static/images/spinner.gif" />
-        <mark>Facilisis aliquet mollis vivamus inceptos vel efficitur taciti nibh nisl. Congue ex libero dapibus egestas sem hendrerit.</mark> 
-        {{ lipsum(html=False, min=10) }}
-      </p>
-    </section>
-  </div>
-</body>
+      
+    }
+  </script>
 
+  <body class="bg-red-50 w-screen h-screen">
+    <div
+      class="p-7 w-full flex flex-col md:flex-row items-start gap-5 md:gap-2 bg-blue-50 h-full"
+    >
+      <section class="flex flex-col h-[100%] w-full">
+        <form
+          class="flex flex-col gap-4 px-2"
+          hx-post="/generate"
+          hx-target="#correction-section"
+          hx-swap="innerHTML"
+          hx-indicator="#spinner"
+        >
+          <label for="reportInformation"
+            ><strong>Report Information:</strong></label
+          >
+          <textarea
+            id="reportInformation"
+            name="reportInformation"
+            spellcheck="true"
+            class="min-h-[20rem] w-auto rounded-md bg-neutral-50 px-2 py-3"
+            style="resize: none"
+            required
+          ></textarea>
+          <label for="modelName"><strong>Choose LLM:</strong></label>
+          <select
+            name="modelName"
+            id="modelName"
+            class="min-w-1/3 max-w-xs p-2 rounded-sm bg-neutral-50 border-2 hover:border-gray-300 border-blue-200 border-solid"
+          >
+            {% for model in models %}
+            <option value="{{model}}">{{model}}</option>
+            {% endfor %}
+          </select>
+          <button
+            class="bg-blue-200 rounded-md flex flex-row justify-center p-4 min-w-1/2 max-w-lg hover:bg-gray-300"
+          >
+            <input type="submit" value="Send Request" class="" />
+          </button>
+        </form>
+        <div
+          class="w-full flex flex-row gap-2 items-center justify-between items-center p-2"
+        >
+          <button
+            class="bg-blue-100 rounded-md flex flex-row p-4 hover:bg-gray-300"
+            id="example-1"
+            onclick="replaceTextArea(1)"
+          >
+            Example 1
+          </button>
+
+          <button
+            class="bg-blue-100 rounded-md flex flex-row p-4 hover:bg-gray-300"
+            id="example-2"
+            onclick="replaceTextArea(2)"
+          >
+            Example 2
+          </button>
+          <button
+            class="bg-blue-100 rounded-md flex flex-row p-4 hover:bg-gray-300"
+            id="example-3"
+            onclick="replaceTextArea(3)"
+          >
+            Example 3
+          </button>
+        </div>
+      </section>
+      <!-- <span class="bg-red-100 h-[75vh] w-[2px] items-center margin-auto"></span> -->
+      <section
+        class="flex flex-col bg-neutral-50 rounded-md gap-3 min-w-md md:max-w-[45vw] w-full"
+        id="correction-section"
+      >
+      <img
+        id="spinner"
+        class="htmx-indicator m-auto"
+        src="../static/images/spinner.gif"
+      />
+        <p class="px-2 py-3 h-[50vh] overflow-y-auto">
+          <mark
+            >Facilisis aliquet mollis vivamus inceptos vel efficitur taciti nibh
+            nisl. Congue ex libero dapibus egestas sem hendrerit.</mark
+          >
+          {{ lipsum(html=False, min=10) }}
+        </p>
+      </section>
+    </div>
+  </body>
 </html>

@@ -10,6 +10,8 @@ import json
 app = Flask(__name__)
 try:
     modelList = [model.get("model") for model in ollama.list().models]
+    if len(modelList) == 0:
+        raise Exception("No models are present. ")
 
 except Exception:
     raise Exception("Ollama not running. Please start ollama.")
@@ -27,8 +29,6 @@ def index():
 @app.post("/generate")
 def generate():
     """Takes in the model name + report information as a form. Outputs the possible errors, as JSON."""
-
-    
 
     modelName = request.form["modelName"]
     reportInfo = request.form["reportInformation"]
